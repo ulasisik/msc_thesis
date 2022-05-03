@@ -10,9 +10,13 @@
 
 # RStudio files
 .Rproj.user/
+msc_thesis.Rproj
 
 # Other files
 examples/
 data/
 figures/
+paper/
 
+# MacOS files
+.DS_Store
