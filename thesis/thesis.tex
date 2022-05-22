@@ -1,0 +1,207 @@
+\documentclass[chaparabic,biol,ms,12pt,oneandhalf,fivejury]{metu}
+\usepackage{appendix}
+\usepackage{longtable}
+\usepackage[pdftex]{hyperref}
+\usepackage[all]{hypcap}
+\usepackage{todonotes}
+\usepackage{graphicx}
+\graphicspath{ {./images/} }
+\usepackage[figuresright]{rotating}
+\usepackage{xy} 
+\usepackage{booktabs}
+\usepackage{pifont}
+\usepackage{color}
+\usepackage{listings}
+\usepackage{pdfpages}
+\usepackage{array}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{lastpage}
+\usepackage{afterpage}
+\usepackage{lipsum}
+\usepackage{adjustbox}
+\usepackage{rotating}
+
+% \usepackage{graphicx}
+\usepackage{amsmath,amssymb} % define this before the line numbering.
+% \usepackage{ruler}
+\usepackage{color}
+% \usepackage{cite}
+% \usepackage[utf8x]{inputenc}
+% \usepackage{footnote}
+% \makesavenoteenv{tabular}
+% \makesavenoteenv{table}
+
+\renewcommand{\sectionautorefname}{\S}
+\renewcommand{\subsectionautorefname}{\S}
+
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+\captionsetup{belowskip=12pt,aboveskip=8pt}
+\newcommand{\tab}{\hspace*{2em}}
+\DeclareGraphicsExtensions{.pdf,.png,.jpg}
+
+
+\usepackage{amsmath}
+\usepackage{siunitx}
+\usepackage{textcomp}
+\usepackage{subcaption}
+
+
+\usepackage{tikz}
+\usepackage{mathtools}
+% \usepackage{rotating}
+%\PassOptionsToPackage{figuresright}{rotating}
+
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+
+\newcommand{\EA}[1]{\textcolor{red}{[EA: #1]}}
+
+% Name and Surname
+\author{Ulaş Işıldak}
+% Thesis Title English and Turkish
+\title{Meta-Analysis of Gene Expression Heterogeneity in Brain Development and Aging}
+\turkishtitle{Beyin Gelişimi ve Yaşlanmasında Gen Anlatımı Heterojenliğinin Meta-Analizi}
+
+\date{XXXX 2022}
+ 
+% prof : Prof. Dr.
+% assocprof : Assoc. Prof. Dr.
+% assistprof : Assist. Prof. Dr.
+% dr : Dr.
+%
+% Director of Institute
+\director[prof]{Halil Kalıpçılar}
+% Head of Department
+\headofdept[prof]{Ayşe Gül Gözen}
+%
+% Supervisor : English and Turkish
+\supervisor[prof]{Mehmet Somel}
+% \turkishsupervisor{  } %if you will hard-code the academic title
+%
+% Affiliation of Supervisor in English and possibly in Turkish
+\departmentofsupervisor{Biology Dept., METU}
+
+%\cosupervisor[dr]{Itır Önal Ertuğrul}
+%\departmentofcosupervisor{Robotics Institute, Carnegie Mellon University}
+%
+% Committee Members
+% In general members are sorted according to their academic titles
+%
+% Proffesors (1)
+% Associate Professors (2)
+% Assistant Professors (3)
+% Other (4)
+% 
+% IMPORTANT:  All affiliatons should fit in a single line
+% If affiliation line is broken into two lines you should shorten the affiliation by using 
+% abbrevations or any other means
+%
+% First committee member should be the chair of examining committee
+% Typically the chair is one of the highest ranked committee members
+% Ask your supervisor if you are not sure
+\committeememberi[assistprof]{Name Surname}
+\affiliationi{Computer Engineering, METU}
+% Second committee member is always your supervisor
+\committeememberii[assistprof]{Name Surname}
+\affiliationii{Computer Engineering, METU}
+
+% IMPORTANT: If you are Ph.D. student your co-supervisor can not be in your 
+% examination committee.
+
+% \def\@proftitlename{Prof. Dr.}\def\@tproftitlename{Prof. Dr.}
+% \def\@assocproftitlename{Assoc. Prof. Dr.}\def\@tassocproftitlename{Doç. Dr.}
+% \def\@assistproftitlename{Assist. Prof. Dr.}\def\@tassistproftitlename{Yrd. Doç. Dr.}
+% \def\@drtitlename{Dr.}\def\@tdrtitlename{Dr.}
+
+\committeememberiii[assistprof]{Name Surname}
+\affiliationiii{Computer Engineering, Bilkent University}
+% Fourth committee member
+\committeememberiv[assistprof]{Gülşah Tümüklü Özyer}
+\affiliationiv{Computer Engineering, Atatürk University}
+% Fifth committee member
+\committeememberv[assistprof]{Jüri}
+\affiliationv{JüriBölüm, Ankara University}
+%
+% Keywords : English & Turkish, Comma seperated
+\keywords{keywords, seperated, with, comma}
+\anahtarklm{virgülle, ayrılmış, anahtar, kelimeler}
+%
+% Abstract in English
+%
+\abstract{
+ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sodales augue sit amet eros maximus, sed venenatis metus vehicula. Proin vel ligula porta justo iaculis ultrices non a ex. Sed lacinia bibendum feugiat. Integer mollis ac quam eu malesuada. Pellentesque malesuada facilisis metus quis condimentum. Nulla eget odio eget arcu elementum fringilla. Vestibulum eget pretium libero. Ut fermentum eleifend enim, nec facilisis sapien iaculis eu. Curabitur volutpat turpis risus, sed sollicitudin velit imperdiet sit amet.
+
+Aliquam tristique dictum facilisis. Aliquam non erat sed ligula lobortis varius id eu est. Suspendisse dapibus auctor diam ut ultrices. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum leo lectus, ornare ac lectus eget, placerat ultrices nulla. Praesent sit amet sodales nibh. Sed vestibulum non lorem non scelerisque.
+
+Sed eget fringilla purus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Duis id metus risus. Vestibulum tempor leo orci, non semper quam aliquet non. Nam vitae convallis dolor, lacinia mollis nunc. Vestibulum imperdiet ornare mauris eget blandit. Etiam venenatis mauris dictum urna convallis fringilla vitae non dui. Etiam sit amet venenatis turpis. Nulla facilisi. Etiam sed nulla pulvinar, ullamcorper mauris a, vulputate risus. Integer ligula nisi, porta sed dapibus ac, mattis at libero. Curabitur sodales lacus ac ante facilisis, ac condimentum ante suscipit. Proin aliquet mattis diam tempus fermentum. Phasellus quis congue ante, sed fringilla dui. 
+}
+%
+% Turkish Abstract
+%
+\oz{
+ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sodales augue sit amet eros maximus, sed venenatis metus vehicula. Proin vel ligula porta justo iaculis ultrices non a ex. Sed lacinia bibendum feugiat. Integer mollis ac quam eu malesuada. Pellentesque malesuada facilisis metus quis condimentum. Nulla eget odio eget arcu elementum fringilla. Vestibulum eget pretium libero. Ut fermentum eleifend enim, nec facilisis sapien iaculis eu. Curabitur volutpat turpis risus, sed sollicitudin velit imperdiet sit amet.\cite{paper1}
+
+Aliquam tristique dictum facilisis. Aliquam non erat sed ligula lobortis varius id eu est. Suspendisse dapibus auctor diam ut ultrices. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum leo lectus, ornare ac lectus eget, placerat ultrices nulla. Praesent sit amet sodales nibh. Sed vestibulum non lorem non scelerisque.
+
+Sed eget fringilla purus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Duis id metus risus. Vestibulum tempor leo orci, non semper quam aliquet non. Nam vitae convallis dolor, lacinia mollis nunc. Vestibulum imperdiet ornare mauris eget blandit. Etiam venenatis mauris dictum urna convallis fringilla vitae non dui. Etiam sit amet venenatis turpis. Nulla facilisi. Etiam sed nulla pulvinar, ullamcorper mauris a, vulputate risus. Integer ligula nisi, porta sed dapibus ac, mattis at libero. Curabitur sodales lacus ac ante facilisis, ac condimentum ante suscipit. Proin aliquet mattis diam tempus fermentum. Phasellus quis congue ante, sed fringilla dui.  
+} 
+%
+% Dedication 
+\dedication{Lorem ipsum dolor sit amet}
+%
+%
+% Acknowledgements   
+\acknowledgments{
+ Sed eget fringilla purus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Duis id metus risus. Vestibulum tempor leo orci, non semper quam aliquet non. Nam vitae convallis dolor, lacinia mollis nunc. Vestibulum imperdiet ornare mauris eget blandit. Etiam venenatis mauris dictum urna convallis fringilla vitae non dui. Etiam sit amet venenatis turpis. Nulla facilisi. Etiam sed nulla pulvinar, ullamcorper mauris a, vulputate risus. Integer ligula nisi, porta sed dapibus ac, mattis at libero. Curabitur sodales lacus ac ante facilisis, ac condimentum ante suscipit. Proin aliquet mattis diam tempus fermentum. Phasellus quis congue ante, sed fringilla dui.
+
+Nullam porta arcu id ultricies consequat. Suspendisse potenti. Morbi vel iaculis diam, semper mollis mi. Integer enim est, viverra et orci nec, porttitor euismod turpis. Curabitur non magna ut nisl mollis rutrum. Curabitur nulla libero, aliquam a magna sed, ullamcorper auctor orci. Donec lectus enim, mattis non est in, elementum fringilla nisi. Aenean imperdiet finibus turpis non mollis. Sed vulputate nisi nec leo blandit bibendum. Donec luctus augue facilisis, aliquam augue iaculis, fringilla ante. Praesent eget sem hendrerit odio tempor vulputate. Nam ac semper enim. Ut at massa sem. Nam at nulla fringilla mi commodo vulputate.
+}
+
+%
+% End of Personal and Introductory Information
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+\begin{document}
+% Preliminaries
+\begin{preliminaries}
+% If you are willing to use any custom stuff before Chapters, put it here
+% Such as List of Abbreviations
+% Check the abbreviations.tex for a template list of abbreviations
+
+\input{abbreviations.tex}
+% End of Preliminaries
+\end{preliminaries}
+%   
+% Latex content Goes Here 
+% 
+%
+
+\setlength{\parindent}{0em}
+\setlength{\parskip}{10pt}
+
+% You can add as many chapters
+\input{chapters/1.intro.tex}
+\input{chapters/2.method.tex}
+\input{chapters/3.result.tex}
+\input{chapters/4.discussion.tex}
+\input{chapters/5.conclusion.tex}
+
+%
+% References in Bibtex format goes into below indicated file with .bib extension
+% \bibliographystyle{ieeetr} 
+\bibliographystyle{abbrv}
+\bibliography{biblio.bib}
+
+% You can use full name of authors, however most likely some of the Bibtex entries you will find, will use abbreviated first names
+% If you don't want to correct each of them by hand, you can use abbreviated style for all of the references
+
+
+
+% if you have more that one appendix, then use \appendices, otherwise use 
+% \appendix
+% \input{appendix1/appendix1.tex}
+\end{document}

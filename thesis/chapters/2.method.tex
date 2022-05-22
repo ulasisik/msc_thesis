@@ -1,0 +1,146 @@
+% CHAPTER 2
+\chapter{Material and Method}
+\label{chp:b2}
+
+\section{Datasets}
+Datasets
+
+
+\begin{table}[ht]
+\centering
+\caption{The list of microarray human brain gene expression datasets.}
+\label{table:table1}
+%% \resizebox{\textwidth}{!}{\begin{tabular}{||c c c c||} 
+\begin{tabular}{|c c c c|}
+ \hline
+ \textbf{GEO Acc.} & \textbf{Source} & \textbf{Brain Region} & \textbf{Sample Size} \\ [0.5ex] 
+ \hline\hline
+ GSE30272 & Colantuoni2011 & PFC & 231 \\ 
+ \hline
+ GSE25219 & Kang2011 & A1C & 47 \\
+ \hline
+ GSE25219 & Kang2011 & AMY & 43 \\
+ \hline
+ GSE25219 & Kang2011 & CBC & 47 \\
+ \hline
+ GSE25219 & Kang2011 & DFC & 48 \\
+ \hline
+ GSE25219 & Kang2011 & HIP & 39 \\
+ \hline
+ GSE25219 & Kang2011 & IPC & 49 \\
+ \hline
+ GSE25219 & Kang2011 & ITC & 49 \\
+ \hline
+ GSE25219 & Kang2011 & M1C & 45 \\
+ \hline
+ GSE25219 & Kang2011 & MD & 43 \\
+ \hline
+ GSE25219 & Kang2011 & MFC & 50 \\
+ \hline
+ GSE25219 & Kang2011 & OFC & 48 \\
+ \hline
+ GSE25219 & Kang2011 & S1C & 46 \\
+ \hline
+ GSE25219 & Kang2011 & STC & 48 \\
+ \hline
+ GSE25219 & Kang2011 & STR & 41 \\
+ \hline
+ GSE25219 & Kang2011 & V1C & 48 \\
+ \hline
+ GSE25219 & Kang2011 & VFC & 47 \\
+ \hline
+ GSE22569 & Somel2011 & PFC & 23 \\
+ \hline
+ GSE18069 & Somel2011 & CBC & 22 \\
+\hline
+\end{tabular}
+
+\end{table}
+
+
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=.9\textwidth]{figures/figure2_1.png}
+\caption{The distribution of ages of the samples. (a) Number of samples included in age intervals. (b) Distribution of ages. The color coding reflect different data sources. }
+\label{fig:fig2.1}
+\end{figure}
+
+
+\section{Dataset Preprocessing}
+\subsection{RMA correction}
+
+\subsection{Probe-set summarization}
+
+\subsection{Log2 transformation}
+
+\subsection{Quantile normalization}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=.9\textwidth]{figures/figure2_2.png}
+\caption{Summary of preprocessing steps. Each histogram shows Somel2011\_CBC dataset at different steps.}
+\label{fig:fig2.2}
+\end{figure}
+
+\subsection{Batch-effect correction}
+
+\subsection{Scaling}
+
+\section{Age-related expression change}
+
+\section{Age-related heterogeneity change}
+
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=.9\textwidth]{figures/figure2_3.png}
+\caption{Summary of the method used to calculate age-related expression change (left panels) and age-related expression heterogeneity change (right panels) during development (a) and aging (b).}
+\label{fig:fig2.3}
+\end{figure}
+
+\section{Permutation test}
+
+\subsection{Expected heterogeneity consistency}
+
+\section{Functional analysis}
+asfgafs
+
+\section{Effect of sex-specific gene expression}
+
+
+
+\begin{equation}
+{\bf y}_k = \phi_k ( {\bf X}) + {\bf x}_k 
+\label{eq:prn}
+\end{equation}
+
+
+\begin{equation}
+{\bf y}_k = {\bf x}_k * {\bf P}_k
+\end{equation}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

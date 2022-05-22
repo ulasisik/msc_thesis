@@ -17,6 +17,12 @@ examples/
 data/
 figures/
 paper/
+# Ignore latex related stuff except .tex files
+thesis/*
+!thesis/*.tex
+!thesis/chapters
+!thesis/biblio.bib
 
 # MacOS files
 .DS_Store
+
