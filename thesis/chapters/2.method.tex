@@ -7,10 +7,9 @@ In this study, I analyzed 19 microarray gene expression datasets to investigate 
 The datasets retrieved from 3 independent published studies \cite{Colantuoni2011, Kang2011, Somel2011, Somel2010}, containing microarray data for the human brain.
 Overall, the datasets included 1010 samples from 298 individuals spanning 17 different brain region. 
 All datasets have samples covering whole lifespan with ages ranging from 0 to 98 years (\textbf{Figure \ref{fig:fig2.1}}).
+A summary of datasets used in this study is shown in \textbf{Table \ref{table:table1}}.
 
 
-
-\ref{table:table1}
 
 
 \begin{table}[ht]
@@ -61,22 +60,34 @@ All datasets have samples covering whole lifespan with ages ranging from 0 to 98
  GSE18069 & Somel2011 & CBC & 22 \\
 \hline
 \end{tabular}
-
 \end{table}
 
-\subsubsection{Seperating development and aging datasets}
+\subsection{Seperating development and aging datasets}
+Since the aim of this study to investigate age-related gene expression change during postnatal development and aging, all the datasets were seperated into two datasets: (i) development (0 to 20 years of age) and  (ii) aging (20 to 98 years of age).
+The age of 20 was used to seperate development and aging for the following reasons:
+\begin{enumerate}
+    \item The age of 20 was shown to correspond approximately to the age of reproduction in human societies\cite{Walker2006}.
+    \item Previous studies investigating age-related gene expression trajectories demonstrated that 20 years of age corresponds to a turning point of gene expression patterns\cite{Colantuoni2011, Donertas2017,Somel2010}.
+    \item Earlier research connected the structural changes occuring in the human brain after the age of 20 to age-related phenotypes\cite{Sowell2004}
+\end{enumerate}
 
-
+As a result, I obtained:
+\begin{itemize}
+    \item One development and one aging dataset for the Colantuoni2011;
+    \item 16 development and 16 aging datasets for the Kang2011;
+    \item Two development and two aging datasets for the Somel2011.
+\end{itemize}
+Overall, 
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=.9\textwidth]{figures/figure2_1.png}
-\caption{The distribution of ages of the samples. (a) Number of samples included in age intervals. (b) Distribution of ages. The color coding reflect different data sources. }
-\label{fig:fig2.1}
+\caption{The distribution of ages of the samples. (a) Number of samples included in age intervals. (b) Distribution of ages. The color coding reflect different data sources. }\label{fig:fig2.1}
 \end{figure}
 
 
 \section{Dataset Preprocessing}
+
 \subsection{RMA correction}
 
 \subsection{Probe-set summarization}
@@ -88,8 +99,7 @@ All datasets have samples covering whole lifespan with ages ranging from 0 to 98
 \begin{figure}[h]
 \centering
 \includegraphics[width=.9\textwidth]{figures/figure2_2.png}
-\caption{Summary of preprocessing steps. Each histogram shows Somel2011\char`_CBC dataset at different steps.}
-\label{fig:fig2.2}
+\caption{Summary of preprocessing steps. Each histogram shows Somel2011\char`_CBC dataset at different steps.}\label{fig:fig2.2}
 \end{figure}
 
 \subsection{Batch-effect correction}
@@ -104,8 +114,7 @@ All datasets have samples covering whole lifespan with ages ranging from 0 to 98
 \begin{figure}[h]
 \centering
 \includegraphics[width=.9\textwidth]{figures/figure2_3.png}
-\caption{Summary of the method used to calculate age-related expression change (left panels) and age-related expression heterogeneity change (right panels) during development (a) and aging (b). Adapted from (Isildak et al., 2020)}
-\label{fig:fig2.3}
+\caption{Summary of the method used to calculate age-related expression change (left panels) and age-related expression heterogeneity change (right panels) during development (a) and aging (b). Adapted from (Isildak et al., 2020)}\label{fig:fig2.3}
 \end{figure}
 
 \section{Permutation test}
