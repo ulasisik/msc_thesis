@@ -1,11 +1,9 @@
 % CHAPTER 2
-\chapter{Material and Method}
-\label{chp:b2}
-
+\chapter{Material and Method}~\label{chp:b2}
 \section{Datasets}
 In this study, I analyzed 19 microarray gene expression datasets to investigate age-related gene expression heterogeneity change during development and aging.
-The datasets retrieved from 3 independent published studies~\cite{Colantuoni2011, Kang2011, Somel2011, Somel2010}, containing microarray data for the human brain.
-Overall, the datasets included 1010 samples from 298 individuals spanning 17 different brain region. 
+The datasets were retrieved from 3 independent published studies, containing microarray data for the human brain~\cite{Colantuoni2011, Kang2011, Somel2011, Somel2010}.
+Overall, the datasets include 1010 samples from 298 individuals spanning 17 different brain region, which are not mutually exclusive.
 All datasets have samples covering whole lifespan with ages ranging from 0 to 98 years (\textbf{Figure~\ref{fig:fig2.1}}).
 A summary of datasets used in this study is shown in \textbf{Table~\ref{table:table1}}.
 
@@ -15,7 +13,12 @@ First, it was previously suggested that left and right hemispheres of the brain 
 Second, the other datasets do not contain hemisphere information.
 Last, previous studies analyzing this dataset, including the original study, also treated them as biological replicates~\cite{Kang2011,Donertas2017}.
 
-The datasets were downloaded from NCBI Gene Expression Omnibus (GEO) database using the accession codes given in \textbf{Table~\ref{table:table1}}. 
+Additionally, Somel2011\char`_PFC dataset included two pairs of technical replicates, between which the correlation was high. 
+Therefore, the mean of expression values was used in the downstream analysis.
+
+
+The datasets were downloaded from NCBI Gene Expression Omnibus (GEO) database using the accession codes given in the
+\textbf{Table~\ref{table:table1}}. 
 All the analysis was performed in R programming environment.
 
 \begin{figure}[h]
@@ -23,7 +26,6 @@ All the analysis was performed in R programming environment.
 \includegraphics[width=.9\textwidth]{figures/figure2_1.png}
 \caption{The distribution of ages of the samples. (a) Number of samples included in age intervals. (b) Distribution of ages. The color coding reflect different data sources. }\label{fig:fig2.1}
 \end{figure}
-
 
 \begin{table}[ht]
 \centering
@@ -74,32 +76,67 @@ All the analysis was performed in R programming environment.
 \end{tabular}
 \end{table}
 
+\subsection{Dataset selection}
+The age-series datasets analyzed in this study are all microarray-based. 
+Although there was one other RNA-Sequencing based dataset that covers whole lifespan~\cite{Mazin2013}, I chose not to include it in this anaysis for two reasons.
+First, the samples were already included in the Somel2011 dataset. 
+Second, it is an underpowered dataset with data from only 35 individuals that cannot reliably lead to conclusion.
+
+There were also RNA-Sequencing datasets containing samples from only development or aging periods. 
+Since combining independent development and aging datasets may confound biological effects that I aimed to examine, 
+this study was limited to meta-analysis of 19 microarray-based datasets. 
+
 \subsection{Seperating development and aging datasets}
-Since the aim of this study to investigate age-related gene expression change during postnatal development and aging, all the datasets were seperated into two datasets: (i) development (0 to 20 years of age) and  (ii) aging (20 to 98 years of age).
-The age of 20 was used to seperate development and aging for the following reasons:
+The aim of this study to investigate age-related gene expression change during development and aging. 
+Thus, all the datasets were seperated into two datasets: development (0 to 20 years of age) and aging (20 to 98 years of age).
+The age of 20 years was used to seperate development and aging for the following reasons:
 \begin{enumerate}
     \item The age of 20 was shown to correspond approximately to the age of reproduction in human societies~\cite{Walker2006}.
     \item Previous studies investigating age-related gene expression trajectories demonstrated that 20 years of age corresponds to a turning point of gene expression patterns\cite{Colantuoni2011, Donertas2017,Somel2010}.
-    \item Earlier research connected the structural changes occuring in the human brain after the age of 20 to age-related phenotypes~\cite{Sowell2004}
+    \item Earlier research connected the structural changes occuring in the human brain after the age of 20 to age-related phenotypes~\cite{Sowell2004}.
 \end{enumerate}
 
-As a result, I obtained:
-\begin{itemize}
-    \item One development and one aging dataset for the Colantuoni2011;
-    \item 16 development and 16 aging datasets for the Kang2011;
-    \item Two development and two aging datasets for the Somel2011.
-\end{itemize}
+As a result, I obtained: 
+(i) one development and one aging dataset for the Colantuoni2011; 
+(ii) 16 development and 16 aging datasets for the Kang2011; and
+(iii) two development and two aging datasets for the Somel2011.
 Overall, both development and aging datasets resulted in a comparable number of samples ($n_{development} = 441$; $n_{aging}=569$).
 
-\section{Dataset Preprocessing}
-The Kang2011 and Somel2011 datasets were generated by Affymetrix HuEx-1\char`_0-st and HuGene-1\char`_0-st microarray platforms, respectively. 
-Colantuoni2011 dataset, on the other hand, was generated using HEEBO-7 set, which is an Illumina based array. 
-Since there is no public R library available to process Illumina based data, I used the expression data preprocessed by the authors of the original study~\cite{Colantuoni2011}.
+Moreover, it is important to note that I excluded samples from prenatal development period, 
+since gene expression trajectories were shown to be discontinuous between prenatal and postnatal development period~\cite{Colantuoni2011,Kang2011}, 
+and since the scope of this study is limited to investigate changes in gene expression heterogeneity during aging compared to pre-adulthood.
 
-For the data from Kang2011 and Somel2011 sources, I downloaded .CEL files from GEO database. 
+\section{Dataset Preprocessing}
+Microarray technology is a widely used tool to quantify expression level of gene transcripts from a given sample. 
+A microarray chip contains known sequences of oligonucleotides -known as probes- that are located on a solid surface.
+Typically, each transcript is represented by a set of 11-20 pairs of probe, called as the probe-set of that transcript, in Affymetrix microarray platforms.
+The mRNA molecules from the sample are hybridised to target probes labelled by detectable fluorochrome molecules, 
+where the amount of hybridization is reflected by the light intensity levels.
+The quantification of expression is then performed by measuring light intensity levels of each probe, which are stored in CEL files.
+
+The Kang2011 and Somel2011 datasets were generated by Affymetrix HuEx-1\char`_0-st and HuGene-1\char`_0-st microarray platforms, respectively. 
+Colantuoni2011 dataset, on the other hand, was generated using HEEBO-7 set (Human 49K oligo array), which is an Illumina based array. 
+Since there is no public R library available to process Illumina based data from Colantuoni2011, 
+I used the expression data preprocessed by the authors of the original study~\cite{Colantuoni2011}. 
+For the datasets from Kang2011 and Somel2011 sources, I downloaded CEL files from GEO database~\cite{Barrett2013}. 
+The preprocessing of Kang2011 and Somel2011 datasets can be summarized in four steps: (1) RMA convolution, (2) probe-set summarization,
+(3) log2 transformation, and (4) quantile normalization. For the Colantuoni2011 dataset, quantile normalization was performed on the preprocessed data.
 
 
 \subsection{RMA correction}
+The very first step of a microarray analysis is the removal of noise and biases from the raw data obtained from light intensities.
+There can be a number of factors contributing background errors, such as optical noise, unspecific hybridization and incomplete washing~\cite{Bengtsson2006}. 
+Nevertheless, low-level preprocessing and normalization, having a significant effect on the downstream analysis, 
+were suggested to be one of the most important step in any microarray data analysis. 
+
+In this study, background normalization was performed by the Robust Multiarray Average (RMA) convolution method, 
+which is a one of the most widely used method to perform background normalization on microarray data. 
+The RMA method involves the removal of technical artefacts so that the measurements from neighbouring probes do not interfere with each other~\cite{Irizarry2003}.
+
+Apart from background normalization, the RMA algorithm also performs probe to probe-set summarization. 
+Since each transcript is represented by a set of 11-20 probes, it is necessary to summarize probe-level data into probe-sets, 
+by grouping probes corresponding the same transcript. I used the R ``oligo'' library to perform RMA correction~\cite{Carvalho2010}.
+As previously stated, RMA correction was performed only on Kang2011 and Somel2011 datasets.
 
 \subsection{Probe-set summarization}
 
