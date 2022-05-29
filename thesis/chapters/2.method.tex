@@ -241,15 +241,35 @@ Consistent with the previous studies~\cite{Donertas2017,Donertas2018}, the follo
 \end{enumerate}
 
 After removing outliers, we obtained 1,010 samples from 298 individuals (\textbf{Table~\ref{table:table1}}).
+Lastly, the common genes among all datasets were selected for the downstream analysis ($n=11,137$), 
+and the genes for which we don't have a measurement in at least one dataset were removed.
 
 \section{Age-related expression change}
+Having preprocessed datasets for both development and aging periods, I next sought to characterize age-related gene expression changes. 
+Linear regression was used to quantify the relationship between expression levels and age. 
+The following linear model was fitted to each gene for each time period seperately.
 
 \begin{equation}
     Expr_i = \beta_{i0} + \beta_{i1} * Age^{1/4} + \epsilon_i
     \label{eq:exp_change}
 \end{equation}
 
+where, $Expr_i$ is the scaled expression value of the i\textsuperscript{th} gene, $\beta_{i0}$ is the intercept, $\beta_{i1}$ is the slope, $Age$ is the age in days, and $\epsilon_i$ is the residual.
+The $\beta_{i1}$ values were considered as the measure of age-related expression change. Throughout this study, $\beta_{i1}$ values will be referred as simply `beta' values.
+Since it is the slope of the linear model, a negative beta value indicates a decrease in gene expression with age, while positive values indicate an age-related increase in the expression of the corresponding gene. 
+The left panels of \textbf{Figure~\ref{fig:fig2.3}} show an example of quantification of age-related expression changes for two genes.
+
+It is also worth noting that we transformed the individual ages into fourth root scale to obtain an approximately uniform distribution of ages across the lifespan.
+To test the effect of the age scale, I performed the same analysis using different age scales and confirmed that they also resulted in quantitativelly similar results.
+
+The linear regression was performed by using ``lm'' function in base R for each gene in each dataset (development and aging datasets separately).
+
+\subsection{Multiple testing correction}
+
+
 \section{Age-related heterogeneity change}
+
+\section{Principal component analysis}
 
 
 \begin{figure}[h]
