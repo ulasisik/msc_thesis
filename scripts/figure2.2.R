@@ -51,7 +51,7 @@ rm(list=setdiff(ls(), "mydf"))
 pp = ggplot(mydf, aes(x=exp)) +
   geom_histogram(bins=80, color="white", fill="darkslategrey") +
   facet_wrap(~lab, nrow=2, scales = "free") +
-  xlab("Gene Expression") +
+  xlab("Expression") +
   ylab("Frequency") +
   theme_bw()
 ggsave("/Users/ulas/Projects/msc_thesis/figures/figure2_2.png", pp, units = "cm", width = 18, height = 12)

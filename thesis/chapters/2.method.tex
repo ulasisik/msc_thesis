@@ -1,7 +1,7 @@
 % CHAPTER 2
 \chapter{Material and Method}~\label{chp:b2}
 \section{Datasets}
-In this study, I analyzed 19 microarray gene expression datasets to investigate age-related gene expression heterogeneity change during development and aging.
+In this study, I analyzed 19 microarray gene expression datasets to investigate age-related gene expression heterogeneity change in human brain during development and aging.
 The datasets were retrieved from 3 independent published studies, containing microarray data for the human brain~\cite{Colantuoni2011, Kang2011, Somel2011, Somel2010}.
 Overall, the datasets include 1010 samples from 298 individuals spanning 17 different brain region, which are not mutually exclusive.
 All datasets have samples covering whole lifespan with ages ranging from 0 to 98 years (\textbf{Figure~\ref{fig:fig2.1}}).
@@ -13,7 +13,7 @@ First, it was previously suggested that left and right hemispheres of the brain 
 Second, the other datasets do not contain hemisphere information.
 Last, previous studies analyzing this dataset, including the original study, also treated them as biological replicates~\cite{Kang2011,Donertas2017}.
 
-Additionally, Somel2011\char`_PFC dataset included two pairs of technical replicates, between which the correlation was high. 
+Additionally, Somel2011\char`_PFC dataset includes two pairs of technical replicates, between which the correlation was high. 
 Therefore, the mean of expression values was used in the downstream analysis.
 
 
@@ -29,7 +29,7 @@ All the analysis was performed in R programming environment.
 
 \begin{table}[ht]
 \centering
-\caption{The list of microarray human brain gene expression datasets.}\label{table:table1}
+\caption{The list of microarray human brain gene expression datasets. The sample sizes were calculated after the removal of outliers.}\label{table:table1}
 %% \resizebox{\textwidth}{!}{\begin{tabular}{||c c c c||} 
 \begin{tabular}{|c c c c|}
  \hline
@@ -110,7 +110,7 @@ and since the scope of this study is limited to investigate changes in gene expr
 Microarray technology is a widely used tool to quantify expression level of gene transcripts from a given sample. 
 A microarray chip contains known sequences of oligonucleotides -known as probes- that are located on a solid surface.
 Typically, each transcript is represented by a set of 11-20 pairs of probe, called as the probe-set of that transcript, in Affymetrix microarray platforms.
-The mRNA molecules from the sample are hybridised to target probes labelled by detectable fluorochrome molecules, 
+The cDNAs derived from the mRNA transcripts of the sample are hybridised to target probes labelled by detectable fluorochrome molecules, 
 where the amount of hybridization is reflected by the light intensity levels.
 The quantification of expression is then performed by measuring light intensity levels of each probe, which are stored in CEL files.
 
@@ -120,16 +120,18 @@ Since there is no public R library available to process Illumina based data from
 I used the expression data preprocessed by the authors of the original study~\cite{Colantuoni2011}. 
 For the datasets from Kang2011 and Somel2011 sources, I downloaded CEL files from GEO database~\cite{Barrett2013}. 
 The preprocessing of Kang2011 and Somel2011 datasets can be summarized in four steps: (1) RMA convolution, (2) probe-set summarization,
-(3) log2 transformation, and (4) quantile normalization. For the Colantuoni2011 dataset, quantile normalization was performed on the preprocessed data.
+(3) log2 transformation, and (4) quantile normalization. 
+Distribution of expression values after each preprocessing step is shown in \textbf{Figure~\ref{fig:fig2.1}}.
+For the Colantuoni2011 dataset, quantile normalization was performed on the preprocessed data.
 
 \subsection{RMA correction}
 The very first step of a microarray analysis is the removal of noise and biases from the raw data obtained from light intensities.
 There can be a number of factors contributing background errors, such as optical noise, unspecific hybridization and incomplete washing~\cite{Bengtsson2006}. 
 Nevertheless, low-level preprocessing and normalization, having a significant effect on the downstream analysis, 
-were suggested to be one of the most important step in any microarray data analysis. 
+were suggested to be one of the most important step in any microarray data analysis~\cite{Bengtsson2006}.
 
 In this study, background normalization was performed by the Robust Multiarray Average (RMA) convolution method, 
-which is a one of the most widely used method to perform background normalization on microarray data. 
+which is a one of the most commonly used method to perform background normalization on microarray data. 
 The RMA method involves the removal of technical artefacts so that the measurements from neighbouring probes do not interfere with each other~\cite{Irizarry2003}.
 
 Apart from background normalization, the RMA algorithm also performs probe to probe-set summarization. 
@@ -139,7 +141,7 @@ As previously stated, RMA correction was performed only on Kang2011 and Somel201
 
 \subsection{Probe-set summarization}
 I next summarized the probe-set expression values into gene expression values. 
-This step is required to combine and analyze data from different platforms, since we need to have expression values that are defined universally (i.e., on gene IDs).
+This step is required to combine and analyze data from different platforms, since we need to have expression values that are defined universally (i.e., by gene IDs).
 Thus, converting probe-sets into gene IDs allows us to compare expression levels of the genes among different platforms.
 
 However, probe-set to gene ID conversion is not always one-to-one in many platforms. 
@@ -148,23 +150,97 @@ In this study, probe-sets that correspond to more than one genes were removed, s
 where the expression level of multiple genes would not be independent. 
 For the genes having multiple probe-set data, the expression values were calculated by taking the average of the expression values of the probe-sets corresponding the gene.
 
-For the dataset generated by HuGene-1\char`_0-st (Somel2011 datasets), Ensembl v.84 annotations~\cite{Yates2016} were retrieved through `biomaRt' library in R~\cite{Durinck2009}.
+For the dataset generated by HuGene-1\char`_0-st (Somel2011 datasets), 
+Ensembl v.84 annotations~\cite{Yates2016} were retrieved through ``biomaRt'' library in R~\cite{Durinck2009}.
 For the Kang2011 dataset generated by HuEx-1\char`_0-st platform, the GPL file deposited in the GEO database was used since the IDs of probe-sets were not complete in Ensembl.
-Lastly, for the Colantuoni2011 dataset, the Entrez gene IDs were retrieved from GEO database.
+Lastly, for the Colantuoni2011 dataset, the gene IDs were retrieved from the GPL file deposited in the GEO database.
 
 \subsection{Log2 transformation}
 
+The $Log_2$ transformation is the most widely used transformation in microarray data analysis
+to remove the correlation between mean and variance, and to make the variance more comparable.
+Moreover, in the data produced by microarray platforms, there are typically many genes having lower expression values, 
+whereas there are fewer genes having high expression levels,
+leading to a right-skewed distribution (\textbf{Figure~\ref{fig:fig2.2}}).
+Making distributions more similar, $Log_2$ transformation allows us to perform parametric statistical tests, as most of them assume equal variance. 
+Additionally, $Log_2$ transformation also allows us to visualize the data more easily.
+
+Therefore, $Log_2$ transformation was applieid to the expression data from Kang2011 and Somel2011 sources.
+
 \subsection{Quantile normalization}
+The microarray platforms are susceptible to technical variation from different sources, hampering the meta analysis of multiple datasets from different sources.
+Quantile normalization is one of commonly used methods used to minimize technical variation~\cite{Zhao2020}. 
+
+Quantile normalization assumes the same distribution for all samples. 
+Therefore, any significant variation in the distribution shape are regarded as unwanted and non-biological noise, and are eleminated.
+However, it is also important to note that quantile normalization should be used with caution as it may also remove signals that can be of biological interest~\cite{Hicks2014}.
+Despite this danger, the quantile normalization was performed on all datasets for three reasons. 
+First, all the datasets analyzed in this study contain samples only from brain (i.e., same tissue).
+Second, sample collection was performed under similar conditions (i.e., from healthy individuals), combined with the first reason, they indicate that overall expression distributions should be similar.
+Third, this study mainly focuses on consistent patterns among different datasets, rather than focusing on significant changes of individual genes from a single dataset.
+We expect quantile normalization to eleminate only random confounding factors that are not shared among datasets. 
+Then, the shared patterns among different datasets were considered as a potential biological signal.
+
+The ``preprocessCore'' R package was used to perform quantile normalization~\cite{Bolstad2021}.
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=.9\textwidth]{figures/figure2_2.png}
-\caption{Summary of preprocessing steps. Each histogram shows Somel2011\char`_CBC dataset at different steps.}~\label{fig:fig2.2}
+\caption{Summary of preprocessing steps for Somel2011\char`_CBC dataset at different preprocessing steps. 
+The top right histogram shows the distribution of raw probe expression levels. 
+The top left histogram shows probe-set expression values after RMA correction. 
+The bottom left plot shows the gene expression values after RMA correction and Log2 transformation.
+The bottom right plot shows the the gene expression values after RMA correction, Log2 transformation and quantile normalization.}~\label{fig:fig2.2}
 \end{figure}
 
 \subsection{Scaling}
+Next, the expression levels for each gene for each dataset were scaled to $mean=0$ and $standard\ deviation=1$. 
+Since linear regression analysis was performed in the downstream analysis, 
+it is important to scale the genes before model fitting in order to obtain comparable residuals.
+Scaling was performed by using the following formula.
+\begin{equation}
+    Scaled\ Expr_i = \frac{Expr_i - mean(Expr)}{Standard\ Deviation(Expr)}
+    \label{eq:scaling}
+\end{equation}
+where $Expr_i$ and $Scaled\ Expr_i$ represent expression and scaled expression value of the sample $i$, respectively, 
+whereas $Expr$ is the expression values of the gene for all samples in a dataset.
+
+I used ``scale'' function in base R to scale each gene in each dataset seperately.
 
 \subsection{Batch-effect correction}
+There was one additional normalization step applied to Somel2011\char`_PFC dataset to correct batch effect.
+The correction was performed in three steps as follows:
+
+\begin{enumerate}
+    \item For each probe-set, mean expression values were calculated.
+    \item Each batch was scaled separately to $mean=0$ and $standard\ deviation=1$ using the equation~\ref{eq:scaling}.
+    \item The mean values calculated at step 1 were added to each value.
+\end{enumerate}
+
+
+
+\section{Outlier removal}
+In addition to technical variance introduced by microarray analysis, 
+there can be some samples showing greater divergence from the rest of the samples due to unknown factors,
+such as different diease backgrounds or different diets.
+Including such samples (i.e., outliers) in the analysis would introduce extra noise and would obstract to identify the true relationship between age and expression levels.
+
+To identify outliers, Principal Component Analysis (PCA) was used. 
+PCA is a dimension reduction method that allows us to visualize high dimensional data and to detect outliers.
+The first two principal components, which are the most important components explaning the largest variance, were used to visualize data and to identify outliers.
+
+Consistent with the previous studies~\cite{Donertas2017,Donertas2018}, the following 7 samples were removed from the analysis: 
+\begin{enumerate}
+    \item 3 years old \textit{GSM705108} from Kang2011 dataset (A1C brain region);
+    \item 37 years old \textit{GSM704438} from Kang2011 dataset (CBC brain region);
+    \item 42 years old \textit{GSM705202} from Kang2011 dataset (CBC brain region);
+    \item 0 year old \textit{GSM704567} from Kang2011 dataset (HIP brain region);
+    \item 40 year old \textit{GSM704627} from Kang2011 dataset (HIP brain region);
+    \item 70 year old \textit{GSM704226} from Kang2011 dataset (HIP brain region);
+    \item 70 year old \textit{GSM704227} from Kang2011 dataset (HIP brain region).
+\end{enumerate}
+
+After removing outliers, we obtained 1,010 samples from 298 individuals (\textbf{Table~\ref{table:table1}}).
 
 \section{Age-related expression change}
 
