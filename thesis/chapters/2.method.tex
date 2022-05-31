@@ -262,7 +262,7 @@ To test the effect of the age scale, I performed the same analysis using differe
 
 The linear regression was performed by using ``lm'' function in base R for each gene in each dataset (development and aging datasets separately).
 
-\subsection{Multiple testing correction}
+\subsection{Multiple testing correction}~\label{subsec:p.adjust}
 As a result of linear regression, I also obtained p-values for each gene, showing the significance of observed expression change.
 In this study, we used a significance level of $\alpha = 0.05$, meaning that there is a $5\%$ chance that there will be a false positive result for a single statistical test.
 Since the regression analysis was performed on each gene independently, the false positive rate is increased dramatically as a result of multiple comparison.
@@ -275,15 +275,28 @@ Compared to other methods, B{\&}H is one of the less conservative and more poowe
 The correction was performed by using ``p.adjust'' function in base R.
 
 \section{Age-related heterogeneity change}
-The gene expression heterogenity was 
+Given that the age-related expression change display a linear trend, the residual obtained from the equation~\ref{eq:exp_change} (i.e., the $\epsilon$ values)
+reflects the deviation of that sample (see dashed vertical lines on the left panels of \textbf{Figure~\ref{fig:fig2.3}}).
+Thus, the absolute value of residuals were used as a measure of heterogeneity of the corresponding sample. 
+To characterize age-related change in gene expression heterogeneity,
+Spearman's correlation test was performed between absolute values of residuals and the forth root of age for each gene and each dataset seperately (see the right panels in \textbf{Figure~\ref{fig:fig2.3}}).
+
+Then, the Spearman's correlation coefficients ($\rho$) were considered as a measure of heterogeneity change, 
+where positive values indicate an increase in heterogeneity with age and negative values reflect a decrease in age-related heterogeneity. 
+
+The correlation test was performed by using ``cor.test'' function in base R and the p-values were adjusted for multiple testing using B{\&}H method, 
+as explained in the \textbf{Section~\ref{subsec:p.adjust}}.
 
 
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=.9\textwidth]{figures/figure2_3.png}
-\caption{Summary of the method used to calculate age-related expression change (left panels) and age-related expression heterogeneity change (right panels) during development (a) and aging (b). 
+\caption{Summary of the method used to calculate age-related expression change (left panels) 
+and age-related expression heterogeneity change (right panels) during development (a) and aging (b). 
+Each point represents a sample.
 The \textit{Beta} values were obtained from linear regression analysis, while the \textit{Rho} values were obtained from Spearman's correlation test. 
+The \textit{p-value} shows the FDR corrected p-values. 
 The figure is adapted from Isildak et al., 2020.}\label{fig:fig2.3}
 \end{figure}
 
