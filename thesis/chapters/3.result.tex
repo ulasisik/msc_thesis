@@ -1,31 +1,50 @@
 % CHAPTER 3
-\chapter{Results}
-\label{chp:b3}
+\chapter{Results}~\label{chp:b3}
 
 In this study, I investigated the age-related gene expression heterogeneity change by analyzing 19 microarray datasets
 containing 1,010 samples from diverse brain regions of 298 individuals, and covering whole lifespan.
 To compare heterogeneity change occuring during before and after adulthood, each dataset were first seperated into two datasets: development dataset 
 (including samples with ages ranging from 0 to 20 years old) and aging dataset (including samples with ages ranging from 20 to 98 years old).
+Only the common genes (n = 11,137) were used in the downstream analysis.
 
 \section{Age-related gene expression change}
 While the aim of this study to investigate age-related changes in gene expression heterogeneity, I first sought to characterize age-related change in gene expression.
-Linear regression was performed to characterize the relationship between gene expression and age for each gene and dataset separately (\textbf{Section \ref{sub:exp-change}} ).
+Linear regression was performed to characterize the relationship between gene expression and age for each gene and dataset separately (\textbf{Sectio~\ref{sub:exp-change}} ).
+The beta values (i.e., $\beta_{i1}$ from \textbf{Equation~\ref{eq:exp_change}}) obtained from linear regression were considered as a measure of age-related expression change.
+
+To investigate the coordination in age-related expression change betweeen datasets, 
+I calculated pairwise Spearman's correlation test for each pair of datasets among the beta value.
+The heatmap in the \textbf{Figure~\ref{fig:fig3.1}a} shows the Spearman's correlation coefficients ($\rho$) for each pair of datasets.
+The significance of correlation among datasets were tested by performing permutation test (see \textbf{Section~\ref{sec:perm}}).
+Overall, I found that both development (permutation test p-value<0.001, median $\rho$=0.56) and aging (permutation test p-value=0.003, median $\rho$=0.43)
+datasets display a modest correlation with the datasets from the same time period, 
+whereas the difference between the correlation of development and aging datasets was not significant (permutation test p-value=0.1).
+Still, the weaker correlation among aging datasets compared to development may indicate weaker consistency during aging period.
+
+I next performed principal component analysis (PCA), which
+
+Then, number of genes showng sig change in each dataset was calculated..
+
+Overall, this analysis shows that ..
+
 
 \begin{figure}[h]
-\centering
-\includegraphics[width=.9\textwidth]{figures/figure3_1.png}
-\caption{Age-related gene expression changes (Adapted from Isildak et al., 2020)}
-\label{fig:fig3.1}
+    \centering
+    \includegraphics[width=.9\textwidth]{figures/figure3_1.png}
+    \caption{Age-related gene expression change. 
+    (a) The heatmap shows the correlation between datasets calculated among beta values.
+    (b) 
+    }~\label{fig:fig3.1}
 \end{figure}
+
+\section{Age-related expression heterogeneity change}
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=.9\textwidth]{figures/figure3_2.png}
-    \caption{Age-related gene expression changes}
-    \label{fig:fig3.2}
-    \end{figure}
-
-\section{Age-related expression heterogeneity change}
-
-
+    \caption{Age-related heterogeneity change. 
+    (a) The heatmap shows the correlation between datasets calculated among rho values.
+    (b) 
+    }~\label{fig:fig3.2}
+\end{figure}
 

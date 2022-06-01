@@ -217,14 +217,14 @@ The correction was performed in three steps as follows:
 
 
 
-\section{Outlier removal}
+\section{Outlier removal}~\label{sec:out.rm}
 In addition to technical variance introduced by microarray analysis, 
 there can be some samples showing greater divergence from the rest of the samples due to unknown factors,
 such as different diease backgrounds or different diets.
 Including such samples (i.e., outliers) in the analysis would introduce extra noise and would obstract to identify the true relationship between age and expression levels.
 
 To identify outliers, Principal Component Analysis (PCA) was used. 
-PCA is a dimension reduction method that allows us to visualize high dimensional data and to detect outliers.
+PCA is a dimension reduction method that allows us to visualize high dimensional data and to detect outliers (see \textbf{Section~\ref{sec:pca}} for more detailed explanation of PCA).
 The first two principal components, which are the most important components explaning the largest variance, were used to visualize data and to identify outliers.
 
 Consistent with the previous studies~\cite{Donertas2017,Donertas2018}, the following 7 samples were removed from the analysis: 
@@ -285,9 +285,7 @@ Then, the Spearman's correlation coefficients ($\rho$) were considered as a meas
 where positive values indicate an increase in heterogeneity with age and negative values reflect a decrease in age-related heterogeneity. 
 
 The correlation test was performed by using ``cor.test'' function in base R and the p-values were adjusted for multiple testing using B{\&}H method, 
-as explained in the \textbf{Section~\ref{subsec:p.adjust}}.
-
-
+as explained in the~\textbf{Section~\ref{subsec:p.adjust}}.
 
 \begin{figure}[h]
 \centering
@@ -300,9 +298,32 @@ The \textit{p-value} shows the FDR corrected p-values.
 The figure is adapted from Isildak et al., 2020.}\label{fig:fig2.3}
 \end{figure}
 
-\section{Principal component analysis}
+\section{Correlation among datasets}
+To evaluate the correlation among datasets in age-related gene expression (and heterogeneity) change, 
+I performed pairwise Spearman's correlation test among beta values (rho values) for each pair of datasets, using the `cor.test` function in R.
+The heatmap visualizations (see \textbf{Figure~\ref{fig:fig3.1}a} and \textbf{Figure~\ref{fig:fig3.2}a}) were created by using ``pheatmap'' liibrary in R~\cite{Kolde2019}.
 
-\section{Permutation test}
+\section{Principal component analysis}~\label{sec:pca}
+Since biological data, including gene expression data, is typically high-dimensional, it is difficult to visualize and discover patterns in the data.
+Principal component analysis (PCA) is a dimension reduction method that is widely used in biological data analysis for summarization and visualization of the data.
+Basically, PCA algorithm creates linaer combinations of variables, known as principal components (PCs). 
+The principal components were sorted based on their capacity to explain variance, where the first principal component explains the most variance.
+Usually, the first two principal component axes are used for visualization. 
+Therefore, PCA allows us to visualize and summarize a high-dimensional data on 2-dimensional space.
+
+Apart from the outlier removal step (see \textbf{Section~\ref{sec:out.rm}}), 
+the PCA algorithm is also used to visualize age-related expression (\textbf{Figure~\ref{fig:fig3.1}b}) and heterogeneity changes (\textbf{Figure~\ref{fig:fig3.2}b}).
+I perform PCA by using ``prcomp'' function in base R.
+
+\section{Permutation test}~\label{sec:perm}
+Permutation test is a statistical method used for hypothesis testing. 
+The main advantage of the permutation test over other parametric statistical tests is that the permutation test does not have distributional assumptions.
+Additionally, conventional parametric tests require each sample to be independent, 
+while the permutation test is more flexible, allowing us to design a permutation procedures that account for non-independence.
+Since there are multiple samples from same individuals in some subdatasets, meaning that not all observations are independent, 
+the permutation test was used to assess significance throughout this study.
+
+The permutation schema 
 
 \subsection{Expected heterogeneity consistency}
 
