@@ -242,7 +242,7 @@ After removing outliers, we obtained 1,010 samples from 298 individuals (\textbf
 Lastly, the common genes among all datasets were selected for the downstream analysis ($n=11,137$), 
 and the genes for which we don't have a measurement in at least one dataset were removed.
 
-\section{Age-related expression change}~\label{sub:exp-change}
+\section{Age-related expression change}~\label{sec:exp-change}
 Having preprocessed datasets for both development and aging periods, I next sought to characterize age-related gene expression changes. 
 Linear regression was used to quantify the relationship between expression levels and age. 
 The following linear model was fitted to each gene for each time period seperately.
@@ -274,7 +274,7 @@ Compared to other methods, B{\&}H is one of the less conservative and more poowe
 
 The correction was performed by using ``p.adjust'' function in base R.
 
-\section{Age-related heterogeneity change}
+\section{Age-related heterogeneity change}~\label{sec:het-change}
 Given that the age-related expression change display a linear trend, the residual obtained from the equation~\ref{eq:exp_change} (i.e., the $\epsilon$ values)
 reflects the deviation of that sample (see dashed vertical lines on the left panels of \textbf{Figure~\ref{fig:fig2.3}}).
 Thus, the absolute value of residuals were used as a measure of heterogeneity of the corresponding sample. 
@@ -323,9 +323,34 @@ while the permutation test is more flexible, allowing us to design a permutation
 Since there are multiple samples from same individuals in some subdatasets, meaning that not all observations are independent, 
 the permutation test was used to assess significance throughout this study.
 
-The permutation schema 
+I used the permutation schema that was developed by earlier studies, 
+taking into account that Kang2011 and Somel2011 datasets contain samples from different brain regions of the same individual~\cite{Donertas2017,Donertas2018}.
+Specifically: 
 
-\subsection{Expected heterogeneity consistency}
+\begin{enumerate}
+    \item The ages were randomly permuted among individuals for each data source, by using ``sample'' function in R. 
+    It is important to note that ages were not randomized among samples, but among individuals to maintain the dependency between samples.
+    \item The randomized ages of individuals were mapped to corresponding samples. All the samples obtained from the same individual were assigned with the same age.
+    \item The age-related gene expression and heterogeneity changes were calculated by using permuted ages of the samples as follows:
+    \begin{enumerate}
+        \item To calculate age-related expression change, linear regression was performed between randomized ages and expression levels, using the \textbf{Equation~\ref{eq:exp_change}} as explained in \textbf{Section~\ref{sec:exp-change}}
+        \item To calculate age-related heterogeneity change, Spearman's correlation test was performed between randomized ages and absolute value of residuals obtained from \textbf{Equation~\ref{eq:exp_change}} computed with non-randomized ages.
+    \end{enumerate} 
+    \item Steps 1-3 were repeated 1,000 times to obtain the null distribution for the test statistic.
+\end{enumerate}
+
+The basic idea of this procedure is to simulate the null hypothesis, where there is no relationship between age and expression (heterogeneity).
+After having 1,000 expression (heterogeneity) change values for each gene in each dataset, we can compare observed values with this null distribution
+to assess significance of observed tendency. 
+
+Using the expression and heterogeneity change estimates, I tested the significange of 
+(i) dataset correlations, (ii) overall increase in heterogeneity, and (iii) expected consistency in the heterogeneity change.
+
+\subsection{Dataset correlations}
+
+\subsection{Overall increase in heterogeneity}
+
+\subsection{Heterogeneity consistency}
 
 \section{Functional analysis}
 asfgafs
