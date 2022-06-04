@@ -303,6 +303,8 @@ To evaluate the correlation among datasets in age-related gene expression (and h
 I performed pairwise Spearman's correlation test among beta values (rho values) for each pair of datasets, using the `cor.test` function in R.
 The heatmap visualizations (see \textbf{Figure~\ref{fig:fig3.1}a} and \textbf{Figure~\ref{fig:fig3.2}a}) were created by using ``pheatmap'' liibrary in R~\cite{Kolde2019}.
 
+The permutation test was used to test the significance of correlations among datasets (see \textbf{Section~\ref{subsec:perm.corr}} for details.)
+
 \section{Principal component analysis}~\label{sec:pca}
 Since biological data, including gene expression data, is typically high-dimensional, it is difficult to visualize and discover patterns in the data.
 Principal component analysis (PCA) is a dimension reduction method that is widely used in biological data analysis for summarization and visualization of the data.
@@ -346,14 +348,31 @@ to assess significance of observed tendency.
 Using the expression and heterogeneity change estimates, I tested the significange of 
 (i) dataset correlations, (ii) overall increase in heterogeneity, and (iii) expected consistency in the heterogeneity change.
 
-\subsection{Dataset correlations}
+\subsection{Dataset correlations}~\label{subsec:perm.corr}
+Using the permuted ages, I first tested the correlations for expression and heterogeneity change within development and aging dataset.
+One approach to test correlations would be to calculate pairwise correlations for each pair of dataset for each permutation,
+and calculate the expected median correlation among development and aging datasets.
+However, since 16 of 19 datasets analyzed in both time periods were retrieved from the same data source (i.e., Kang2011) and contain samples from different brain regions of the same individual,
+this approach would lead to low statistical power due to high number of dependent pairwise comparisons.
+Therefore, we adapted an alternative approach, where I first calculated a median correlation coefficient value
+by performing Spearman's correlation test among all pairwise combinations of three subsets of datasets: one dataset from Kang2011, one dataset from Somel2011, and the Colantuoni2011 dataset.
+I performed this 1,000 using the permuted ages and generated a null distribution of medians for development and aging datasets, seperately. 
+Then, the observed median values were compared against the null distribution of medians to assess the significance of observed median correlation among development and aging datasets.
+
+Next, the difference in correlations between development and aging datasets were tested. 
+For each permutation, I calculated a median difference between the correlations of development and aging datasets.
+Similarly, observed median difference were compared against the distribution of median differences obtained from permutations.
+
+\subsection{Genes showing significant change}~\label{subsec:perm.sig.change}
+
 
 \subsection{Overall increase in heterogeneity}
 
 \subsection{Heterogeneity consistency}
 
+\section{Clustering}
+
 \section{Functional analysis}
-asfgafs
 
 \section{Effect of sex-specific gene expression}
 
