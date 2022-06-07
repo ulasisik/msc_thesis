@@ -26,6 +26,7 @@ The beta values (i.e., $\beta_{i1}$ from \textbf{Equation~\ref{eq:exp_change}}) 
     calculated using PC1 and PC2.
     (c) Barplots show the number of genes showing significant age-related expression change (FDR p-value < 0.05) during development (left side) and aging (right side).
     Color-coding reflects the direction of expression change, which is determined by the sign of the beta value.
+    Adapted from Isildak et al., 2020
     }~\label{fig:fig3.1}
 \end{figure}
 
@@ -41,7 +42,8 @@ Still, the weaker correlation among aging datasets compared to development may i
 I next performed principal component analysis (PCA), which is a dimension reduction algorithm that is widely used in transcriptome data analysis. 
 The beta values obtained for each gene for each dataset (development and aging datasets, seperately) was used to calculate principal components.
 The first two principal components (PC1 and PC2), which also explain the most variance, was used to visualize the data.
-\textbf{Figure~\ref{fig:fig3.1}b} shows the development and aging datasets projected on PC1 and PC2 axis.
+\textbf{Figure~\ref{fig:fig3.1}b} shows the development and aging datasets projected on PC1 and PC2 axis, where
+the first principal component separates development and aging datasets, suggesting that expression changes may display different patterns in development and aging.
 By calculating median euclidian distance, I found that the median distance among development datasets is 21, 
 whereas the median distance among aging datasets is 77. 
 The fact that development datasets are clustered more closely compared to agig datasets may reflect an increase in heterogeneity during agig period.
@@ -59,7 +61,18 @@ leading to a higher inter-individual variability during aging, which may be the 
 \section{Age-related expression heterogeneity change}
 I next characterized age-related change in gene expression heterogeneity by performing Spearman's correlation test between absolute value of residuals and fourth root of age (see \textbf{Section~\ref{sec:het-change}}).
 Similar to the previous section, I first examined the correlations in gene expression heterogeneity change among development and aging datasets (\textbf{Figure~\ref{fig:fig3.2}a})
+By conducting  Spearman's correlation test between all possible pairs of datasets among rho values, 
+I found that aging datasets show higher correlation (median $\rho$=0.21, permutation test p-value=0.24) in heterogeneity change
+compared to development datasets (median $\rho$=0.11, permutation test p-value=0.25), although both were not significant.
+Although the difference in correlation of heterogeneity change between development and aging datasets were not significant (permutation test p-value=0.2),
+this observation may suggest that aging datasets show more similar changes in heterogeneity compared to development datasets.
 
+Principal component analysis of heterogeneity changes (i.e., rho values) was performed using a similar procedure as the previous section, 
+except rho values were used instead of beta values. 
+Similar to the PCA of expression changes, PCA of heterogeneity changes showed that development and aging datasets can be differentiated from each other by heterogeneity change (\textbf{Figure~\ref{fig:fig3.2}b}).
+However, unlike expression change, development datasets tended to cluster more sparsly (median euclidian distance = 44), compared to aging datasets (median euclidian distance = 41).
+
+I then investigated genes showing significant changes in expression heterogeneity. 
 
 \begin{figure}[h]
     \centering
@@ -75,6 +88,7 @@ Similar to the previous section, I first examined the correlations in gene expre
     calculated using PC1 and PC2.
     (c) Barplots show the number of genes showing significant age-related heterogeneity change (FDR p-value < 0.05) during development (left side) and aging (right side).
     Color-coding reflects the direction of heterogeneity change, which is determined by the sign of the rho value.
+    Adapted from Isildak et al., 2020
     }~\label{fig:fig3.2}
 \end{figure}
 
