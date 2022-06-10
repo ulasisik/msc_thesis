@@ -67,13 +67,6 @@ compared to development datasets (median $\rho$=0.11, permutation test p-value=0
 Although the difference in correlation of heterogeneity change between development and aging datasets were not significant (permutation test p-value=0.2),
 this observation may suggest that aging datasets show more similar changes in heterogeneity compared to development datasets.
 
-Principal component analysis of heterogeneity changes (i.e., rho values) was performed using a similar procedure as the previous section, 
-except rho values were used instead of beta values. 
-Similar to the PCA of expression changes, PCA of heterogeneity changes showed that development and aging datasets can be differentiated from each other by heterogeneity change (\textbf{Figure~\ref{fig:fig3.2}b}).
-However, unlike expression change, development datasets tended to cluster more sparsly (median euclidian distance = 44), compared to aging datasets (median euclidian distance = 41).
-
-I then investigated genes showing significant changes in expression heterogeneity. 
-
 \begin{figure}[h]
     \centering
     \includegraphics[width=.9\textwidth]{figures/figure3_2.png}
@@ -92,3 +85,38 @@ I then investigated genes showing significant changes in expression heterogeneit
     }~\label{fig:fig3.2}
 \end{figure}
 
+Principal component analysis of heterogeneity changes (i.e., rho values) was performed using a similar procedure as the previous section, 
+except rho values were used instead of beta values. 
+Similar to the PCA of expression changes, PCA of heterogeneity changes showed that development and aging datasets can be differentiated from each other by heterogeneity change (\textbf{Figure~\ref{fig:fig3.2}b}).
+However, unlike expression change, development datasets tended to cluster more sparsly (median euclidian distance = 44), compared to aging datasets (median euclidian distance = 41).
+
+I then investigated the genes showing significant changes in expression heterogeneity. 
+The p-values obtained from Spearman's correlation test for each gene for each dataset were corrected for multiple testing using B{\&}H method (see \textbf{Section~\ref{sec:het-change}}).
+(\textbf{Figure~\ref{fig:fig3.2}c}) shows the number of genes showing significant hetergeneity change during development and aging.
+First, I found that there is a small number of genes showing significant change during development compared to aging (permutation test p-value < 0.05).
+Moreover, genes showing significant heterogeneity change during development were tend to decrease in heterogeneity, whereas they showed a tendency to increase in aging datasets.
+It is also important to note the high number of genes showing significant change in Colantuoni2011, which is a result of large sample size leading to an increased statistical power.
+
+Overall, this analysis demonstrated that there may be a higher consistency in heterogeneity change during aging compared to development, 
+suggesting that increased heterogeneity may be a characteristic of aging period.
+
+\section{Consistent increase in heterogeneity during aging}
+Having observed both that heterogeneity changes can differentiate between time periods and that there is a tendency towards more similar changes in heterogeneity during aging,
+I next focused on identifying those genes showing consistent change in heterogeneity.
+As previously stated, in this study, I chose to focus on genes showing consistent trends among different datasets, rather than focusing on significant changes within individual datasets.
+The most important advantage of this approach is that, by using the advantage of having multiple datasets, 
+it enables us to detect genes that would otherwise not pass the significance treshold due to low sample size.
+
+I first analyzed the distribution of heterogeneity changes (i.e., $\rho$ values) for each dataset and time period (\textbf{Figure~\ref{fig:fig3.3}a}).
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=.9\textwidth]{figures/figure3_3.png}
+    \caption{(a) Boxplots on the left side shows the distribution of rho values, 
+    whereas the barplots on the right shows the difference in medians between development and aging datasets.
+    (b) Distribution of Spearman's correlation coefficients between expression and heterogeneity change of each dataset. 
+    The color-coding reflects data source, whereas 
+    (c) Barplots showing expected and observed number of genes showing consistent increase in heterogeneiy among datasets during development (top panel) and aging (bottom panel).
+    Adapted from Isildak et al., 2020
+    }~\label{fig:fig3.3}
+\end{figure}
