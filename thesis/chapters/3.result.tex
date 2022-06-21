@@ -2,14 +2,14 @@
 \chapter{Results}~\label{chp:b3}
 
 In this study, I investigated the age-related gene expression heterogeneity change by analyzing 19 microarray datasets
-containing 1,010 samples from diverse brain regions of 298 individuals, and covering whole lifespan.
-To compare heterogeneity change occuring during before and after adulthood, each dataset were first seperated into two datasets: development dataset 
+containing 1,010 samples from diverse brain regions of 298 individuals, and covering the whole lifespan.
+To compare heterogeneity change occuring before and after adulthood, each dataset were first seperated into two datasets: development dataset 
 (including samples with ages ranging from 0 to 20 years old) and aging dataset (including samples with ages ranging from 20 to 98 years old).
 Only the common genes (n = 11,137) were used in the downstream analysis.
 
 \section{Age-related gene expression change}
 While the aim of this study to investigate age-related changes in gene expression heterogeneity, I first sought to characterize age-related change in gene expression.
-Linear regression was performed to characterize the relationship between gene expression and age for each gene and dataset separately (\textbf{Sectio~\ref{sub:exp-change}} ).
+Linear regression was performed to characterize the relationship between gene expression and age for each gene and dataset separately (\textbf{Section~\ref{sec:exp-change}}).
 The beta values (i.e., $\beta_{i1}$ from \textbf{Equation~\ref{eq:exp_change}}) obtained from linear regression were considered as a measure of age-related expression change.
 
 \begin{figure}[h]
@@ -34,9 +34,9 @@ To investigate the coordination in age-related expression change betweeen datase
 I calculated pairwise Spearman's correlation test for each pair of datasets among the beta value.
 The heatmap in the \textbf{Figure~\ref{fig:fig3.1}a} shows the Spearman's correlation coefficients ($\rho$) for each pair of datasets.
 The significance of correlation among datasets were tested by performing permutation test (see \textbf{Section~\ref{sec:perm}}).
-Overall, I found that both development (permutation test p-value<0.001, median $\rho$=0.56) and aging (permutation test p-value=0.003, median $\rho$=0.43)
+Overall, I found that both development (permutation test p-value < 0.001, median $\rho$ = 0.56) and aging (permutation test p-value = 0.003, median $\rho$ = 0.43)
 datasets display a modest correlation with the datasets from the same time period, 
-whereas the difference between the correlation of development and aging datasets was not significant (permutation test p-value=0.1).
+whereas the difference between the correlation of development and aging datasets was not significant (permutation test p-value = 0.1).
 Still, the weaker correlation among aging datasets compared to development may indicate the stochasticity of aging period.
 
 I next performed principal component analysis (PCA), which is a dimension reduction algorithm that is widely used in transcriptome data analysis. 
@@ -46,10 +46,10 @@ The first two principal components (PC1 and PC2), which also explain the most va
 the first principal component separates development and aging datasets, suggesting that expression changes may display different patterns in development and aging.
 By calculating median euclidian distance, I found that the median distance among development datasets is 21, 
 whereas the median distance among aging datasets is 77. 
-The fact that development datasets are clustered more closely compared to agig datasets may reflect an increase in heterogeneity during agig period.
+The fact that development datasets are clustered more closely compared to aging datasets may reflect an increase in heterogeneity during agig period.
 
 Then, the number of genes showing significant age-related gene expression change was calculated for development and aging datasets (\textbf{Figure~\ref{fig:fig3.1}c}).
-The p-values obtained from linear regression analysis for each gene in each dataset were adjust for multiple testing using the B{\&}H method (see \textbf{Section~\ref{subsec:p.adjust}}).
+The p-values obtained from linear regression analysis for each gene in each dataset were adjusted for multiple testing using the B{\&}H method (see \textbf{Section~\ref{subsec:p.adjust}}).
 Analyzing significant changes, I first found that there are significantly more genes in the development datasets showing significant change compared to aging datasets (permutation test p-value = 0.003),
 which may again reflect the higher heterogeneity during aging compared to development.
 Second, the direction of change in development datasets is mainly in positive direction (14 of 19 datasets showed more increase), 
@@ -60,11 +60,11 @@ leading to a higher inter-individual variability during aging, which may be the 
 
 \section{Age-related expression heterogeneity change}
 I next characterized age-related change in gene expression heterogeneity by performing Spearman's correlation test between absolute value of residuals and fourth root of age (see \textbf{Section~\ref{sec:het-change}}).
-Similar to the previous section, I first examined the correlations in gene expression heterogeneity change among development and aging datasets (\textbf{Figure~\ref{fig:fig3.2}a})
+Similar to the previous section, I first examined the correlations in gene expression heterogeneity change among development and aging datasets (\textbf{Figure~\ref{fig:fig3.2}a}).
 By conducting  Spearman's correlation test between all possible pairs of datasets among rho values, 
 I found that aging datasets show higher correlation (median $\rho$=0.21, permutation test p-value=0.24) in heterogeneity change
 compared to development datasets (median $\rho$=0.11, permutation test p-value=0.25), although both were not significant.
-Although the difference in correlation of heterogeneity change between development and aging datasets were not significant (permutation test p-value=0.2),
+Whilst the difference in correlation of heterogeneity change between development and aging datasets were not significant (permutation test p-value=0.2),
 this observation may suggest that aging datasets show more similar changes in heterogeneity compared to development datasets.
 
 \begin{figure}[h]
@@ -104,10 +104,8 @@ suggesting that increased heterogeneity may be a characteristic of aging period.
 Having observed both that heterogeneity changes can differentiate between time periods and that there is a tendency towards more similar changes in heterogeneity during aging,
 I next focused on identifying those genes showing consistent change in heterogeneity.
 As previously stated, in this study, I chose to focus on genes showing consistent trends among different datasets, rather than focusing on significant changes within individual datasets.
-The most important advantage of this approach is that, by using the advantage of having multiple datasets, 
+The most important advantage of this approach is that, using the advantage of having multiple datasets, 
 it enables us to detect genes that would otherwise not pass the significance treshold due to low sample size.
-
-I first analyzed the distribution of heterogeneity changes (i.e., $\rho$ values) for each dataset and time period (\textbf{Figure~\ref{fig:fig3.3}a}).
 
 \begin{figure}[h]
     \centering
@@ -119,4 +117,44 @@ I first analyzed the distribution of heterogeneity changes (i.e., $\rho$ values)
     (c) Barplots showing expected and observed number of genes showing consistent increase in heterogeneiy among datasets during development (top panel) and aging (bottom panel).
     Adapted from Isildak et al., 2020
     }~\label{fig:fig3.3}
+\end{figure}
+
+I first analyzed the distribution of heterogeneity changes (i.e., $\rho$ values) for each dataset and time period (\textbf{Figure~\ref{fig:fig3.3}a}).
+The 18 of 19 aging datasets showed more increase in age-related heterogeneity (median $\rho$ > 0), 
+while the remaining one dataset showed no change in heterogeneity (median $\rho$ = 0). 
+During development, on the other hand, I found that 14 of 19 datasets displayed a decrease in heterogeneity  (median $\rho$ < 0).
+Moreover, comparison of median heterogeneity changes between development and aging datasets revealed that 
+18 of 19 datasets showed more increase during aging compared to development. 
+The permutation test further demonstrated that overall increase in heterogeneity during aging compared to development is significant (permutation test p-value < 0.001).
+
+Although I observed increased heterogeneity during aging compared to development, 
+one possible explanation may be related to positive correlation between mean and variation, 
+where increased heterogeneity may be a result of increased expression levels during aging, rather than being a biological effect.
+To test this, I analyzed the correlations between expression and heterogeneity changes for each dataset and time period (\textbf{Figure~\ref{fig:fig3.3}b}).
+Spearman's correlation test revealed that there is no significance dependence between expression and heterogeneity change.
+In fact, development datasets showed higher positive correlations compared to aging datasets. 
+Nevertheless, this analysis showed that the observed overall increase in heterogeneity during aging is not a result of mean-variance dependence.
+
+Given that we observed an overall increase in heterogeneity during aging compared to development (\textbf{Figure~\ref{fig:fig3.3}a}),
+and this increase is not a technical artifact (\textbf{Figure~\ref{fig:fig3.3}b}), I next focus on detecting those genes showing consistent change in heterogeneity. 
+For each gene, I calculated number of datasets in which they show consistent increase in heterogeneity (in development and aging periods separately), 
+irrespective of whether the increase is significant (\textbf{Figure~\ref{fig:fig3.3}c}).
+The expected consistency in heterogeneity change was calculated using the random permutations (see \textbf{Section~\ref{subsec:perm.consist}} for details).
+By comparing observed consistency in heterogeneity increase to expected consistency, I first found a shift towards increased heterogeneity consistency
+during aging period, whereas no such shift was observed in development datasets.
+Moreover, 147 genes were identified that consistently increase in heterogeneity among all 19 aging datasets (permutation test p-value < 0.001), 
+whereas there was only 1 gene showing consistent decrease in all datasets during aging period.
+The full list of these consistent 147 is given in the \textbf{Appendix~\ref{app:const.genes}}.
+
+
+\section{Clustering}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=.9\textwidth]{figures/figure3_4.png}
+    \caption{Trajectories of different clusters of 147 genes showing consistent increase in all 19 datasets during aging.
+    The x-axis shows age in years, while the y-axis shows scaled heterogeneity changes (i.e., rho values).
+    The spline lines show the mean heterogeneity change level for genes. 
+    Adapted from Isildak et al., 2020
+    }~\label{fig:fig3.4}
 \end{figure}

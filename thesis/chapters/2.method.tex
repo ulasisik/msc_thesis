@@ -369,9 +369,17 @@ To test if there is a significant difference in number of genes showing signific
 I calculated the difference in number of significantly changing genes between development and aging datasets for each permutation to construct the null distribution.
 The p-values were obtained by comparing observed differences against the null distribution.
 
-\subsection{Overall increase in heterogeneity}
+\subsection{Overall increase in heterogeneity}~\label{subsec:perm.overall}
+To test if overall increase in heterogeneity during aging is significantly higher than development, 
+I calculated median difference between median heterogeneity change of development and aging for each dataset.
+This median values computed 1,000 times for each permutation to construct the null distribution.
+Then, I compared observed median difference against the null distribution to obtain emprical p-value.
 
-\subsection{Heterogeneity consistency}
+\subsection{Heterogeneity consistency}~\label{subsec:perm.consist}
+Lastly, I used heterogeneity change values computed using the permuted ages to obtain expected consistency in heterogeneity increase and to test the significance of observed consistency.
+For each permutation, I calculated number of genes showing consistent increase in $X$ number of datasets, where $X$ is an integer having values from 1 to 19.
+Then, the observed number of genes showing consistent increase in heterogeneity in $X$ number of datasets were compared against the expected number of genes for
+each $X$ value ranging from 1 to 19.
 
 \section{Clustering}
 
