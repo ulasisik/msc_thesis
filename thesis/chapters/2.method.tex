@@ -381,7 +381,14 @@ For each permutation, I calculated the number of genes showing a consistent incr
 Then, the observed number of genes showing a consistent increase in heterogeneity in the $X$ number of datasets were compared against the expected number of genes for
 each $X$ value ranging from 1 to 19.
 
-\section{Clustering}
+\section{Clustering}~\label{sec:cluster}
+Clustering was performed using k-means clustering algorithm on 147 genes showing consistent increase in heterogeneity in all 19 aging datasets.
+The heterogeneity levels (i.e., absolute residuals obtained from \textbf{Equation~\ref{eq:exp_change}}) were first scaled to have same mean and standard deviation. 
+Then, using the scaled heterogeneity levels, spline curves were fitted for each gene with a degree of freedom of 3, by using the ``smooth.spline'' R function.
+Within each dataset, the smallest sample size was used to interpolate the data so that the age points are evenly spaced.
+Lastly, I used interpolated values to perform k-means clustering (k = 8), using the ``kmeans'' function in R.
+An alternative approach would be to directly use scaled heterogeneity values to perform clustering. 
+However, this approach would fail to represent all data points equally due to varying sample sizes of different datasets.
 
 \section{Functional analysis}
 
