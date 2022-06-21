@@ -1,19 +1,19 @@
 % CHAPTER 2
 \chapter{Material and Method}~\label{chp:b2}
 \section{Datasets}
-In this study, I analyzed 19 microarray gene expression datasets to investigate age-related gene expression heterogeneity change in human brain during development and aging.
+In this study, I analyzed 19 microarray gene expression datasets to investigate age-related gene expression heterogeneity change in the human brain during development and aging.
 The datasets were retrieved from 3 independent published studies, containing microarray data for the human brain~\cite{Colantuoni2011, Kang2011, Somel2011, Somel2010}.
-Overall, the datasets include 1,010 samples from 298 individuals spanning 17 different brain region, which are not mutually exclusive.
+Overall, the datasets include 1,010 samples from 298 individuals spanning 17 different brain regions, which are not mutually exclusive.
 All datasets have samples covering whole lifespan with ages ranging from 0 to 98 years (\textbf{Figure~\ref{fig:fig2.1}}).
 A summary of datasets used in this study is shown in \textbf{Table~\ref{table:table1}}.
 
-It should also be noted that Kang2011 datasets contain samples from left and right hemispheres of the same individual.
-These samples were analyzed as biological replicates, meaning that samples were not seperated into two different datasets, for three reasons.
-First, it was previously suggested that left and right hemispheres of the brain may show asymmetric age-related changes~\cite{Sun2005, Dolcos2002}.
+It should also be noted that Kang2011 datasets contain samples from the left and right hemispheres of the same individual.
+These samples were analyzed as biological replicates, meaning that samples were not separated into two different datasets, for three reasons.
+First, it was previously suggested that the left and right hemispheres of the brain may show asymmetric age-related changes~\cite{Sun2005, Dolcos2002}.
 Second, the other datasets do not contain hemisphere information.
-Last, previous studies analyzing this dataset, including the original study, also treated them as biological replicates~\cite{Kang2011,Donertas2017}.
+Last, previous studies analyzing this dataset, including the original study, also treated them as biological replicates~\cite{Kang2011, Donertas2017}.
 
-Additionally, Somel2011\char`_PFC dataset includes two pairs of technical replicates, between which the correlation was high. 
+Additionally, the Somel2011\char`_PFC dataset includes two pairs of technical replicates, between which the correlation was high. 
 Therefore, the mean of expression values was used in the downstream analysis.
 
 The datasets were downloaded from NCBI Gene Expression Omnibus (GEO) database using the accession codes given in the \textbf{Table~\ref{table:table1}}. 
@@ -76,22 +76,22 @@ All the analysis was performed in R programming environment~\cite{R2020}.
 
 \subsection{Dataset selection}
 The age-series datasets analyzed in this study are all microarray-based. 
-Although there was one other RNA-Sequencing based dataset that covers whole lifespan~\cite{Mazin2013}, I chose not to include it in this anaysis for two reasons.
+Although there was one other RNA Sequencing-based dataset that covers the whole lifespan~\cite{Mazin2013}, I chose not to include it in this analysis for two reasons.
 First, the samples were already included in the Somel2011 dataset. 
-Second, it is an underpowered dataset with data from only 35 individuals that cannot reliably lead to conclusion.
+Second, it is an underpowered dataset with data from only 35 individuals that cannot reliably lead to a conclusion.
 
 There were also RNA-Sequencing datasets containing samples from only development or aging periods. 
-Since combining independent development and aging datasets may confound biological effects that I aimed to examine, 
-this study was limited to meta-analysis of 19 microarray-based datasets. 
+Since combining independent development and aging datasets may confound the biological effects that I aimed to examine, 
+this study was limited to the meta-analysis of 19 microarray-based datasets. 
 
 \subsection{Seperating development and aging datasets}
-The aim of this study to investigate age-related gene expression change during development and aging. 
-Thus, all the datasets were seperated into two datasets: development (0 to 20 years of age) and aging (20 to 98 years of age).
-The age of 20 years was used to seperate development and aging for the following reasons:
+The aim of this study is to investigate age-related gene expression changes during development and aging. 
+Thus, all the datasets were separated into two datasets: development (0 to 20 years of age) and aging (20 to 98 years of age).
+The age of 20 years was used to separate development and aging for the following reasons:
 \begin{enumerate}
     \item The age of 20 was shown to correspond approximately to the age of reproduction in human societies~\cite{Walker2006}.
-    \item Previous studies investigating age-related gene expression trajectories demonstrated that 20 years of age corresponds to a turning point of gene expression patterns\cite{Colantuoni2011, Donertas2017,Somel2010}.
-    \item Earlier research connected the structural changes occuring in the human brain after the age of 20 to age-related phenotypes~\cite{Sowell2004}.
+    \item Previous studies investigating age-related gene expression trajectories demonstrated that 20 years of age corresponds to a turning point of gene expression patterns\cite{Colantuoni2011, Donertas2017, Somel2010}.
+    \item Earlier research connected the structural changes occurring in the human brain after the age of 20 to age-related phenotypes~\cite{Sowell2004}.
 \end{enumerate}
 
 As a result, I obtained: 
@@ -100,21 +100,21 @@ As a result, I obtained:
 (iii) two development and two aging datasets for the Somel2011.
 Overall, both development and aging datasets resulted in a comparable number of samples ($n_{development} = 441$; $n_{aging}=569$).
 
-Moreover, it is important to note that I excluded samples from prenatal development period, 
-since gene expression trajectories were shown to be discontinuous between prenatal and postnatal development period~\cite{Colantuoni2011,Kang2011}, 
-and since the scope of this study is limited to investigate changes in gene expression heterogeneity during aging compared to pre-adulthood.
+Moreover, it is important to note that I excluded samples from the prenatal development period, 
+since gene expression trajectories were shown to be discontinuous between prenatal and postnatal development period~\cite{Colantuoni2011, Kang2011}, 
+and since the scope of this study is limited to investigating changes in gene expression heterogeneity during aging compared to pre-adulthood.
 
 \section{Dataset Preprocessing}
-Microarray technology is a widely used tool to quantify expression level of gene transcripts from a given sample. 
+Microarray technology is a widely used tool to quantify the expression level of gene transcripts from a given sample. 
 A microarray chip contains known sequences of oligonucleotides -known as probes- that are located on a solid surface.
-Typically, each transcript is represented by a set of 11-20 pairs of probe, called as the probe-set of that transcript, in Affymetrix microarray platforms.
-The cDNAs derived from the mRNA transcripts of the sample are hybridised to target probes labelled by detectable fluorochrome molecules, 
+Typically, each transcript is represented by a set of 11-20 pairs of probes, called the probe-set of that transcript, in Affymetrix microarray platforms.
+The cDNAs derived from the mRNA transcripts of the sample are hybridized to target probes labeled by detectable fluorochrome molecules, 
 where the amount of hybridization is reflected by the light intensity levels.
-The quantification of expression is then performed by measuring light intensity levels of each probe, which are stored in CEL files.
+The quantification of expression is then performed by measuring the light intensity levels of each probe, which are stored in CEL files.
 
 The Kang2011 and Somel2011 datasets were generated by Affymetrix HuEx-1\char`_0-st and HuGene-1\char`_0-st microarray platforms, respectively. 
-Colantuoni2011 dataset, on the other hand, was generated using HEEBO-7 set (Human 49K oligo array), which is an Illumina based array. 
-Since there is no public R library available to process Illumina based data from Colantuoni2011, 
+Colantuoni2011 dataset, on the other hand, was generated using the HEEBO-7 set (Human 49K oligo array), which is an Illumina-based array. 
+Since there is no public R library available to process Illumina-based data from Colantuoni2011, 
 I used the expression data preprocessed by the authors of the original study~\cite{Colantuoni2011}. 
 For the datasets from Kang2011 and Somel2011 sources, I downloaded CEL files from GEO database~\cite{Barrett2013}. 
 The preprocessing of Kang2011 and Somel2011 datasets can be summarized in four steps: (1) RMA convolution, (2) probe-set summarization,
@@ -123,34 +123,34 @@ Distribution of expression values after each preprocessing step is shown in \tex
 For the Colantuoni2011 dataset, quantile normalization was performed on the preprocessed data.
 
 \subsection{RMA correction}
-The very first step of a microarray analysis is the removal of noise and biases from the raw data obtained from light intensities.
-There can be a number of factors contributing background errors, such as optical noise, unspecific hybridization and incomplete washing~\cite{Bengtsson2006}. 
+The very first step of microarray analysis is the removal of noise and biases from the raw data obtained from light intensities.
+There can be a number of factors contributing to background errors, such as optical noise, unspecific hybridization and incomplete washing~\cite{Bengtsson2006}. 
 Nevertheless, low-level preprocessing and normalization, having a significant effect on the downstream analysis, 
-were suggested to be one of the most important step in any microarray data analysis~\cite{Bengtsson2006}.
+were suggested to be one of the most important steps in any microarray data analysis~\cite{Bengtsson2006}.
 
 In this study, background normalization was performed by the Robust Multiarray Average (RMA) convolution method, 
-which is a one of the most commonly used method to perform background normalization on microarray data. 
-The RMA method involves the removal of technical artefacts so that the measurements from neighbouring probes do not interfere with each other~\cite{Irizarry2003}.
+which is one of the most commonly used methods to perform background normalization on microarray data. 
+The RMA method involves the removal of technical artifacts so that the measurements from neighboring probes do not interfere with each other~\cite{Irizarry2003}.
 
-Apart from background normalization, the RMA algorithm also performs probe to probe-set summarization. 
+Apart from background normalization, the RMA algorithm also performs probe-to-probe-set summarization. 
 Since each transcript is represented by a set of 11-20 probes, it is necessary to summarize probe-level data into probe-sets, 
-by grouping probes corresponding the same transcript. I used the R ``oligo'' library to perform RMA correction~\cite{Carvalho2010}.
+by grouping probes corresponding to the same transcript. I used the R ``oligo'' library to perform RMA correction~\cite{Carvalho2010}.
 As previously stated, RMA correction was performed only on Kang2011 and Somel2011 datasets.
 
 \subsection{Probe-set summarization}
 I next summarized the probe-set expression values into gene expression values. 
-This step is required to combine and analyze data from different platforms, since we need to have expression values that are defined universally (i.e., by gene IDs).
+This step is required to combine and analyze data from different platforms since we need to have expression values that are defined universally (i.e., by gene IDs).
 Thus, converting probe-sets into gene IDs allows us to compare expression levels of the genes among different platforms.
 
 However, probe-set to gene ID conversion is not always one-to-one in many platforms. 
 There can be multiple probe-sets that correspond to the same gene, while it is also possible to have a probe-set that maps to multiple genes. 
-In this study, probe-sets that correspond to more than one genes were removed, since keeping these samples may lead to a pseudoreplication problem, 
+In this study, probe-sets that correspond to more than one gene were removed, since keeping these samples may lead to a pseudoreplication problem, 
 where the expression level of multiple genes would not be independent. 
-For the genes having multiple probe-set data, the expression values were calculated by taking the average of the expression values of the probe-sets corresponding the gene.
+For the genes having multiple probe-set data, the expression values were calculated by taking the average of the expression values of the probe-sets corresponding to the gene.
 
 For the dataset generated by HuGene-1\char`_0-st (Somel2011 datasets), 
 Ensembl v.84 annotations~\cite{Yates2016} were retrieved through ``biomaRt'' library in R~\cite{Durinck2009}.
-For the Kang2011 dataset generated by HuEx-1\char`_0-st platform, the GPL file deposited in the GEO database was used since the IDs of probe-sets were not complete in Ensembl.
+For the Kang2011 dataset generated by the HuEx-1\char`_0-st platform, the GPL file deposited in the GEO database was used since the IDs of probe-sets were not complete in Ensembl.
 Lastly, for the Colantuoni2011 dataset, the gene IDs were retrieved from the GPL file deposited in the GEO database.
 
 \subsection{Log2 transformation}
@@ -161,22 +161,22 @@ Moreover, in the data produced by microarray platforms, there are typically many
 whereas there are fewer genes having high expression levels,
 leading to a right-skewed distribution (\textbf{Figure~\ref{fig:fig2.2}}).
 Making distributions more similar, $Log_2$ transformation allows us to perform parametric statistical tests, as most of them assume equal variance. 
-Additionally, $Log_2$ transformation also allows us to visualize the data more easily.
+Additionally, the $Log_2$ transformation also allows us to visualize the data more easily.
 
-Therefore, $Log_2$ transformation was applieid to the expression data from Kang2011 and Somel2011 sources.
+Therefore, the $Log_2$ transformation was applied to the expression data from Kang2011 and Somel2011 sources.
 
 \subsection{Quantile normalization}
-The microarray platforms are susceptible to technical variation from different sources, hampering the meta analysis of multiple datasets from different sources.
-Quantile normalization is one of commonly used methods used to minimize technical variation~\cite{Zhao2020}. 
+The microarray platforms are susceptible to technical variation from different sources, hampering the meta-analysis of multiple datasets from different sources.
+Quantile normalization is one of the commonly used methods used to minimize technical variation~\cite{Zhao2020}. 
 
 Quantile normalization assumes the same distribution for all samples. 
-Therefore, any significant variation in the distribution shape are regarded as unwanted and non-biological noise, and are eleminated.
+Therefore, any significant variation in the distribution shape is regarded as unwanted and non-biological noise and is eliminated.
 However, it is also important to note that quantile normalization should be used with caution as it may also remove signals that can be of biological interest~\cite{Hicks2014}.
 Despite this danger, the quantile normalization was performed on all datasets for three reasons. 
 First, all the datasets analyzed in this study contain samples only from the human brain.
 Second, sample collection was performed under similar conditions (i.e., from healthy individuals), combined with the first reason, they indicate that overall expression distributions should be similar.
-Third, this study mainly focuses on consistent patterns among different datasets, rather than focusing on significant changes of individual genes from a single dataset.
-We expect quantile normalization to eleminate only random confounding factors that are not shared among datasets. 
+Third, this study mainly focuses on consistent patterns among different datasets, rather than focusing on significant changes in individual genes from a single dataset.
+We expect quantile normalization to eliminate only random confounding factors that are not shared among datasets. 
 Then, the shared patterns among different datasets were considered as a potential biological signal.
 
 The ``preprocessCore'' R package was used to perform quantile normalization~\cite{Bolstad2021}.
@@ -188,7 +188,7 @@ The ``preprocessCore'' R package was used to perform quantile normalization~\cit
 The top right histogram shows the distribution of raw probe expression levels. 
 The top left histogram shows probe-set expression values after RMA correction. 
 The bottom left plot shows the gene expression values after RMA correction and Log2 transformation.
-The bottom right plot shows the the gene expression values after RMA correction, Log2 transformation and quantile normalization.}~\label{fig:fig2.2}
+The bottom right plot shows the gene expression values after RMA correction, Log2 transformation and quantile normalization.}~\label{fig:fig2.2}
 \end{figure}
 
 \subsection{Scaling}
@@ -203,10 +203,10 @@ Scaling was performed by using the following formula.
 where $Expr_i$ and $Scaled\ Expr_i$ represent expression and scaled expression value of the sample $i$, respectively, 
 whereas $Expr$ is the expression values of the gene for all samples in a dataset.
 
-I used ``scale'' function in base R to scale each gene in each dataset seperately.
+I used the ``scale'' function in base R to scale each gene in each dataset separately.
 
 \subsection{Batch-effect correction}
-There was one additional normalization step applied to Somel2011\char`_PFC dataset to correct batch effect.
+There was one additional normalization step applied to the Somel2011\char`_PFC dataset to correct the batch effect.
 The correction was performed in three steps as follows:
 
 \begin{enumerate}
@@ -220,12 +220,12 @@ The correction was performed in three steps as follows:
 \section{Outlier removal}~\label{sec:out.rm}
 In addition to technical variance introduced by microarray analysis, 
 there can be some samples showing greater divergence from the rest of the samples due to unknown factors,
-such as different diease backgrounds or different diets.
-Including such samples (i.e., outliers) in the analysis would introduce extra noise and would obstract to identify the true relationship between age and expression levels.
+such as different disease backgrounds or different diets.
+Including such samples (i.e., outliers) in the analysis would introduce extra noise and would obstruct the identification of the true relationship between age and expression levels.
 
 To identify outliers, Principal Component Analysis (PCA) was used. 
-PCA is a dimension reduction method that allows us to visualize high dimensional data and to detect outliers (see \textbf{Section~\ref{sec:pca}} for more detailed explanation of PCA).
-The first two principal components, which are the most important components explaning the largest variance, were used to visualize data and to identify outliers.
+PCA is a dimension reduction method that allows us to visualize high-dimensional data and detect outliers (see \textbf{Section~\ref{sec:pca}} for a more detailed explanation of PCA).
+The first two principal components, which are the most important components explaining the largest variance, were used to visualize data and identify outliers.
 
 Consistent with the previous studies~\cite{Donertas2017,Donertas2018}, the following 7 samples were removed from the analysis: 
 \begin{enumerate}
@@ -245,7 +245,7 @@ and the genes for which we don't have a measurement in at least one dataset were
 \section{Age-related expression change}~\label{sec:exp-change}
 Having preprocessed datasets for both development and aging periods, I next sought to characterize age-related gene expression changes. 
 Linear regression was used to quantify the relationship between expression levels and age. 
-The following linear model was fitted to each gene for each time period seperately.
+The following linear model was fitted to each gene for each time period separately.
 
 \begin{equation}
     Expr_i = \beta_{i0} + \beta_{i1} * Age^{1/4} + \epsilon_i
@@ -257,34 +257,34 @@ The $\beta_{i1}$ values were considered as the measure of age-related expression
 Since it is the slope of the linear model, a negative beta value indicates a decrease in gene expression with age, while positive values indicate an age-related increase in the expression of the corresponding gene. 
 The left panels of \textbf{Figure~\ref{fig:fig2.3}} show an example of quantification of age-related expression changes for two genes.
 
-It is also worth noting that we transformed the individual ages into fourth root scale to obtain an approximately uniform distribution of ages across the lifespan.
-To test the effect of the age scale, I performed the same analysis using different age scales and confirmed that they also resulted in quantitativelly similar results.
+It is also worth noting that we transformed the individual ages into the fourth root scale to obtain an approximately uniform distribution of ages across the lifespan.
+To test the effect of the age scale, I performed the same analysis using different age scales and confirmed that they also resulted in quantitatively similar results.
 
-The linear regression was performed by using ``lm'' function in base R for each gene in each dataset (development and aging datasets separately).
+The linear regression was performed by using the ``lm'' function in base R for each gene in each dataset (development and aging datasets separately).
 
 \subsection{Multiple testing correction}~\label{subsec:p.adjust}
 As a result of linear regression, I also obtained p-values for each gene, showing the significance of observed expression change.
-In this study, we used a significance level of $\alpha = 0.05$, meaning that there is a $5\%$ chance that there will be a false positive result for a single statistical test.
-Since the regression analysis was performed on each gene independently, the false positive rate is increased dramatically as a result of multiple comparison.
-Therefore, we need to adjust the p-values obtained from linear regression to eleminate accumulation of false positive results.
+In this study, we used a significance level of $\alpha = 0.05$, meaning that there is a $5\%$ chance that there will be a false-positive result for a single statistical test.
+Since the regression analysis was performed on each gene independently, the false positive rate increased dramatically as a result of multiple comparisons.
+Therefore, we need to adjust the p-values obtained from linear regression to eliminate the accumulation of false-positive results.
 
 While there are several other methods available, I used Benjamini {\&} Hochberg method throughout this study to adjust p-values~\cite{Benjamini1995}.
-It is the standard method that is commonly used to control false discovery rate. 
-Compared to other methods, B{\&}H is one of the less conservative and more poowerfull method.
+It is the standard method that is commonly used to control the false discovery rate. 
+Compared to other methods, B{\&}H is one of the less conservative and more powerful methods.
 
-The correction was performed by using ``p.adjust'' function in base R.
+The correction was performed by using the ``p.adjust'' function in base R.
 
 \section{Age-related heterogeneity change}~\label{sec:het-change}
 Given that the age-related expression change display a linear trend, the residual obtained from the equation~\ref{eq:exp_change} (i.e., the $\epsilon$ values)
 reflects the deviation of that sample (see dashed vertical lines on the left panels of \textbf{Figure~\ref{fig:fig2.3}}).
-Thus, the absolute value of residuals were used as a measure of heterogeneity of the corresponding sample. 
-To characterize age-related change in gene expression heterogeneity,
-Spearman's correlation test was performed between absolute values of residuals and the forth root of age for each gene and each dataset seperately (see the right panels in \textbf{Figure~\ref{fig:fig2.3}}).
+Thus, the absolute value of residuals was used as a measure of the heterogeneity of the corresponding sample. 
+To characterize the age-related change in gene expression heterogeneity,
+Spearman's correlation test was performed between absolute values of residuals and the fourth root of age for each gene and each dataset separately (see the right panels in \textbf{Figure~\ref{fig:fig2.3}}).
 
 Then, the Spearman's correlation coefficients ($\rho$) were considered as a measure of heterogeneity change, 
 where positive values indicate an increase in heterogeneity with age and negative values reflect a decrease in age-related heterogeneity. 
 
-The correlation test was performed by using ``cor.test'' function in base R and the p-values were adjusted for multiple testing using B{\&}H method, 
+The correlation test was performed by using the ``cor.test'' function in base R and the p-values were adjusted for multiple testing using the B{\&}H method, 
 as explained in the~\textbf{Section~\ref{subsec:p.adjust}}.
 
 \begin{figure}[h]
@@ -308,31 +308,31 @@ The permutation test was used to test the significance of correlations among dat
 \section{Principal component analysis}~\label{sec:pca}
 Since biological data, including gene expression data, is typically high-dimensional, it is difficult to visualize and discover patterns in the data.
 Principal component analysis (PCA) is a dimension reduction method that is widely used in biological data analysis for summarization and visualization of the data.
-Basically, PCA algorithm creates linaer combinations of variables, known as principal components (PCs). 
-The principal components were sorted based on their capacity to explain variance, where the first principal component explains the most variance.
+Basically, the PCA algorithm creates linear combinations of variables, known as principal components (PCs). 
+The principal components were sorted based on their capacity to explain the variance, where the first principal component explains the most variance.
 Usually, the first two principal component axes are used for visualization. 
-Therefore, PCA allows us to visualize and summarize a high-dimensional data on 2-dimensional space.
+Therefore, PCA allows us to visualize and summarize high-dimensional data in 2-dimensional space.
 
 Apart from the outlier removal step (see \textbf{Section~\ref{sec:out.rm}}), 
 the PCA algorithm is also used to visualize age-related expression (\textbf{Figure~\ref{fig:fig3.1}b}) and heterogeneity changes (\textbf{Figure~\ref{fig:fig3.2}b}).
-I perform PCA by using ``prcomp'' function in base R.
+I perform PCA by using the ``prcomp'' function in base R.
 
 \section{Permutation test}~\label{sec:perm}
-Permutation test is a statistical method used for hypothesis testing. 
+The permutation test is a statistical method used for hypothesis testing. 
 The main advantage of the permutation test over other parametric statistical tests is that the permutation test does not have distributional assumptions.
 Additionally, conventional parametric tests require each sample to be independent, 
-while the permutation test is more flexible, allowing us to design a permutation procedures that account for non-independence.
-Since there are multiple samples from same individuals in some subdatasets, meaning that not all observations are independent, 
+while the permutation test is more flexible, allowing us to design a permutation procedure that accounts for non-independence.
+Since there are multiple samples from the same individuals in some sub-datasets, meaning that not all observations are independent, 
 the permutation test was used to assess significance throughout this study.
 
 I used the permutation schema that was developed by earlier studies, 
-taking into account that Kang2011 and Somel2011 datasets contain samples from different brain regions of the same individual~\cite{Donertas2017,Donertas2018}.
+taking into account that Kang2011 and Somel2011 datasets contain samples from different brain regions of the same individual~\cite{Donertas2017, Donertas2018}.
 Specifically: 
 
 \begin{enumerate}
-    \item The ages were randomly permuted among individuals for each data source, by using ``sample'' function in R. 
+    \item The ages were randomly permuted among individuals for each data source, by using the ``sample'' function in R. 
     It is important to note that ages were not randomized among samples, but among individuals to maintain the dependency between samples.
-    \item The randomized ages of individuals were mapped to corresponding samples. All the samples obtained from the same individual were assigned with the same age.
+    \item The randomized ages of individuals were mapped to corresponding samples. All the samples obtained from the same individual were assigned to the same age.
     \item The age-related gene expression and heterogeneity changes were calculated by using permuted ages of the samples as follows:
     \begin{enumerate}
         \item To calculate age-related expression change, linear regression was performed between randomized ages and expression levels, using the \textbf{Equation~\ref{eq:exp_change}} as explained in \textbf{Section~\ref{sec:exp-change}}
@@ -343,42 +343,42 @@ Specifically:
 
 The basic idea of this procedure is to simulate the null hypothesis, where there is no relationship between age and expression (heterogeneity).
 After having 1,000 expression (heterogeneity) change values for each gene in each dataset, we can compare observed values with this null distribution
-to assess significance of observed tendency. 
+to assess the significance of observed tendency. 
 
-Using the expression and heterogeneity change estimates, I tested the significange of 
+Using the expression and heterogeneity change estimates, I tested the significance of 
 (i) dataset correlations, (ii) overall increase in heterogeneity, and (iii) expected consistency in the heterogeneity change.
 All permutation tests were performed one-tailed.
 
 \subsection{Dataset correlations}~\label{subsec:perm.corr}
-Using the permuted ages, I first tested the correlations for expression and heterogeneity change within development and aging dataset.
-One approach to test correlations would be to calculate pairwise correlations for each pair of dataset for each permutation,
+Using the permuted ages, I first tested the correlations for expression and heterogeneity change within the development and aging dataset.
+One approach to test correlations would be to calculate pairwise correlations for each pair of datasets for each permutation,
 and calculate the expected median correlation among development and aging datasets.
 However, since 16 of 19 datasets analyzed in both time periods were retrieved from the same data source (i.e., Kang2011) and contain samples from different brain regions of the same individual,
-this approach would lead to low statistical power due to high number of dependent pairwise comparisons.
-Therefore, we adapted an alternative approach, where I first calculated a median correlation coefficient value
+this approach would lead to low statistical power due to a high number of dependent pairwise comparisons.
+Therefore, we adopted an alternative approach, where I first calculated a median correlation coefficient value
 by performing Spearman's correlation test among all pairwise combinations of three subsets of datasets: one dataset from Kang2011, one dataset from Somel2011, and the Colantuoni2011 dataset.
-I performed this 1,000 using the permuted ages and generated a null distribution of medians for development and aging datasets, seperately. 
-Then, the observed median values were compared against the null distribution of medians to assess the significance of observed median correlation among development and aging datasets.
+I performed this 1,000 using the permuted ages and generated a null distribution of medians for development and aging datasets, separately. 
+Then, the observed median values were compared against the null distribution of medians to assess the significance of the observed median correlation among development and aging datasets.
 
-Next, the difference in correlations between development and aging datasets were tested. 
+Next, the difference in correlations between development and aging datasets was tested. 
 For each permutation, I calculated a median difference between the correlations of development and aging datasets.
-Similarly, observed median difference were compared against the distribution of median differences obtained from permutations.
+Similarly, observed median differences were compared against the distribution of median differences obtained from permutations.
 
 \subsection{Genes showing significant change}~\label{subsec:perm.sig.change}
-To test if there is a significant difference in number of genes showing significant age-related change in expression (heterogeneity) between development and aging datasets,
+To test if there is a significant difference in the number of genes showing the significant age-related change in expression (heterogeneity) between development and aging datasets,
 I calculated the difference in number of significantly changing genes between development and aging datasets for each permutation to construct the null distribution.
 The p-values were obtained by comparing observed differences against the null distribution.
 
 \subsection{Overall increase in heterogeneity}~\label{subsec:perm.overall}
-To test if overall increase in heterogeneity during aging is significantly higher than development, 
-I calculated median difference between median heterogeneity change of development and aging for each dataset.
-This median values computed 1,000 times for each permutation to construct the null distribution.
-Then, I compared observed median difference against the null distribution to obtain emprical p-value.
+To test if the overall increase in heterogeneity during aging is significantly higher than development, 
+I calculated the median difference between median heterogeneity change of development and aging for each dataset.
+The median value was computed 1,000 times for each permutation to construct the null distribution.
+Then, I compared the observed median difference against the null distribution to obtain an empirical p-value.
 
 \subsection{Heterogeneity consistency}~\label{subsec:perm.consist}
 Lastly, I used heterogeneity change values computed using the permuted ages to obtain expected consistency in heterogeneity increase and to test the significance of observed consistency.
-For each permutation, I calculated number of genes showing consistent increase in $X$ number of datasets, where $X$ is an integer having values from 1 to 19.
-Then, the observed number of genes showing consistent increase in heterogeneity in $X$ number of datasets were compared against the expected number of genes for
+For each permutation, I calculated the number of genes showing a consistent increase in the $X$ number of datasets, where $X$ is an integer having values from 1 to 19.
+Then, the observed number of genes showing a consistent increase in heterogeneity in the $X$ number of datasets were compared against the expected number of genes for
 each $X$ value ranging from 1 to 19.
 
 \section{Clustering}
