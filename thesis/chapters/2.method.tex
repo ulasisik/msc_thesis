@@ -390,37 +390,22 @@ Lastly, I used interpolated values to perform k-means clustering (k = 8), using 
 An alternative approach would be to directly use scaled heterogeneity values to perform clustering. 
 However, this approach would fail to represent all data points equally due to varying sample sizes of different datasets.
 
-\section{Functional analysis}
+\section{Functional enrichment analysis}~\label{sec:func}
+Gene Set Enrichment Analysis (GSEA) was performed using Gene Ontology (GO) Biological Process categories and Kyoto Encyclopedia of Genes and Genomes (KEGG) pathways.
+Specifically, the common genes were first ordered based on the number of datasets they show a consistent increase.
+Then, by using the ``gseGO'' and ``gseKEGG'' functions from the ``clusterProfiler'' R package~\cite{clusterProfiler}, 
+I investigated whether the genes showing increased consistency in heterogeneity change are associated with specific GO categories or KEGG pathways.
+The gene sets with a size between 5 and 500 were employed to run GSEA analysis and resulting Normalized Enrichment Scores (NES) was used to assess the strength of the association.
+The p-values were adjusted for multiple testing using the B{\&}H method, consistent with the previous sections (\textbf{Section~\ref{subsec:p.adjust}}).
 
-\section{Effect of sex-specific gene expression}
+Since I want to test if genes with consistent heterogeneity increase are associated with certain functionalities, 
+the genes were ranked according to number of datasets in which they show consistent heterogeneity increase, meaning that a number between 0 and 19 was assigned to each gene.
+One problem of this approach is that not all genes can be ranked unambiguously due to many ties observed in the dataset. 
+To address this issue, I ran GSEA 1,000 times and calculated the number of times that each pathway detected as significant (see `significanceIn1000' column in \textbf{Table~\ref{table:a3}}).
 
+GO Biological Process enrichment results were visualized by using the ``treemap'' function from ``treemap'' package~\cite{treemap2021}, 
+whereas significant KEGG pathways were visualized by using ``KEGGgraph'' package in R~\cite{KEGGgraph}.
 
-
-\begin{equation}
-{\bf y}_k = {\bf x}_k * {\bf P}_k
-\end{equation}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+\section{Transcriptional regulation enrichment analysis}
 
 

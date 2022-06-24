@@ -114,7 +114,7 @@ it enables us to detect genes that would otherwise not pass the significance thr
     whereas the barplots on the right shows the difference in medians between development and aging datasets.
     (b) Distribution of Spearman's correlation coefficients between expression and heterogeneity change of each dataset. 
     The color-coding reflects the data source, whereas 
-    (c) Barplots showing expected and observed number of genes showing a consistent increase in heterogeneity among datasets during development (top panel) and aging (bottom panel).
+    (c) Barplots showing expected and observed number of genes showing a consistent increase in heterogeneity among datasets during development (upper panel) and aging (lower panel).
     Adapted from Isildak et al., 2020
     }~\label{fig:fig3.3}
 \end{figure}
@@ -146,6 +146,10 @@ Moreover, 147 genes were identified that consistently increase in heterogeneity 
 whereas there was only 1 gene showing a consistent decrease in all datasets during the aging period.
 The full list of these consistent 147 is given in the \textbf{Appendix~\ref{app:const.genes}}.
 However, it is also important to note that, according to permutations, 
+the number of genes that would show consistent increase in heterogeneity under the null hypothesis (i.e., by chance) is 84,
+indicating a 40\% true positives.
+Although I couldn't confidently identify a gene set showing increased heterogeneity consistently among all datasets,
+this analysis demonstrated a clear shift towards increased heterogeneity during aging compared to development. 
 
 \section{Clustering}
 I next examined if 147 consistent genes (i.e., showing consistent heterogeneity increase in all 19 datasets) display certain trajectories of heterogeneity change.
@@ -168,3 +172,59 @@ Overall, the clustering analysis revealed three diverse patterns of heterogeneit
     Adapted from Isildak et al., 2020
     }~\label{fig:fig3.4}
 \end{figure}
+
+\section{Functional analysis}
+To investigate the functional role of increased heterogeneity during aging, 
+I next performed gene set enrichment analysis using Gene Ontology (GO) Biological Process categories~\cite{GO2019} and Kyoto Encyclopedia of Genes and Genomes (KEGG) pathways~\cite{Kanehisa2019}.
+The gene set enrichment analysis was performed on the genes that were ranked by number of datasets they show consistent increase in heterogeneity. 
+
+\subsection{GO Biological Process enrichment analysis}
+Gene Ontology Biological Process enrichment analysis was performed on development and aging datasets, separately. 
+While there was no GO term significantly enriched for the consistent changes in heterogeneity during development, 
+I identified 111 significantly enriched GO Biological Process terms for the consistent changes in aging. 
+The full list of enriched GO terms and normalized enrichment scores can be found in \textbf{Table~\ref{table:a2}}, 
+while \textbf{Figure~\ref{fig:fig3.5}} shows the REVIGO summarization.
+
+One of the most important enriched biological process GO term was the autophagy (GO term ID: GO:0006914), which was previously suggested to play important role in aging and aging-related diseases~\cite{Luo2019}.
+Moreover, another important enriched group of genes belonged to the axon regeneration (GO term ID: GO:0048679), which also demonstrated to decrease during aging~\cite{Belin2014}.
+Additionally, the regulation of T-helper cell differentiation and cellular response to virus terms were found to be significantly enriched. 
+Given the weakened immune system in aging, this result also suggests that increased heterogeneity may have important consequences in aging.
+Other significantly enriched groups included terms related to metabolic processes, mRNA processing and localization.
+Overall, GO Biological Process enrichment analysis of genes showing consistent increaese in hetergeneity indicates that increased heterogeneity may be associated with the aging-related phenotypes.
+
+\begin{landscape}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1.5\textwidth]{figures/figure3_5.png}
+    \caption{GO Biological Process enrichment analysis results for the genes showing consistent increase in heterogeneity, summarized by REVIGO~\cite{Supek2011}.
+    }~\label{fig:fig3.5}
+\end{figure}
+\end{landscape}
+
+\subsection{KEGG pathway enrichment analysis}
+Next, I performed KEGG pathway enrichment analysis. Similarly, there was no KEGG pathway found to be significantly enriched in development period.
+In aging, on the other hand, 
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=.9\textwidth]{figures/figure3_6.png}
+    \caption{KEGG pathways enrichment analysis results for the genes showing consistent increase in heterogeneity.
+    (a) Significantly enriched KEGG pathways (on the y-axis) and the distribution of number of datasets in which genes showing consistent increase in heterogeneity (x-axis). 
+    (b) Demonstration of Longevity Regulation Pathway as an example during development (upper panel) and aging (lower panel). Nodes represent genes, while color-coding reflect the consistency in heterogeneity increase.
+    Adapted from Isildak et al., 2020
+    }~\label{fig:fig3.6}
+\end{figure}
+
+\section{Transcriptional regulation enrichment analysis}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=.9\textwidth]{figures/figure3_7.png}
+    \caption{The distribution of correlation coefficients between number of transcriptional regulators and heterogeneity changes. 
+    Adapted from Isildak et al., 2020
+    }~\label{fig:fig3.7}
+\end{figure}
+
+\subsection{Transcription factor enrichment analysis}
+
+\subsection{miRNA enrichment analysis}
