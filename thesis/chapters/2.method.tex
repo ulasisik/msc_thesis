@@ -391,7 +391,8 @@ An alternative approach would be to directly use scaled heterogeneity values to 
 However, this approach would fail to represent all data points equally due to varying sample sizes of different datasets.
 
 \section{Functional enrichment analysis}~\label{sec:func}
-Gene Set Enrichment Analysis (GSEA) was performed using Gene Ontology (GO) Biological Process categories and Kyoto Encyclopedia of Genes and Genomes (KEGG) pathways.
+Gene set enrichment analysis (GSEA) was performed using Gene Ontology (GO) Biological Process categories and Kyoto Encyclopedia of Genes and Genomes (KEGG) pathways 
+to determine functional role of increased heterogeneity.
 Specifically, the common genes were first ordered based on the number of datasets they show a consistent increase.
 Then, by using the ``gseGO'' and ``gseKEGG'' functions from the ``clusterProfiler'' R package~\cite{clusterProfiler}, 
 I investigated whether the genes showing increased consistency in heterogeneity change are associated with specific GO categories or KEGG pathways.
@@ -406,6 +407,20 @@ To address this issue, I ran GSEA 1,000 times and calculated the number of times
 GO Biological Process enrichment results were visualized by using the ``treemap'' function from ``treemap'' package~\cite{treemap2021}, 
 whereas significant KEGG pathways were visualized by using ``KEGGgraph'' package in R~\cite{KEGGgraph}.
 
-\section{Transcriptional regulation enrichment analysis}
+\section{Transcriptional regulation enrichment analysis}~\label{sec:reg.enrich}
+Next, the gene enrichment analysis was also performed for transcriptional regulators, namely miRNAs and transcription factors. 
+The Harmonizome database was used to retrieve transcription-regulator association information~\cite{Rouillard2016}.
+Specifically, the miRNA-target interaction information was obtained from miRTarBase~\cite{Chou2016}, containing information for 12,086 genes and 596 miRNAs.
+The information about transcription factors and their binding sites were curated by TRANSFAC database for 13,216 genes and 201 transcription factors~\cite{Matys2006}.
+To run gene set enrichment analysis on these custom gene sets, the ``fgsea'' package in R was used~\cite{fgsea}.
+Similar to functional enrichment analysis, the genes were ranked based on the number of datasets in which they show consistent increase.
+The regulators with 10 to 500 targets were used to perform enrichment analysis.
 
-
+Additionally, I performed correlation test between the heterogeneity change and the number of transcriptional regulators. 
+Specifically, Spearman's correlation test was performed between the number of datasets with a consistent increase in heterogeneity and 
+the number of regulators (i.e., miRNAs and transcription factors), for development and aging periods separately. 
+To test the significance of the difference in correlations between development and aging, the permutation test was used.
+In detail, I randomly permuted the number of regulators 1,000 times and 
+calculated Spearman's correlation coefficients between the number of datasets with a consistent increase and permuted number of regulators.
+Then, for each permutation, I computed the proportion of datasets where the correlation in the aging dataset is higher than the development.
+The emprical p-value was obtained by comparing the observed proportion against the distribution of expected proportions.

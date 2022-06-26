@@ -173,7 +173,7 @@ Overall, the clustering analysis revealed three diverse patterns of heterogeneit
     }~\label{fig:fig3.4}
 \end{figure}
 
-\section{Functional analysis}
+\section{Functional enrichmenet analysis}
 To investigate the functional role of increased heterogeneity during aging, 
 I next performed gene set enrichment analysis using Gene Ontology (GO) Biological Process categories~\cite{GO2019} and Kyoto Encyclopedia of Genes and Genomes (KEGG) pathways~\cite{Kanehisa2019}.
 The gene set enrichment analysis was performed on the genes that were ranked by number of datasets they show consistent increase in heterogeneity. 
@@ -185,7 +185,7 @@ I identified 111 significantly enriched GO Biological Process terms for the cons
 The full list of enriched GO terms and normalized enrichment scores can be found in \textbf{Table~\ref{table:a2}}, 
 while \textbf{Figure~\ref{fig:fig3.5}} shows the REVIGO summarization.
 
-One of the most important enriched biological process GO term was the autophagy (GO term ID: GO:0006914), which was previously suggested to play important role in aging and aging-related diseases~\cite{Luo2019}.
+One of the most important enriched biological process GO term was the autophagy (GO term ID: GO:0006914), which was previously suggested to play important role in aging and aging-related diseases~\cite{Rubinsztein2011}.
 Moreover, another important enriched group of genes belonged to the axon regeneration (GO term ID: GO:0048679), which also demonstrated to decrease during aging~\cite{Belin2014}.
 Additionally, the regulation of T-helper cell differentiation and cellular response to virus terms were found to be significantly enriched. 
 Given the weakened immune system in aging, this result also suggests that increased heterogeneity may have important consequences in aging.
@@ -203,28 +203,59 @@ Overall, GO Biological Process enrichment analysis of genes showing consistent i
 
 \subsection{KEGG pathway enrichment analysis}
 Next, I performed KEGG pathway enrichment analysis. Similarly, there was no KEGG pathway found to be significantly enriched in development period.
-In aging, on the other hand, 
+In aging, on the other hand, there were 21 KEGG pathways significantly enriched for the genes that become consistently heterogeneous. 
+The full list of significantly enriched KEGG pathways can be found in \textbf{Table~\ref{table:a3}},
+while \textbf{Figure~\ref{fig:fig3.6}a} shows the distribution of consistency of those genes that belong to significantly enriched pathways. 
+Among the significantly enriched KEGG pathways, the most notable ones were longevity regulating pathway, autophagy~\cite{Rubinsztein2011}, mTOR signaling~\cite{Johnson2013} and FoxO signaling~\cite{Martins2016}, 
+all of which were shown to be related to aging and aging-related diseases.
+Additionally, the difference in the distribution of number of datasets with increase in heterogeneity between development and aging can be clearly identified,
+where aging period has higher number of datasets with heterogeneity increase compared to development.
+Importantly, 4/21 pathways were found to have negative enrichment scores: protein digestion and absoption pathway, primary immunodeficiency pathway, linoleic acid metabolism, and fat digestion and absoption pathway.
+However, due to skewed distribution of observed consistency (see the lower panel of \textbf{Figure~\ref{fig:fig3.3}c}), 
+negative scores do not automatically indicate a decrease in heterogeneity consistency. \textbf{Figure~\ref{fig:fig3.6}b} further demonstrates the heterogeneity consistency of genes in the longevity regulating pathway 
+(KEGG Pathway ID: hsa04211) for development (upper panel) and aging (lower panel).
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=.9\textwidth]{figures/figure3_6.png}
     \caption{KEGG pathways enrichment analysis results for the genes showing consistent increase in heterogeneity.
     (a) Significantly enriched KEGG pathways (on the y-axis) and the distribution of number of datasets in which genes showing consistent increase in heterogeneity (x-axis). 
-    (b) Demonstration of Longevity Regulation Pathway as an example during development (upper panel) and aging (lower panel). Nodes represent genes, while color-coding reflect the consistency in heterogeneity increase.
+    (b) Demonstration of Longevity Regulating Pathway as an example during development (upper panel) and aging (lower panel). 
+    Nodes and edges represent the genes and their relationship, respectively, while color-coding reflect the consistency in heterogeneity increase.
     Adapted from Isildak et al., 2020
     }~\label{fig:fig3.6}
 \end{figure}
 
+Overall, the functional enrichment analysis of genes that become consistently heterogeneous suggested that 
+increased heterogeneity may have important functional consquences in aging period, possibly contributing to the aging-related phenotypes.
+
 \section{Transcriptional regulation enrichment analysis}
+I next asked if there are specific transcriptional regulators associated with the genes that become consistently heterogeneous with age.
+I performed gene set enrichment analysis for both miRNAs and transcription factors.
+
+Performing gene set enrichment analysis for transcription factors, 
+I found 30 significantly enriched transcription factors in aging (see \textbf{Table~\ref{table:a4}} for the full list),
+while no transcription factor found to be significantly enriched in development. 
+The significantly enriched transcription factors included transcription factors belonging to Early Growth Response factor (EGR) and Forkhead box class O (FoxO) families,
+both of which are known to be associated with longevity and tissue homeostasis. 
+
+Then, the same gene set enrichment analysis was performed for miRNAs. 
+Overall, I found only 2 miRNAs significantly enriched for the heterogeneity changes in development, 
+while there were 99 miRNAs that are significantly associated with heterogeneity changes during aging.
+
+\subsection{Association between number of regulators and increased heterogeneity}
+As earlier studies suggested the association between number of regulators and gene expression noise~\cite{Barroso2018}, 
+I next sought to characterize the relationship between number of regulators and gene expression heterogeneity for development and aging, separately (\textbf{Figure~\ref{fig:fig3.7}}).
+Spearman's correlation coefficient was calculated for miRNAs and transcription factors, separately.
+In aging dataset, the correlation was mainly in the positive direction, where 18/19 and 15/19 datasets showed positive correlation for miRNAs and transcription factors, respectively.
+Moreover, permutation test revealed that the difference between development and aging datasets is also significant 
+for both miRNAs (permutation test p-value = 0.007) and transcription factors (permutation test p-value = 0.045).
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=.9\textwidth]{figures/figure3_7.png}
     \caption{The distribution of correlation coefficients between number of transcriptional regulators and heterogeneity changes. 
+    The p-values were computed by permutation test.
     Adapted from Isildak et al., 2020
     }~\label{fig:fig3.7}
 \end{figure}
-
-\subsection{Transcription factor enrichment analysis}
-
-\subsection{miRNA enrichment analysis}
