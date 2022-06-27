@@ -22,7 +22,9 @@ All the analysis was performed in R programming environment~\cite{R2020}.
 \begin{figure}[h]
 \centering
 \includegraphics[width=.9\textwidth]{figures/figure2_1.png}
-\caption{The distribution of ages of the samples. (a) Number of samples included in age intervals. (b) Distribution of ages. The color coding reflect different data sources. }\label{fig:fig2.1}
+\caption{The distribution of ages of the samples. 
+(a) Number of samples included in age intervals. 
+(b) Distribution of ages. The color coding reflect different data sources.}~\label{fig:fig2.1}
 \end{figure}
 
 \begin{table}[ht]
@@ -84,7 +86,7 @@ There were also RNA-Sequencing datasets containing samples from only development
 Since combining independent development and aging datasets may confound the biological effects that I aimed to examine, 
 this study was limited to the meta-analysis of 19 microarray-based datasets. 
 
-\subsection{Seperating development and aging datasets}
+\subsection{Seperating development and aging datasets}~\label{subsec:dset.seperation}
 The aim of this study is to investigate age-related gene expression changes during development and aging. 
 Thus, all the datasets were separated into two datasets: development (0 to 20 years of age) and aging (20 to 98 years of age).
 The age of 20 years was used to separate development and aging for the following reasons:
@@ -104,7 +106,7 @@ Moreover, it is important to note that I excluded samples from the prenatal deve
 since gene expression trajectories were shown to be discontinuous between prenatal and postnatal development period~\cite{Colantuoni2011, Kang2011}, 
 and since the scope of this study is limited to investigating changes in gene expression heterogeneity during aging compared to pre-adulthood.
 
-\section{Dataset Preprocessing}
+\section{Dataset Preprocessing}~\label{sec:dset.preprocess}
 Microarray technology is a widely used tool to quantify the expression level of gene transcripts from a given sample. 
 A microarray chip contains known sequences of oligonucleotides -known as probes- that are located on a solid surface.
 Typically, each transcript is represented by a set of 11-20 pairs of probes, called the probe-set of that transcript, in Affymetrix microarray platforms.
@@ -268,7 +270,7 @@ In this study, we used a significance level of $\alpha = 0.05$, meaning that the
 Since the regression analysis was performed on each gene independently, the false positive rate increased dramatically as a result of multiple comparisons.
 Therefore, we need to adjust the p-values obtained from linear regression to eliminate the accumulation of false-positive results.
 
-While there are several other methods available, I used Benjamini {\&} Hochberg method throughout this study to adjust p-values~\cite{Benjamini1995}.
+While there are several other methods available, I used Benjamini {\&} Hochberg method throughout this study to adjust p-values~\cite{Benjamin1995}.
 It is the standard method that is commonly used to control the false discovery rate. 
 Compared to other methods, B{\&}H is one of the less conservative and more powerful methods.
 
@@ -279,7 +281,8 @@ Given that the age-related expression change display a linear trend, the residua
 reflects the deviation of that sample (see dashed vertical lines on the left panels of \textbf{Figure~\ref{fig:fig2.3}}).
 Thus, the absolute value of residuals was used as a measure of the heterogeneity of the corresponding sample. 
 To characterize the age-related change in gene expression heterogeneity,
-Spearman's correlation test was performed between absolute values of residuals and the fourth root of age for each gene and each dataset separately (see the right panels in \textbf{Figure~\ref{fig:fig2.3}}).
+Spearman's correlation test was performed between absolute values of residuals and 
+the fourth root of age for each gene and each dataset separately (see the right panels in \textbf{Figure~\ref{fig:fig2.3}}).
 
 Then, the Spearman's correlation coefficients ($\rho$) were considered as a measure of heterogeneity change, 
 where positive values indicate an increase in heterogeneity with age and negative values reflect a decrease in age-related heterogeneity. 

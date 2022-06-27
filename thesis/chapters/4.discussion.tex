@@ -2,31 +2,91 @@
 \chapter{Discussion}
 \label{chp:b4}
 
-aim and description 
+In this study, I aimed to investivage the changes in gene expression heterogeneity during development and aging periods.
+The dataset that I analyzed included 19 microarray dataset containing gene expression measurements for human brain from 3 independent sources.
+Overall, 1,010 samples from 17 different brain regions of 298 individuals (\textbf{Table~\ref{table:table1}}, \textbf{Figure~\ref{fig:fig2.1}}).
 
-seperation point and focusing on consistent changes
+The datasets, containing samples covering whole lifespan (ages from 0 to 98 years old), 
+were first divided into development and aging datasets,
+using the age of 20 years as a seperation point (see \textbf{Section~\ref{subsec:dset.seperation}}), 
+which was previously shown to be the global turning point of gene expression trajectories~\cite{Donertas2017, Colantuoni2011, Somel2010}.
+Overall, I obtained 19 development datasets including samples whose ages range from 0 to 20 years old (n = 441).
+It is also important to note that pre-natal samples were excluded from the downstream analysis
+since the gene expression trajectories are suggested to be discontinous between pre- and post-natal development, 
+and the scope of this study was to compare heterogeneity changes during postnatal development and aging.
+The aging datasets (n = 19 datasets), on the other hand, included samples whose ages range from 20 to 98 (n = 569).
+Only the common genes (i.e., the genes for which I have measurement across all datasets) were included in the downstream analysis (n = 11,137).
 
-\section{Higher correlation in expression changes during development}
+Using the advantage of having multiple datasets, this study focused on consistent changes that are shared across the datasets, 
+rather than focusing on significant changes in a single dataset, which is highly dependent on the sample sizes. 
+Thus, this approach was able to capture weak but shared signals that would otherwise fail to pass the significance treshold in individual datasets.
 
-expression changes
+\section{Correlations among datasets in expression and heterogeneity changes}
+After performing preprocessing on microarray datasets (see \textbf{Section~\ref{sec:dset.preprocess}}), 
+I first sought to characterize the age-related changes in gene expression, 
+by performing a linear regression analysis between scaled expression values and 
+fourth root of ages in days as shown in the left panels of \textbf{Figure~\ref{fig:fig2.3}}.
+The $\beta_{i1}$ values obtained from \textbf{Equation~\ref{eq:exp_change}} were considered as the measure of age-related expression change.
+The regression analysis was performed for each gene and for each time period, seperately (see \textbf{Section~\ref{sec:exp-change}} for details).
 
-\section{Higher correlation in heterogeneity changes during aging}
-heterogeneity changes
+Then I investigated the coordination in expression change between all possible pairs of datasets by calculating Spearman's correlation coefficient 
+and found that the correlation among development datasets (median correlation coefficient = 0.56) 
+is significantly higher than the correlation among aging datatsets (median correlation coefficient = 0.43, permutation test p-value = 0.003).
+Furthermore, more genes showed significant changes during development compared to aging period, and they mostly tended to decrease in expression (\textbf{Figure~\ref{fig:fig3.1}}).
+One possible explanation of these results might be related to stochastic nature of aging. 
+As previously suggested, the accumulation of random detrimental effects (i.e., mutations) during aging may cause reduced gene expressions, 
+and in turn causing an increased level of heterogenety in aging~\cite{Lu2004}.
+Consistent with earlier findings, my initial analysis of gene expression changes also supports the view of aging as a stochastic process.
+
+Next, the change in gene expression heterogeneity was characterized 
+by performing Spearman's correlation test between absolute value of residuals obtained from \textbf{Equation~\ref{eq:exp_change}} 
+and the fourth root of age for each gene and time period seperately (see \textbf{Section~\ref{sec:het-change}}).
+Analyzing the correlations among development and aging datasets in heterogeneity change,
+I found that aging datasets display a higher correlation compared to development datasets, 
+reflecting a more consistent heterogeneity change in aging.
+A further analysis of genes showing significant heterogeneity changes revealed that 
+there are more genes showing significant changes in heterogeneity during aging, compared to development (\textbf{Figure~\ref{fig:fig3.2}b}). 
+Moreover, the significant changes in heterogeneity are mostly in the positive direction during aging, suggesting an increase in heterogeneity.
 
 \section{Increased heterogeneity consistency in aging}
-heterogeneity consistency
+Having observed more consistent heterogeneity change and more significant heterogeneity increase in aging, 
+I next investigated heterogeneity changes in individual datasets and found an overall increase in heterogeneity during aging 
+(i.e., 18 of 19 aging datasets display higher median heterogeneity change compared to development, see \textbf{Figure~\ref{fig:fig3.3}a}). 
+An analysis of consistent heterogeneity change further revealed that there is a significant shift towards increased heterogeneity consistency during aging compared to expectation,
+while no such shift was observed for development datasets (\textbf{Figure~\ref{fig:fig3.3}c}).
 
-\section{Increased heterogeneity is a biological effect}
-increased heterogeneity is not technical artifact or low statistical power:
-- mean-variance dependence
-- pmi
+There are number of factors that can explain increased heterogeneity during aging compared to development.
+First, a number of studies previously demonstrated that the stochastic accumulation of somatic mutations may cause genomic instability,
+which may in turn lead to increased heterogeneity in aging period~\cite{Lu2004, Vijg2004, Lodato2018, Lombard2005}.
+Second, Cheung \textit{et al.}, analyzing a twin cohort, demonstrated the stochastic nature of age-related changes in chromatin,
+leading to increase variation between both individuals and cells in aging~\cite{Cheung2018}.
+The third factor might be the transcriptional regulation, which was suggested to be stochastic due to randomness of biochemical reactions~\cite{Maheshri2007, Barroso2018}.
+Previous studies found that the variability in gene expression is positively correlated with the number of transcription factors that control is regulation~\cite{Barroso2018, Sharon2014}.
+While the first two factors could not be tested in this study since the datasets did not contain somatic mutation or epigenetic regulation information, 
+I also found a mainly positive correlation between number of regulators and heterogeneity change during aging (\textbf{Figure~\ref{fig:fig3.7}}).
+Moreover, transcription factors found to be significantly associated with increased heterogeneity during aging included FoxO and EGR family of transcription factors, 
+which were shown to be regulating genes important for synaptic homeostasis, stress resistance, cell cycle arrest and apoptosis.
+Combined, the results obtained in this study also supported the view that increased heterogeneity in aging may be associated with the transcriptional regulation.
+
+\section{Increased heterogeneity may have important functional consequences}
+functional enrichment analysis
+transcriptional regulator anaysis
+
+\section{Increased heterogeneity is a biological signal}
+I next confirmed that the observed increase in heterogeneity consistency is a biological signal, rather than being a technical artifact or a result of low statistical power, 
+given the similar sample sizes of development and aging periods (\textbf{Figure~\ref{fig:fig2.1}}).
+- mean-variance dependence \textbf{Figure~\ref{fig:fig3.3}b}
+- pmi 
 - different sepration points
 - affect of sex
+- linear regression vs losso regression
 - not a result of an outlier sample (i.e., one older individual having too high/low expression)
 
 
 \section{Limitations \& future perspectives}
 There are a number of limitations of this study that should be pointed out. The first one is related to microarray data. 
+- microarray data -> let me to analyze reative changes only
+- bulk rna -> change in the cel-type composition?
 - Cannot confidently identify gene-sets showing consistent increase.
 
 
