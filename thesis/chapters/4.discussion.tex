@@ -73,15 +73,63 @@ functional enrichment analysis
 transcriptional regulator anaysis
 
 \section{Increased heterogeneity is a biological signal}
-I next confirmed that the observed increase in heterogeneity consistency is a biological signal, rather than being a technical artifact or a result of low statistical power, 
+I next confirmed that the observed increase in heterogeneity consistency is a biological signal, rather than being a technical artifacts or a result of low statistical power, 
 given the similar sample sizes of development and aging periods (\textbf{Figure~\ref{fig:fig2.1}}).
-- mean-variance dependence \textbf{Figure~\ref{fig:fig3.3}b}
-- pmi 
-- different sepration points
-- affect of sex
-- linear regression vs losso regression
-- not a result of an outlier sample (i.e., one older individual having too high/low expression)
 
+One technical factor that can explain increased heterogeneity during aging might be related to dependence between mean and variance, 
+where accompanying increase in expression levels may cause increased variance, which in turn detected as increased heterogeneity.
+To address this issue, I performed correlation test between heterogeneity changes and expression changes for each dataset and each period, 
+and found that the correlation coefficients calculated for aging datasets are mostly negative (\textbf{Figure~\ref{fig:fig3.3}b}), 
+suggesting that observed increase in heterogeneity was not caused by mean-variance dependence.
+
+Another technical factor that can cause increased inter-individual variance may be related to post-mortem interval (PMI), 
+which measures the time between death and sample collection.
+It was previously suggested that PMI-related mRNA degradation is gene-specific, leading to a bias in downstream analysis~\cite{Zhu2017}.
+To confirm that increased heterogeneity was not a result of PMI-related mRNA degradation,
+I used previously identified 107 PMI-associated genes~\cite{Zhu2017}, 75 of which were included in this analysis.
+Specifically, I tested if the 75 PMI-associated genes show more increase in heterogeneity during aging,
+and found that only 2 of 147 consistent genes were PMI-associated, 
+suggesting that PMI by itself was not enough to explain observed increase in heterogeneity (\textbf{Figure~\ref{fig:a6.1}}).
+
+One other factor that can affect the main results presented here might be related to age scales.
+As previously stated, the fourth root of age scale was used in this study to obtain relatively uniform distribution of ages across the lifespan.
+However, whether the observed increase in heterogeneity depends on the use of specific age scales remained unanswered.
+To assess the effect of using different age scales on the downstream analysis, I repeated the analysis using 3 additional age scales: 
+(1) age in days, (2) age in log2 scale, and (3) age in years (\textbf{Figure~\ref{fig:a6.2}}).
+Overall, I found that using different age scales also yield a quantitatively similar results.
+In fact, the use of log2 age scale resulted in a higher number of genes showing consistent increase in heterogeneity across all 19 datasets (\textbf{Figure~\ref{fig:a6.2}b}, lower left panel).
+Nevertheless, this analysis indicated that the observed increase in heterogeneity is not a result of the use of specific age scale.
+
+It was previously suggested a sex-specific difference in human brain aging, where males showed more changes in gene expression~\cite{Berchtold2008}.
+In this analysis, however, both males and females were combined to calculate expression and heterogeneity changes, raising a question about possible confound of sex with age.
+To address this question, I retrieved the real values of residuals obtained from \textbf{Equation~\ref{eq:exp_change}} 
+(not absolute values) for 147 genes showing consistent increase in heterogeneity.
+Then, for each gene and each aging dataset, two sample Wilcoxon test was performed on residuals to test if there is a significant difference between males and females.
+The obtained p-values were corrected for multiple testing by B{\&}H method (\textbf{Section~\ref{subsec:p.adjust}}).
+Overall, I found that there are only 15 out of 147 consistent genes show significant difference between sexes in at least one dataset (\textbf{Figure~\ref{fig:a6.3}}),
+suggesting that the increased heterogeneity cannot be explained solely by sex-specific differences in brain aging.
+
+In this study, a permutation scheme that takes into account the dependency of Kang2011 and Somel2011 
+datasets was employed to calculate expectation of heterogeneity consistency (\textbf{Section~\ref{sec:perm}}).
+By also using random permutations to calculate expected consistency in heterogeneity increase, 
+I found that the scheme used in this study was more strict than the random permutations (\textbf{Figure~\ref{fig:a6.4}}).
+
+One important assumption of this study is that the relationship between scaled expression levels and fourth root of age is linear,
+since linear regression was used to characterize the age-related expression change.
+To ensure that this assumption did not have significant effect on the downstream results, 
+I re-calculated heterogeneity changes using the residuals obtained from loess regression and 
+found a high correlation between heterogeneity changes calculated using linear regression and loess regression (\textbf{Figure~\ref{fig:a6.5}}).
+Yet, the heterogeneity changes calculated from loess regression did not included in the downstream analysis
+since both the model parameters and sample sizes have significant effect on the estimates of loess regression.
+
+The last factor that can cause the observed increase in heterogeneity might be related to the outliers in the datasets.
+For example, one older individual having too low or high expression value (i.e., having higher absolute value of residual) 
+can drive the heterogeneity estimates up.
+To investigate the effect of outliers, I plotted the absolute value of residuals for 147 consistent genes (\textbf{Figure~\ref{fig:a6.5}}).
+A visual inspection revealed that there was no significant outlier sample that can explain the observed increase in heterogeneity.
+
+Overall, these extra analysis demonstrated that the increased heterogeneity reported in this study cannot be explained by low statistical power and technical factors,
+but rather it is indeed a biological signal.
 
 \section{Limitations \& future perspectives}
 There are a number of limitations of this study that should be pointed out. The first one is related to microarray data. 
