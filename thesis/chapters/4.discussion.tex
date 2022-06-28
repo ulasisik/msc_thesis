@@ -36,7 +36,8 @@ Furthermore, more genes showed significant changes during development compared t
 One possible explanation of these results might be related to stochastic nature of aging. 
 As previously suggested, the accumulation of random detrimental effects (i.e., mutations) during aging may cause reduced gene expressions, 
 and in turn causing an increased level of heterogenety in aging~\cite{Lu2004}.
-Consistent with earlier findings, my initial analysis of gene expression changes also supports the view of aging as a stochastic process.
+Consistent with earlier findings, my initial analysis of gene expression changes also suggests that the changes in development are well-regulated,
+and further supports the view of aging as a stochastic process.
 
 Next, the change in gene expression heterogeneity was characterized 
 by performing Spearman's correlation test between absolute value of residuals obtained from \textbf{Equation~\ref{eq:exp_change}} 
@@ -64,13 +65,20 @@ The third factor might be the transcriptional regulation, which was suggested to
 Previous studies found that the variability in gene expression is positively correlated with the number of transcription factors that control is regulation~\cite{Barroso2018, Sharon2014}.
 While the first two factors could not be tested in this study since the datasets did not contain somatic mutation or epigenetic regulation information, 
 I also found a mainly positive correlation between number of regulators and heterogeneity change during aging (\textbf{Figure~\ref{fig:fig3.7}}).
-Moreover, transcription factors found to be significantly associated with increased heterogeneity during aging included FoxO and EGR family of transcription factors, 
-which were shown to be regulating genes important for synaptic homeostasis, stress resistance, cell cycle arrest and apoptosis.
-Combined, the results obtained in this study also supported the view that increased heterogeneity in aging may be associated with the transcriptional regulation.
+Therefore, the results obtained in this study also supported the view that increased heterogeneity in aging may be associated with the transcriptional regulation.
 
 \section{Increased heterogeneity may have important functional consequences}
-functional enrichment analysis
-transcriptional regulator anaysis
+Then, I investigated the functional consequences of increased heterogeneity in aging by conducting gene set enrichment analysis for GO biological processes and KEGG pathways.
+The significantly enriched KEGG pathways included many pathways that were known to be important in aging,
+including longevity regulating pathway, authophagy, and mTOR signalin pathways (\textbf{Figure~\ref{fig:fig3.3}}).
+Moreover, the significantly enriched GO terms also included terms that are related to aging and aging-related diseases,
+suggesting functional significance of increased heterogeneity in aging and aging-related diseases.
+Additionally, GO terms related to neuronal and synaptic functions were also enriched for genes showing increased heterogeneity consistency during aging,
+indicating the potential role of increased heterogeneity in age-related cognitive decline, which was suggested to be mainly a result of synaptic dysfunction~\cite{Morrison2012}.
+
+I also performed gene set enrichment analysis for transcriptional regulators. Transcription factors found to be significantly associated with increased heterogeneity during aging included FoxO and EGR family of transcription factors, 
+which were shown to be regulating genes important for synaptic homeostasis, stress resistance, cell cycle arrest and apoptosis.
+Combined, gene set enrichment analysis revealed a potentially important role of increased heterogeneity in human brain aging.
 
 \section{Increased heterogeneity is a biological signal}
 I next confirmed that the observed increase in heterogeneity consistency is a biological signal, rather than being a technical artifacts or a result of low statistical power, 
@@ -132,9 +140,26 @@ Overall, these extra analysis demonstrated that the increased heterogeneity repo
 but rather it is indeed a biological signal.
 
 \section{Limitations \& future perspectives}
-There are a number of limitations of this study that should be pointed out. The first one is related to microarray data. 
-- microarray data -> let me to analyze reative changes only
-- bulk rna -> change in the cel-type composition?
-- Cannot confidently identify gene-sets showing consistent increase.
-
-
+\begin{enumerate}
+    \item Microarray platform, unlike RNA-Sequencing, is unable to measure absolute abundance of mRNAs. 
+    Rather, the light intensities obtained from microarray platform reflect the relative expression levels.
+    In their 2018 paper, Davie \textit{et al.} found that the total abundance of mRNAs tends to decrease with age~\cite{Davie2018}.
+    Moreover, it was periously shown that the genes with lower genes expression values are susceptible to have higher variance~\cite{Aris2004}.
+    In this respect, the dataset analyzed in this study was unable to detect the contribution of mRNA decay and
+    further researches are needed to understand the contribution of total mRNA decay to observed increase in gene expression heterogeneity.
+    \item Another limitation is also related to microarray datasets containing bulk mRNA expression data.
+    Since the expression datasets analyzed in this study contains the average measurements for many cells,
+    the results presented here only reflects increased heterogeneity among individuals, not cells.
+    Future researches using single cell RNA-Sequencing data are required to investigate heterogeneity changes between cells.
+    \item Although 19 different datasets were analyzed in this study, it is important to note that they were originated from 3 independent sources,
+    where Somel2011 and Kang2011 datasets contain measurements from different brain regions of the same individual.
+    \item Although a significant overall shift was observed towards increased heterogeneity consistency during aging (\textbf{Figure~\ref{fig:fig3.3}c, lower panel}),
+    a gene set that become significantly more heterogeneous across all datasets was not confidently identified due to ~40\% true positive rate.
+    \item One other limitation is related to unequal sample sizes across datasets. 
+    Specifically, the Colantuoni2011 dataset had markedly higher sample size compared to all other datasets,
+    leading to higher statistical power, and subsequently identification of more significant genes in both expression (\textbf{Figure~\ref{fig:fig3.1}c}) 
+    and heterogeneity changes (\textbf{Figure~\ref{fig:fig3.2}c}).
+    \item While two possible explanations of increased heterogeneity are related to accumulation of somatic mutations and epigenetic regulations,
+    I couldn't test their effect due to lack of data. 
+    More comprehensive studies incorporating different types of data are needed to reveal the source of increased heterogeneity.
+\end{enumerate}
