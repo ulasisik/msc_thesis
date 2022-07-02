@@ -255,7 +255,7 @@ The following linear model was fitted to each gene for each time period separate
 \end{equation}
 
 where, $Expr_i$ is the scaled expression value of the i\textsuperscript{th} gene, $\beta_{i0}$ is the intercept, $\beta_{i1}$ is the slope, $Age$ is the age in days, and $\epsilon_i$ is the residual.
-The $\beta_{i1}$ values were considered as the measure of age-related expression change. Throughout this study, $\beta_{i1}$ values will be referred as simply `beta' values.
+The $\beta_{i1}$ values were considered as the measure of age-related expression change. Throughout this study, $\beta_{i1}$ values will be referred to as simply `beta' values.
 Since it is the slope of the linear model, a negative beta value indicates a decrease in gene expression with age, while positive values indicate an age-related increase in the expression of the corresponding gene. 
 The left panels of \textbf{Figure~\ref{fig:fig2.3}} show an example of quantification of age-related expression changes for two genes.
 
@@ -369,7 +369,7 @@ Similarly, observed median differences were compared against the distribution of
 
 \subsection{Genes showing significant change}~\label{subsec:perm.sig.change}
 To test if there is a significant difference in the number of genes showing the significant age-related change in expression (heterogeneity) between development and aging datasets,
-I calculated the difference in number of significantly changing genes between development and aging datasets for each permutation to construct the null distribution.
+I calculated the difference in the number of significantly changing genes between development and aging datasets for each permutation to construct the null distribution.
 The p-values were obtained by comparing observed differences against the null distribution.
 
 \subsection{Overall increase in heterogeneity}~\label{subsec:perm.overall}
@@ -385,45 +385,45 @@ Then, the observed number of genes showing a consistent increase in heterogeneit
 each $X$ value ranging from 1 to 19.
 
 \section{Clustering}~\label{sec:cluster}
-Clustering was performed using k-means clustering algorithm on 147 genes showing consistent increase in heterogeneity in all 19 aging datasets.
-The heterogeneity levels (i.e., absolute residuals obtained from \textbf{Equation~\ref{eq:exp_change}}) were first scaled to have same mean and standard deviation. 
+Clustering was performed using the k-means clustering algorithm on 147 genes showing a consistent increase in heterogeneity in all 19 aging datasets.
+The heterogeneity levels (i.e., absolute residuals obtained from \textbf{Equation~\ref{eq:exp_change}}) were first scaled to have the same mean and standard deviation. 
 Then, using the scaled heterogeneity levels, spline curves were fitted for each gene with a degree of freedom of 3, by using the ``smooth.spline'' R function.
 Within each dataset, the smallest sample size was used to interpolate the data so that the age points are evenly spaced.
 Lastly, I used interpolated values to perform k-means clustering (k = 8), using the ``kmeans'' function in R.
 An alternative approach would be to directly use scaled heterogeneity values to perform clustering. 
-However, this approach would fail to represent all data points equally due to varying sample sizes of different datasets.
+However, this approach would fail to represent all data points equally due to the varying sample sizes of different datasets.
 
 \section{Functional enrichment analysis}~\label{sec:func}
 Gene set enrichment analysis (GSEA) was performed using Gene Ontology (GO) Biological Process categories and Kyoto Encyclopedia of Genes and Genomes (KEGG) pathways 
-to determine functional role of increased heterogeneity.
+to determine the functional role of increased heterogeneity.
 Specifically, the common genes were first ordered based on the number of datasets they show a consistent increase.
 Then, by using the ``gseGO'' and ``gseKEGG'' functions from the ``clusterProfiler'' R package~\cite{clusterProfiler}, 
 I investigated whether the genes showing increased consistency in heterogeneity change are associated with specific GO categories or KEGG pathways.
-The gene sets with a size between 5 and 500 were employed to run GSEA analysis and resulting Normalized Enrichment Scores (NES) was used to assess the strength of the association.
+The gene sets with a size between 5 and 500 were employed to run GSEA analysis and the resulting Normalized Enrichment Scores (NES) were used to assess the strength of the association.
 The p-values were adjusted for multiple testing using the B{\&}H method, consistent with the previous sections (\textbf{Section~\ref{subsec:p.adjust}}).
 
 Since I want to test if genes with consistent heterogeneity increase are associated with certain functionalities, 
-the genes were ranked according to number of datasets in which they show consistent heterogeneity increase, meaning that a number between 0 and 19 was assigned to each gene.
-One problem of this approach is that not all genes can be ranked unambiguously due to many ties observed in the dataset. 
+the genes were ranked according to the number of datasets in which they show consistent heterogeneity increase, meaning that a number between 0 and 19 was assigned to each gene.
+One problem with this approach is that not all genes can be ranked unambiguously due to many ties observed in the dataset. 
 To address this issue, I ran GSEA 1,000 times and calculated the number of times that each pathway detected as significant (see `significanceIn1000' column in \textbf{Table~\ref{table:a3}}).
 
 GO Biological Process enrichment results were visualized by using the ``treemap'' function from ``treemap'' package~\cite{treemap2021}, 
-whereas significant KEGG pathways were visualized by using ``KEGGgraph'' package in R~\cite{KEGGgraph}.
+whereas significant KEGG pathways were visualized by using the ``KEGGgraph'' package in R~\cite{KEGGgraph}.
 
 \section{Transcriptional regulation enrichment analysis}~\label{sec:reg.enrich}
 Next, the gene enrichment analysis was also performed for transcriptional regulators, namely miRNAs and transcription factors. 
 The Harmonizome database was used to retrieve transcription-regulator association information~\cite{Rouillard2016}.
 Specifically, the miRNA-target interaction information was obtained from miRTarBase~\cite{Chou2016}, containing information for 12,086 genes and 596 miRNAs.
-The information about transcription factors and their binding sites were curated by TRANSFAC database for 13,216 genes and 201 transcription factors~\cite{Matys2006}.
+The information about transcription factors and their binding sites were curated by the TRANSFAC database for 13,216 genes and 201 transcription factors~\cite{Matys2006}.
 To run gene set enrichment analysis on these custom gene sets, the ``fgsea'' package in R was used~\cite{fgsea}.
-Similar to functional enrichment analysis, the genes were ranked based on the number of datasets in which they show consistent increase.
+Similar to functional enrichment analysis, the genes were ranked based on the number of datasets in which they show a consistent increase.
 The regulators with 10 to 500 targets were used to perform enrichment analysis.
 
-Additionally, I performed correlation test between the heterogeneity change and the number of transcriptional regulators. 
+Additionally, I performed a correlation test between the heterogeneity change and the number of transcriptional regulators. 
 Specifically, Spearman's correlation test was performed between the number of datasets with a consistent increase in heterogeneity and 
 the number of regulators (i.e., miRNAs and transcription factors), for development and aging periods separately. 
 To test the significance of the difference in correlations between development and aging, the permutation test was used.
 In detail, I randomly permuted the number of regulators 1,000 times and 
 calculated Spearman's correlation coefficients between the number of datasets with a consistent increase and permuted number of regulators.
 Then, for each permutation, I computed the proportion of datasets where the correlation in the aging dataset is higher than the development.
-The emprical p-value was obtained by comparing the observed proportion against the distribution of expected proportions.
+The empirical p-value was obtained by comparing the observed proportion against the distribution of expected proportions.
