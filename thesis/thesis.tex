@@ -1,4 +1,4 @@
-\documentclass[chaparabic,biol,ms,12pt,oneandhalf,fivejury]{metu}
+\documentclass[chaparabic,biol,ms,12pt,oneandhalf,threejury]{metu}
 \usepackage{appendix}
 \usepackage{longtable}
 \usepackage[pdftex]{hyperref}
@@ -69,7 +69,7 @@
 \title{Meta-Analysis of Gene Expression Heterogeneity in Brain Development and Aging}
 \turkishtitle{Beyin Gelişimi ve Yaşlanmasında Gen Anlatımı Heterojenliğinin Meta-Analizi}
 
-\date{XXXX 2022}
+\date{August 2022}
  
 % prof : Prof. Dr.
 % assocprof : Assoc. Prof. Dr.
@@ -107,11 +107,13 @@
 % Typically the chair is one of the highest ranked committee members
 % Ask your supervisor if you are not sure
 \committeememberi[assistprof]{Name Surname}
-\affiliationi{Computer Engineering, METU}
+\affiliationi{Biology, METU}
 % Second committee member is always your supervisor
-\committeememberii[assistprof]{Name Surname}
-\affiliationii{Computer Engineering, METU}
-
+\committeememberii[prof]{Mehmet Somel}
+\affiliationii{Biology, METU}
+% Third member of committee
+\committeememberiii[assistprof]{Name Surname}
+\affiliationiii{Computer Engineering, Bilkent University}
 % IMPORTANT: If you are Ph.D. student your co-supervisor can not be in your 
 % examination committee.
 
@@ -120,37 +122,63 @@
 % \def\@assistproftitlename{Assist. Prof. Dr.}\def\@tassistproftitlename{Yrd. Doç. Dr.}
 % \def\@drtitlename{Dr.}\def\@tdrtitlename{Dr.}
 
-\committeememberiii[assistprof]{Name Surname}
-\affiliationiii{Computer Engineering, Bilkent University}
 % Fourth committee member
-\committeememberiv[assistprof]{Gülşah Tümüklü Özyer}
-\affiliationiv{Computer Engineering, Atatürk University}
+% \committeememberiv[assistprof]{Gülşah Tümüklü Özyer}
+% \affiliationiv{Computer Engineering, Atatürk University}
 % Fifth committee member
-\committeememberv[assistprof]{Jüri}
-\affiliationv{JüriBölüm, Ankara University}
+% \committeememberv[assistprof]{Jüri}
+% \affiliationv{JüriBölüm, Ankara University}
 %
 % Keywords : English & Turkish, Comma seperated
-\keywords{keywords, seperated, with, comma}
-\anahtarklm{virgülle, ayrılmış, anahtar, kelimeler}
+\keywords{aging, development, gene expression, heterogeneity, human, brain}
+\anahtarklm{yaşlanma, gelişim, gen anlatımı, heterojenlik, insan, beyin}
 %
 % Abstract in English
 %
 \abstract{
- Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sodales augue sit amet eros maximus, sed venenatis metus vehicula. Proin vel ligula porta justo iaculis ultrices non a ex. Sed lacinia bibendum feugiat. Integer mollis ac quam eu malesuada. Pellentesque malesuada facilisis metus quis condimentum. Nulla eget odio eget arcu elementum fringilla. Vestibulum eget pretium libero. Ut fermentum eleifend enim, nec facilisis sapien iaculis eu. Curabitur volutpat turpis risus, sed sollicitudin velit imperdiet sit amet.
-
-Aliquam tristique dictum facilisis. Aliquam non erat sed ligula lobortis varius id eu est. Suspendisse dapibus auctor diam ut ultrices. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum leo lectus, ornare ac lectus eget, placerat ultrices nulla. Praesent sit amet sodales nibh. Sed vestibulum non lorem non scelerisque.
-
-Sed eget fringilla purus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Duis id metus risus. Vestibulum tempor leo orci, non semper quam aliquet non. Nam vitae convallis dolor, lacinia mollis nunc. Vestibulum imperdiet ornare mauris eget blandit. Etiam venenatis mauris dictum urna convallis fringilla vitae non dui. Etiam sit amet venenatis turpis. Nulla facilisi. Etiam sed nulla pulvinar, ullamcorper mauris a, vulputate risus. Integer ligula nisi, porta sed dapibus ac, mattis at libero. Curabitur sodales lacus ac ante facilisis, ac condimentum ante suscipit. Proin aliquet mattis diam tempus fermentum. Phasellus quis congue ante, sed fringilla dui. 
+    Aging is a complex process associated with the accumulation of stochastic genetic and epigenetic alterations,
+    possibly leading to functional decline and increased risk for disease and death.
+    Although some previous studies investigating age-related expression changes demonstrated a tendency towards increased inter-individual heterogeneity,
+    whether it is a function of time that starts at the beginning of life, 
+    or its functional consequences and regulations have not been systematically studied.
+    In this study, I addressed these questions by the meta-analysis of 19 microarray age-series datasets, comprising 17 brain regions of 298 individuals.
+    Investigating the age-related gene expression heterogeneity changes, 
+    I found that there is a significant shift towards increased heterogeneity consistency during aging (20 to 98 years of age)
+    compared to the post-natal development period (0 to 20 years of age),
+    suggesting that increased heterogeneity is not only driven by the general effect of time, 
+    but rather it is a specific effect of the aging period.
+    Moreover, the genes that become more heterogeneous consistently across all aging datasets were
+    found to be associated with biological processes and pathways that are related to neuronal function (i.e., axon guidance, postsynaptic specialization)
+    and longevity (i.e., autophagy, mTOR signaling). 
+    Gene set enrichment analysis for transcriptional regulators (i.e., miRNAs and transcription factors) further revealed that
+    increased heterogeneity is not only associated with specific regulators but also there is a positive correlation between the number of regulators and 
+    consistent changes in heterogeneity, indicating the possible role of transcriptional regulators in the underlying mechanism.
+    
+    Overall, the results presented here demonstrate that increased inter-individual expression heterogeneity is a general characteristic of the aging human brain,
+    which is associated with multiple lifespans and disease-related pathways and processes,
+    suggesting that increased heterogeneity may contribute to the emergence of aging-associated phenotypes.
 }
 %
 % Turkish Abstract
 %
 \oz{
- Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sodales augue sit amet eros maximus, sed venenatis metus vehicula. Proin vel ligula porta justo iaculis ultrices non a ex. Sed lacinia bibendum feugiat. Integer mollis ac quam eu malesuada. Pellentesque malesuada facilisis metus quis condimentum. Nulla eget odio eget arcu elementum fringilla. Vestibulum eget pretium libero. Ut fermentum eleifend enim, nec facilisis sapien iaculis eu. Curabitur volutpat turpis risus, sed sollicitudin velit imperdiet sit amet.\cite{paper1}
-
-Aliquam tristique dictum facilisis. Aliquam non erat sed ligula lobortis varius id eu est. Suspendisse dapibus auctor diam ut ultrices. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum leo lectus, ornare ac lectus eget, placerat ultrices nulla. Praesent sit amet sodales nibh. Sed vestibulum non lorem non scelerisque.
-
-Sed eget fringilla purus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Duis id metus risus. Vestibulum tempor leo orci, non semper quam aliquet non. Nam vitae convallis dolor, lacinia mollis nunc. Vestibulum imperdiet ornare mauris eget blandit. Etiam venenatis mauris dictum urna convallis fringilla vitae non dui. Etiam sit amet venenatis turpis. Nulla facilisi. Etiam sed nulla pulvinar, ullamcorper mauris a, vulputate risus. Integer ligula nisi, porta sed dapibus ac, mattis at libero. Curabitur sodales lacus ac ante facilisis, ac condimentum ante suscipit. Proin aliquet mattis diam tempus fermentum. Phasellus quis congue ante, sed fringilla dui.  
+    Yaşlanma, stokastik genetik ve epigenetik değişikliklerin birikimi ile ilişkili karmaşık bir süreçtir.
+    Yaşa bağlı gen anlatımı değişikliklerini inceleyen önceki bazı çalışmalar, bireyler arası heterojenliğin artmasına yönelik bir eğilimin olduğunu gösterse de,
+    bu artışın tam olarak ne zaman başladığı ve fonksiyonel sonuçlarının ne olduğu sistematik olarak çalışılmamıştır.
+    Bu çalışmada, 298 bireyin 17 beyin bölgesini içeren 19 mikrodizi yaş serisi veri setinin meta-analizi ile bu soruları ele aldım.
+    Yaşa bağlı gen anlatımı heterojenlik değişikliklerine inceleyerek,
+    yaşlanma sırasında (20 ila 98 yaş aralığı) doğum sonrası gelişim dönemine (0-20 yaş aralığı) kıyasla 
+    heterojenlik tutarlılığının artışı yönünde istatistiksel olarak anlamlı bir kayma olduğu bulunmuştur.
+    Bu sonuç artan heterojenliğin sadece zamanın genel etkisinden kaynaklanmadığını,
+    daha ziyade yaşlanma döneminin spesifik bir etkisi olduğuna işaret ediyor.
+    Ayrıca, bu tutarlı artış gösteren genlerin nöronal fonksiyon (akson rehberliği, postsinaptik uzmanlaşma) ve 
+    yaşlanmayla (otofaji, mTOR sinyali) ilgili biyolojik süreçler ve yolaklar ile ilişkili olduğu bulunmuştur.
+    Transkripsiyonel regülatörler (miRNA'lar ve transkripsiyon faktörleri) için gen seti zenginleştirme analizi ayrıca şunu ortaya koydu:
+    artan heterojenlik sadece belirli regülatörlerle ilişkili değil, aynı zamanda regülatörlerin sayısı ile heterojenlik artışı arasında da pozitif bir ilişki var.
+    
+    Genel olarak, burada sunulan sonuçlar, artan bireyler arası gen anlatımı heterojenliğinin yaşlanan insan beyninin genel bir özelliği olduğunu göstermektedir.
+    Ayrıca, bu artışın yaşlanma ve hastalıklarla ilgili yolaklar ve biyolojik işlevlerle ilişkili olması,
+    artan heterojenliğin yaşlanma ile ilişkili fenotiplerin ortaya çıkmasına katkıda bulunabileceğini düşündürmektedir.
 } 
 %
 % Dedication 
@@ -161,7 +189,7 @@ Sed eget fringilla purus. Pellentesque habitant morbi tristique senectus et netu
 \acknowledgments{
  Sed eget fringilla purus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Duis id metus risus. Vestibulum tempor leo orci, non semper quam aliquet non. Nam vitae convallis dolor, lacinia mollis nunc. Vestibulum imperdiet ornare mauris eget blandit. Etiam venenatis mauris dictum urna convallis fringilla vitae non dui. Etiam sit amet venenatis turpis. Nulla facilisi. Etiam sed nulla pulvinar, ullamcorper mauris a, vulputate risus. Integer ligula nisi, porta sed dapibus ac, mattis at libero. Curabitur sodales lacus ac ante facilisis, ac condimentum ante suscipit. Proin aliquet mattis diam tempus fermentum. Phasellus quis congue ante, sed fringilla dui.
 
-Nullam porta arcu id ultricies consequat. Suspendisse potenti. Morbi vel iaculis diam, semper mollis mi. Integer enim est, viverra et orci nec, porttitor euismod turpis. Curabitur non magna ut nisl mollis rutrum. Curabitur nulla libero, aliquam a magna sed, ullamcorper auctor orci. Donec lectus enim, mattis non est in, elementum fringilla nisi. Aenean imperdiet finibus turpis non mollis. Sed vulputate nisi nec leo blandit bibendum. Donec luctus augue facilisis, aliquam augue iaculis, fringilla ante. Praesent eget sem hendrerit odio tempor vulputate. Nam ac semper enim. Ut at massa sem. Nam at nulla fringilla mi commodo vulputate.
+ The research I conducted as part of this thesis was previously published in~\cite{Isildak2020}. 
 }
 
 %
@@ -200,8 +228,6 @@ Nullam porta arcu id ultricies consequat. Suspendisse potenti. Morbi vel iaculis
 
 % You can use full name of authors, however most likely some of the Bibtex entries you will find, will use abbreviated first names
 % If you don't want to correct each of them by hand, you can use abbreviated style for all of the references
-
-
 
 % if you have more that one appendix, then use \appendices, otherwise use 
 \appendices
