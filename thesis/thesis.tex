@@ -1,10 +1,14 @@
 \documentclass[chaparabic,biol,ms,12pt,oneandhalf,threejury]{metu}
 \usepackage{appendix}
 \usepackage{longtable}
+\usepackage{tabu}
 \usepackage[pdftex]{hyperref}
+% \usepackage[natbibapa]{apacite}
 \usepackage[all]{hypcap}
 \usepackage{todonotes}
 \usepackage{graphicx}
+\usepackage{babel}
+\usepackage{csquotes}
 \usepackage{lscape}
 \usepackage{ltablex}
 \graphicspath{ {./images/} }
@@ -25,6 +29,8 @@
 \usepackage{lipsum}
 \usepackage{adjustbox}
 \usepackage{rotating}
+\usepackage[backend=biber, style=apa]{biblatex}
+\addbibresource{biblio.bib}
 
 % \usepackage{graphicx}
 \usepackage{amsmath,amssymb} % define this before the line numbering.
@@ -130,33 +136,30 @@
 % \affiliationv{JüriBölüm, Ankara University}
 %
 % Keywords : English & Turkish, Comma seperated
-\keywords{aging, development, gene expression, heterogeneity, human, brain}
-\anahtarklm{yaşlanma, gelişim, gen anlatımı, heterojenlik, insan, beyin}
+\keywords{aging, development, gene expression, heterogeneity, brain}
+\anahtarklm{yaşlanma, gelişim, gen anlatımı, heterojenlik, beyin}
 %
 % Abstract in English
 %
 \abstract{
     Aging is a complex process associated with the accumulation of stochastic genetic and epigenetic alterations,
-    possibly leading to functional decline and increased risk for disease and death.
-    Although some previous studies investigating age-related expression changes demonstrated a tendency towards increased inter-individual heterogeneity,
-    whether it is a function of time that starts at the beginning of life, 
-    or its functional consequences and regulations have not been systematically studied.
+    leading to functional decline and increased risk for disease and death.
+    Although some previous studies demonstrated a tendency towards increased inter-individual heterogeneity during aging,
+    whether it is a function of time that starts at the beginning of life is unknown.
+    Its functional consequences and regulations have also not been systematically studied.
     In this study, I addressed these questions by the meta-analysis of 19 microarray age-series datasets, comprising 17 brain regions of 298 individuals.
     Investigating the age-related gene expression heterogeneity changes, 
     I found that there is a significant shift towards increased heterogeneity consistency during aging (20 to 98 years of age)
-    compared to the post-natal development period (0 to 20 years of age),
-    suggesting that increased heterogeneity is not only driven by the general effect of time, 
-    but rather it is a specific effect of the aging period.
-    Moreover, the genes that become more heterogeneous consistently across all aging datasets were
-    found to be associated with biological processes and pathways that are related to neuronal function (i.e., axon guidance, postsynaptic specialization)
+    compared to the post-natal development period (0 to 20 years of age).
+    Moreover, the genes that become more heterogeneous consistently across all aging datasets were found to be associated with biological processes and pathways that are related to neuronal function (i.e., axon guidance, postsynaptic specialization)
     and longevity (i.e., autophagy, mTOR signaling). 
-    Gene set enrichment analysis for transcriptional regulators (i.e., miRNAs and transcription factors) further revealed that
-    increased heterogeneity is not only associated with specific regulators but also there is a positive correlation between the number of regulators and 
+    Gene set enrichment analysis for transcriptional regulators (i.e., miRNAs and transcription factors) further revealed a positive correlation between the number of regulators and 
     consistent changes in heterogeneity, indicating the possible role of transcriptional regulators in the underlying mechanism.
     
     Overall, the results presented here demonstrate that increased inter-individual expression heterogeneity is a general characteristic of the aging human brain,
     which is associated with multiple lifespans and disease-related pathways and processes,
     suggesting that increased heterogeneity may contribute to the emergence of aging-associated phenotypes.
+
 }
 %
 % Turkish Abstract
@@ -189,7 +192,7 @@
 \acknowledgments{
  Sed eget fringilla purus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Duis id metus risus. Vestibulum tempor leo orci, non semper quam aliquet non. Nam vitae convallis dolor, lacinia mollis nunc. Vestibulum imperdiet ornare mauris eget blandit. Etiam venenatis mauris dictum urna convallis fringilla vitae non dui. Etiam sit amet venenatis turpis. Nulla facilisi. Etiam sed nulla pulvinar, ullamcorper mauris a, vulputate risus. Integer ligula nisi, porta sed dapibus ac, mattis at libero. Curabitur sodales lacus ac ante facilisis, ac condimentum ante suscipit. Proin aliquet mattis diam tempus fermentum. Phasellus quis congue ante, sed fringilla dui.
 
- The research I conducted as part of this thesis was previously published in~\cite{Isildak2020}. 
+ The research I conducted as part of this thesis was previously published in \autocite{Isildak2020}. 
 }
 
 %
@@ -223,9 +226,10 @@
 %
 % References in Bibtex format goes into below indicated file with .bib extension
 % \bibliographystyle{ieeetr} 
-\bibliographystyle{abbrv}
-\bibliography{biblio.bib}
-
+%\bibliographystyle{apacite}
+%\bibliographystyle{abbrv}
+%\bibliographystyle{apacite}
+\printbibliography[heading=bibintoc, title={REFERENCES}]
 % You can use full name of authors, however most likely some of the Bibtex entries you will find, will use abbreviated first names
 % If you don't want to correct each of them by hand, you can use abbreviated style for all of the references
 

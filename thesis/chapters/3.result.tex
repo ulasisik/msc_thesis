@@ -12,9 +12,9 @@ While this study aims to investigate age-related changes in gene expression hete
 Linear regression was performed to characterize the relationship between gene expression and age for each gene and dataset separately (\textbf{Section~\ref{sec:exp-change}}).
 The beta values (i.e., $\beta_{i1}$ from \textbf{Equation~\ref{eq:exp_change}}) obtained from linear regression were considered as a measure of age-related expression change.
 
-\begin{figure}[h]
+\begin{figure}[!ht]
     \centering
-    \includegraphics[width=.9\textwidth]{figures/figure3_1.png}
+    \includegraphics[width=.9\textwidth]{figures/figure3_1.pdf}
     \caption{Age-related gene expression change. 
     (a) The heatmap shows Spearman's correlation coefficient values for each pair of datasets.
     The row and column annotations reflect the brain region, data source and time period of the corresponding dataset.
@@ -26,7 +26,7 @@ The beta values (i.e., $\beta_{i1}$ from \textbf{Equation~\ref{eq:exp_change}}) 
     calculated using PC1 and PC2.
     (c) Barplots show the number of genes showing significant age-related expression change (FDR p-value < 0.05) during development (left side) and aging (right side).
     Color-coding reflects the direction of expression change, which is determined by the sign of the beta value.
-    Adapted from Isildak et al., 2020
+    Adapted from \autocite{Isildak2020}.
     }~\label{fig:fig3.1}
 \end{figure}
 
@@ -52,8 +52,8 @@ Then, the number of genes showing significant age-related gene expression change
 The p-values obtained from linear regression analysis for each gene in each dataset were adjusted for multiple testing using the B{\&}H method (see \textbf{Section~\ref{subsec:p.adjust}}).
 Analyzing significant changes, I first found that there are significantly more genes in the development datasets showing significant change compared to aging datasets (permutation test p-value = 0.003),
 which may again reflect the higher heterogeneity during aging compared to development.
-Second, the direction of change in development datasets is mainly in the positive direction (14 of 19 datasets showed more increase), 
-whereas genes showing significant change during aging tend to decrease in expression (13 of 19 datasets showed more decrease).
+Second, the direction of change in development datasets was mainly in the positive direction (14 of 19 datasets showed more increase), 
+whereas genes showing significant change during aging tended to decrease in expression (13 of 19 datasets showed more decrease).
 
 Combined, my analysis of age-related expression changes demonstrated that the age-related gene expression changes may be less coordinated during aging,
 leading to a higher inter-individual variability during aging, which may be the first clue to increased age-related heterogeneity during aging.
@@ -64,12 +64,12 @@ Similar to the previous section, I first examined the correlations in gene expre
 By conducting  Spearman's correlation test between all possible pairs of datasets among rho values, 
 I found that aging datasets show higher correlation (median $\rho$ = 0.21, permutation test p-value = 0.24) in heterogeneity change
 compared to development datasets (median $\rho$ = 0.11, permutation test p-value = 0.25), although both were not significant.
-Whilst the difference in correlation of heterogeneity change between development and aging datasets was not significant (permutation test p-value = 0.2),
-this observation may suggest that aging datasets show more similar changes in heterogeneity compared to development datasets.
+Whilst the difference in correlation of heterogeneity change between development and aging datasets was also not significant (permutation test p-value = 0.2),
+this observation may still suggest that aging datasets show more similar changes in heterogeneity compared to development datasets.
 
-\begin{figure}[h]
+\begin{figure}[!ht]
     \centering
-    \includegraphics[width=.9\textwidth]{figures/figure3_2.png}
+    \includegraphics[width=.9\textwidth]{figures/figure3_2.pdf}
     \caption{Age-related heterogeneity change. 
     (a) The heatmap shows Spearman's correlation coefficient values for each pair of datasets.
     The row and column annotations reflect the brain region, data source and time period of the corresponding dataset.
@@ -81,7 +81,7 @@ this observation may suggest that aging datasets show more similar changes in he
     calculated using PC1 and PC2.
     (c) Barplots show the number of genes showing significant age-related heterogeneity change (FDR p-value < 0.05) during development (left side) and aging (right side).
     Color-coding reflects the direction of heterogeneity change, which is determined by the sign of the rho value.
-    Adapted from Isildak et al., 2020
+    Adapted from \autocite{Isildak2020}.
     }~\label{fig:fig3.2}
 \end{figure}
 
@@ -92,8 +92,8 @@ However, unlike expression change, development datasets tended to cluster more s
 
 I then investigated the genes showing significant changes in expression heterogeneity. 
 The p-values obtained from Spearman's correlation test for each gene for each dataset were corrected for multiple testing using the B{\&}H method (see \textbf{Section~\ref{sec:het-change}}).
-(\textbf{Figure~\ref{fig:fig3.2}c}) shows the number of genes showing significant heterogeneity change during development and aging.
-First, I found that there is a small number of genes showing significant change during development compared to aging (permutation test p-value < 0.05).
+\textbf{Figure~\ref{fig:fig3.2}c} shows the number of genes showing significant heterogeneity change during development and aging.
+First, I found that there is a less number of genes showing significant change during development compared to aging (permutation test p-value < 0.05).
 Moreover, genes showing significant heterogeneity change during development tended to decrease in heterogeneity, whereas they showed a tendency to increase in aging datasets.
 It is also important to note the high number of genes showing a significant change in Colantuoni2011, which is a result of the large sample size leading to increased statistical power.
 
@@ -101,21 +101,21 @@ Overall, this analysis demonstrated that there may be a higher consistency in he
 suggesting that increased heterogeneity may be a characteristic of the aging period.
 
 \section{Consistent increase in heterogeneity during aging}
-Having observed both that heterogeneity changes can differentiate between time periods and that there is a tendency towards more similar changes in heterogeneity during aging,
+Having observed both that heterogeneity changes can differentiate between time periods, and that there is a tendency towards more similar changes in heterogeneity during aging,
 I next focused on identifying those genes showing the consistent change in heterogeneity.
 As previously stated, in this study, I chose to focus on genes showing consistent trends among different datasets, rather than focusing on significant changes within individual datasets.
 The most important advantage of this approach is that, using the advantage of having multiple datasets, 
-it enables us to detect genes that would otherwise not pass the significance threshold due to low sample size.
+it enables me to detect genes that would otherwise not pass the significance threshold due to low sample size.
 
-\begin{figure}[h]
+\begin{figure}[!ht]
     \centering
-    \includegraphics[width=.9\textwidth]{figures/figure3_3.png}
+    \includegraphics[width=.9\textwidth]{figures/figure3_3.pdf}
     \caption{(a) Boxplots on the left side shows the distribution of rho values, 
     whereas the barplots on the right shows the difference in medians between development and aging datasets.
     (b) Distribution of Spearman's correlation coefficients between expression and heterogeneity change of each dataset. 
     The color-coding reflects the data source, whereas 
     (c) Barplots showing expected and observed numbers of genes showing a consistent increase in heterogeneity among datasets during development (upper panel) and aging (lower panel).
-    Adapted from Isildak et al., 2020
+    Adapted from \autocite{Isildak2020}.
     }~\label{fig:fig3.3}
 \end{figure}
 
@@ -140,16 +140,16 @@ and this increase is not a technical artifact (\textbf{Figure~\ref{fig:fig3.3}b}
 For each gene, I calculated the number of datasets in which they show a  consistent increase in heterogeneity (in development and aging periods separately), 
 irrespective of whether the increase is significant (\textbf{Figure~\ref{fig:fig3.3}c}).
 The expected consistency in heterogeneity change was calculated using the random permutations (see \textbf{Section~\ref{subsec:perm.consist}} for details).
-By comparing observed consistency in heterogeneity increase to expected consistency, I first found a shift towards increased heterogeneity consistency
+By comparing observed consistency in heterogeneity increase to expected consistency, I first observed a shift towards increased heterogeneity consistency
 during the aging period, whereas no such shift was observed in development datasets.
 Moreover, 147 genes were identified that consistently increase in heterogeneity among all 19 aging datasets (permutation test p-value < 0.001), 
 whereas there was only 1 gene showing a consistent decrease in all datasets during the aging period.
-The full list of these consistent 147 is given in the \textbf{Appendix~\ref{app:const.genes}}.
+The full list of the consistent 147 is given in the \textbf{Appendix~\ref{app:const.genes}}.
 However, it is also important to note that, according to permutations, 
 the number of genes that would show a consistent increase in heterogeneity under the null hypothesis (i.e., by chance) is 84,
 indicating a 40\% true positive rate.
 Although I couldn't confidently identify a gene set showing increased heterogeneity consistently among all datasets,
-this analysis demonstrated a clear shift toward increased heterogeneity during aging compared to development. 
+this analysis still demonstrated a clear shift toward increased heterogeneity during aging compared to development. 
 
 \section{Clustering}
 I next examined if 147 consistent genes (i.e., showing consistent heterogeneity increase in all 19 datasets) display certain trajectories of heterogeneity change.
@@ -163,40 +163,40 @@ Overall, the clustering analysis revealed three diverse patterns of heterogeneit
 \end{enumerate}
 
 
-\begin{figure}[h]
+\begin{figure}[!ht]
     \centering
-    \includegraphics[width=.9\textwidth]{figures/figure3_4.png}
+    \includegraphics[width=.9\textwidth]{figures/figure3_4.pdf}
     \caption{Trajectories of different clusters of 147 genes showing consistent increase in all 19 datasets during aging.
     The x-axis shows age in years, while the y-axis shows scaled heterogeneity changes (i.e., rho values).
     The spline lines show the mean heterogeneity change level for genes. 
-    Adapted from Isildak et al., 2020
+    Adapted from \autocite{Isildak2020}.
     }~\label{fig:fig3.4}
 \end{figure}
 
 \section{Functional enrichmenet analysis}
 To investigate the functional role of increased heterogeneity during aging, 
-I next performed gene set enrichment analysis using Gene Ontology (GO) Biological Process categories~\cite{GO2019} and Kyoto Encyclopedia of Genes and Genomes (KEGG) pathways~\cite{Kanehisa2019}.
+I next performed gene set enrichment analysis using Gene Ontology (GO) Biological Process categories~\autocite{GO2019} and Kyoto Encyclopedia of Genes and Genomes (KEGG) pathways~\autocite{Kanehisa2019}.
 The gene set enrichment analysis was performed on the genes that were ranked by the number of datasets they show a consistent increase in heterogeneity. 
 
 \subsection{GO Biological Process enrichment analysis}
 Gene Ontology Biological Process enrichment analysis was performed on development and aging datasets, separately. 
-While there was no GO term significantly enriched for the consistent changes in heterogeneity during development, 
+While there was no GO term significantly enriched for the consistent heterogeneity changes during development, 
 I identified 111 significantly enriched GO Biological Process terms for the consistent changes in aging. 
 The full list of enriched GO terms and normalized enrichment scores can be found in \textbf{Table~\ref{table:a2}}, 
 while \textbf{Figure~\ref{fig:fig3.5}} shows the REVIGO summarization.
 
-One of the most important enriched biological process GO term was autophagy (GO term ID: GO:0006914), which was previously suggested to play important role in aging and aging-related diseases~\cite{Rubinsztein2011}.
-Moreover, another important enriched group of genes belonged to the axon regeneration (GO term ID: GO:0048679), which also demonstrated to decrease during aging~\cite{Belin2014}.
+One of the most important enriched biological process GO term was autophagy (GO term ID: GO:0006914), which was previously suggested to play important role in aging and aging-related diseases~\autocite{Rubinsztein2011}.
+Moreover, another important enriched group of genes belonged to the axon regeneration (GO term ID: GO:0048679), which also demonstrated to decrease during aging~\autocite{Belin2014}.
 Additionally, the regulation of T-helper cell differentiation and cellular response to virus terms were found to be significantly enriched. 
 Given the weakened immune system in aging, this result also suggests that increased heterogeneity may have important consequences in aging.
 Other significantly enriched groups included terms related to metabolic processes, mRNA processing and localization.
 Overall, GO Biological Process enrichment analysis of genes showing a consistent increase in heterogeneity indicates that increased heterogeneity may be associated with the aging-related phenotypes.
 
 \begin{landscape}
-\begin{figure}[h]
+\begin{figure}[!ht]
     \centering
-    \includegraphics[width=1.5\textwidth]{figures/figure3_5.png}
-    \caption{GO Biological Process enrichment analysis results for the genes showing consistent increase in heterogeneity, summarized by REVIGO~\cite{Supek2011}.}
+    \includegraphics[width=1.5\textwidth]{figures/figure3_5.pdf}
+    \caption{GO Biological Process enrichment analysis results for the genes showing consistent increase in heterogeneity, summarized by REVIGO~\autocite{Supek2011}.}
     \label{fig:fig3.5}
 \end{figure}
 \end{landscape}
@@ -207,23 +207,23 @@ Similarly, there was no KEGG pathway found to be significantly enriched in the d
 In aging, on the other hand, there were 21 KEGG pathways significantly enriched for the genes that become consistently heterogeneous. 
 The full list of significantly enriched KEGG pathways can be found in \textbf{Table~\ref{table:a3}},
 while \textbf{Figure~\ref{fig:fig3.6}a} shows the distribution of consistency of those genes that belong to significantly enriched pathways. 
-Among the significantly enriched KEGG pathways, the most notable ones were longevity regulating pathway, autophagy~\cite{Rubinsztein2011}, mTOR signaling~\cite{Johnson2013} and FoxO signaling~\cite{Martins2016}, 
-all of which were shown to be related to aging and aging-related diseases.
+Among the significantly enriched KEGG pathways, the most notable ones were longevity regulating pathway, autophagy, mTOR signaling and FoxO signaling, 
+all of which were shown to be related to aging and aging-related diseases~\autocite{Rubinsztein2011, Johnson2013, Martins2016}.
 Additionally, the difference in the distribution of the number of datasets with an increase in heterogeneity between development and aging can be clearly identified,
-where the aging period has a higher number of datasets with heterogeneity increase compared to development.
+where the aging period has a higher number of datasets with heterogeneity increase compared to development (\textbf{Figure~\ref{fig:fig3.6}}).
 Importantly, 4/21 pathways were found to have negative enrichment scores: protein digestion and absorption pathway, primary immunodeficiency pathway, linoleic acid metabolism, and fat digestion and absorption pathway.
 However, due to the skewed distribution of observed consistency (see the lower panel of \textbf{Figure~\ref{fig:fig3.3}c}), 
 negative scores do not automatically indicate a decrease in heterogeneity consistency. \textbf{Figure~\ref{fig:fig3.6}b} further demonstrates the heterogeneity consistency of genes in the longevity regulating pathway 
 (KEGG Pathway ID: hsa04211) for development (upper panel) and aging (lower panel).
 
-\begin{figure}[h]
+\begin{figure}[!ht]
     \centering
-    \includegraphics[width=.9\textwidth]{figures/figure3_6.png}
+    \includegraphics[width=.9\textwidth]{figures/figure3_6.pdf}
     \caption{KEGG pathways enrichment analysis results for the genes showing consistent increase in heterogeneity.
     (a) Significantly enriched KEGG pathways (on the y-axis) and the distribution of the number of datasets in which genes show a consistent increase in heterogeneity (x-axis). 
     (b) Demonstration of Longevity Regulating Pathway as an example during development (upper panel) and aging (lower panel). 
     Nodes and edges represent the genes and their relationship, respectively, while color-coding reflects the consistency in heterogeneity increase.
-    Adapted from Isildak et al., 2020
+    Adapted from \autocite{Isildak2020}.
     }~\label{fig:fig3.6}
 \end{figure}
 
@@ -245,18 +245,18 @@ Overall, I found only 2 miRNAs significantly enriched for the heterogeneity chan
 while there were 99 miRNAs that are significantly associated with heterogeneity changes during aging.
 
 \subsection{Association between the number of regulators and increased heterogeneity}
-As earlier studies suggested the association between the number of regulators and gene expression noise~\cite{Barroso2018, Sharon2014}, 
+As earlier studies suggested the association between the number of regulators and gene expression noise~\autocite{Barroso2018, Sharon2014}, 
 I next sought to characterize the relationship between the number of regulators and gene expression heterogeneity for development and aging, separately (\textbf{Figure~\ref{fig:fig3.7}}).
 Spearman's correlation coefficient was calculated for miRNAs and transcription factors, separately.
 In the aging dataset, the correlation was mainly in the positive direction, where the 18/19 and 15/19 datasets showed a positive correlation for miRNAs and transcription factors, respectively.
 Moreover, the permutation test revealed that the difference between development and aging datasets is also significant 
 for both miRNAs (permutation test p-value = 0.007) and transcription factors (permutation test p-value = 0.045).
 
-\begin{figure}[h]
+\begin{figure}[!ht]
     \centering
-    \includegraphics[width=.9\textwidth]{figures/figure3_7.png}
+    \includegraphics[width=.9\textwidth]{figures/figure3_7.pdf}
     \caption{The distribution of correlation coefficients between number of transcriptional regulators and heterogeneity changes. 
     The p-values were computed by permutation test.
-    Adapted from Isildak et al., 2020
+    Adapted from \autocite{Isildak2020}.
     }~\label{fig:fig3.7}
 \end{figure}
