@@ -12,6 +12,7 @@ While this study aims to investigate age-related changes in gene expression hete
 Linear regression was performed to characterize the relationship between gene expression and age for each gene and dataset separately (\textbf{Section~\ref{sec:exp-change}}).
 The beta values (i.e., $\beta_{i1}$ from \textbf{Equation~\ref{eq:exp_change}}) obtained from linear regression were considered as a measure of age-related expression change.
 
+\afterpage{
 \begin{figure}[!ht]
     \centering
     \includegraphics[width=.9\textwidth]{figures/figure3_1.pdf}
@@ -29,6 +30,8 @@ The beta values (i.e., $\beta_{i1}$ from \textbf{Equation~\ref{eq:exp_change}}) 
     Adapted from \autocite{Isildak2020}.
     }~\label{fig:fig3.1}
 \end{figure}
+\clearpage
+}
 
 To investigate the coordination in age-related expression change between datasets, 
 I calculated pairwise Spearman's correlation test for each pair of datasets among the beta value.
@@ -67,6 +70,7 @@ compared to development datasets (median $\rho$ = 0.11, permutation test p-value
 Whilst the difference in correlation of heterogeneity change between development and aging datasets was also not significant (permutation test p-value = 0.2),
 this observation may still suggest that aging datasets show more similar changes in heterogeneity compared to development datasets.
 
+\afterpage{
 \begin{figure}[!ht]
     \centering
     \includegraphics[width=.9\textwidth]{figures/figure3_2.pdf}
@@ -84,6 +88,8 @@ this observation may still suggest that aging datasets show more similar changes
     Adapted from \autocite{Isildak2020}.
     }~\label{fig:fig3.2}
 \end{figure}
+\clearpage
+}
 
 Principal component analysis of heterogeneity changes (i.e., rho values) was performed using a similar procedure as the previous section, 
 except rho values were used instead of beta values. 
@@ -107,6 +113,7 @@ As previously stated, in this study, I chose to focus on genes showing consisten
 The most important advantage of this approach is that, using the advantage of having multiple datasets, 
 it enables me to detect genes that would otherwise not pass the significance threshold due to low sample size.
 
+\afterpage{
 \begin{figure}[!ht]
     \centering
     \includegraphics[width=.9\textwidth]{figures/figure3_3.pdf}
@@ -118,6 +125,8 @@ it enables me to detect genes that would otherwise not pass the significance thr
     Adapted from \autocite{Isildak2020}.
     }~\label{fig:fig3.3}
 \end{figure}
+\clearpage
+}
 
 I first analyzed the distribution of heterogeneity changes (i.e., $\rho$ values) for each dataset and time period (\textbf{Figure~\ref{fig:fig3.3}a}).
 The 18 of 19 aging datasets showed more increase in age-related heterogeneity (median $\rho$ > 0), 
