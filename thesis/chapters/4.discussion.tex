@@ -27,11 +27,11 @@ I first sought to characterize the age-related changes in gene expression,
 by performing a linear regression analysis between scaled expression values and 
 fourth root of ages in days as shown in the left panels of \textbf{Figure~\ref{fig:fig2.3}}.
 The $\beta_{i1}$ values obtained from \textbf{Equation~\ref{eq:exp_change}} were considered as the measure of age-related expression change.
-The regression analysis was performed for each gene and for each time period, seperately (see \textbf{Section~\ref{sec:exp-change}} for details).
+The regression analysis was performed for each gene and for each time period, separately (see \textbf{Section~\ref{sec:exp-change}} for details).
 
-Then I investigated the coordination in expression change between all possible pairs of datasets by calculating Spearman's correlation coefficient 
-and found that the correlation among development datasets is significantly higher than the correlation among aging datatsets.
-Furthermore, more genes showed significant changes during development compared to the aging period, and they mostly tended to decrease in expression (\textbf{Figure~\ref{fig:fig3.1}}).
+Then I investigated the coordination in expression change between all possible pairs of datasets by calculating the Spearman correlation coefficient 
+and found that the correlation among development datasets is significantly higher than the correlation among aging datasets.
+Furthermore, more genes showed significant changes during development compared to the aging period, and genes showing significant changes during aging mostly tended to decrease in expression (\textbf{Figure~\ref{fig:fig3.1}}).
 One possible explanation of these results might be related to the stochastic nature of aging. 
 As previously suggested, the accumulation of random detrimental effects (i.e., mutations) during aging may cause reduced gene expressions, 
 and in turn, causing an increased level of heterogeneity in aging~\autocite{Lu2004}.
@@ -40,7 +40,7 @@ and further supports the view of aging as a stochastic process.
 
 Next, the change in gene expression heterogeneity was characterized 
 by performing Spearman's correlation test between absolute value of residuals obtained from \textbf{Equation~\ref{eq:exp_change}} 
-and the fourth root of age for each gene and time period seperately (see \textbf{Section~\ref{sec:het-change}}).
+and the fourth root of age for each gene and time period separately (see \textbf{Section~\ref{sec:het-change}}).
 Analyzing the correlations among development and aging datasets in heterogeneity change,
 I found that aging datasets display a higher correlation compared to development datasets, 
 reflecting a more consistent heterogeneity change in aging.
@@ -52,7 +52,7 @@ Moreover, the significant changes in heterogeneity are mostly in the positive di
 Having observed more consistent heterogeneity change and more significant heterogeneity increase in aging, 
 I next investigated heterogeneity changes in individual datasets and found an overall increase in heterogeneity during aging 
 (i.e., 18 of 19 aging datasets display higher median heterogeneity change compared to development, see \textbf{Figure~\ref{fig:fig3.3}a}). 
-An analysis of consistent heterogeneity change further revealed that there is a significant shift towards increased heterogeneity consistency during aging compared to expectation,
+An analysis of consistent heterogeneity change further revealed that there is a significant shift towards increased heterogeneity consistency during aging compared to random expectation,
 while no such shift was observed for development datasets (\textbf{Figure~\ref{fig:fig3.3}c}).
 
 There are a number of factors that can explain increased heterogeneity during aging compared to development.
@@ -113,7 +113,7 @@ It was previously suggested a sex-specific difference in human brain aging, wher
 In this analysis, however, both males and females were combined to calculate expression and heterogeneity changes, raising a question about the possible confound of sex with age.
 To address this question, I retrieved the real values of residuals obtained from \textbf{Equation~\ref{eq:exp_change}} 
 (not absolute values) for 147 genes showing a consistent increase in heterogeneity.
-Then, for each gene and each aging dataset, two sample Wilcoxon test was performed on residuals to test if there is a significant difference between males and females.
+Then, for each gene and each aging dataset, two-sample Mann–Whitney U test was performed on residuals to test if there is a significant difference between males and females.
 The obtained p-values were corrected for multiple testing by B{\&}H method (\textbf{Section~\ref{subsec:p.adjust}}).
 Overall, I found that there are only 15 out of 147 consistent genes that show a significant difference between sexes in at least one dataset (\textbf{Figure~\ref{fig:a6.3}}),
 suggesting that the increased heterogeneity cannot be explained solely by sex-specific differences in brain aging.
@@ -142,7 +142,7 @@ but rather it is indeed a biological signal.
 
 \section{Limitations \& future perspectives}
 \begin{enumerate}
-    \item Microarray platform, unlike RNA-Sequencing, is unable to measure the absolute abundance of mRNAs. 
+    \item Microarray platforms, unlike RNA-Sequencing, are unable to measure the absolute abundance of mRNAs. 
     Rather, the light intensities obtained from the microarray platform reflect the relative expression levels.
     In their 2018 paper, Davie \textit{et al.} found that the total abundance of mRNAs tends to decrease with age~\autocite{Davie2018}.
     Moreover, it was previously shown that the genes with lower gene expression values are susceptible to having higher variance~\autocite{Aris2004}.
@@ -152,8 +152,8 @@ but rather it is indeed a biological signal.
     \item Another limitation is also related to microarray datasets containing bulk mRNA expression data.
     Since the expression datasets analyzed in this study contain the average measurements for many cells,
     the results presented here only reflect increased heterogeneity among individuals, not cells.
-    Future research using single-cell RNA-Sequencing data is required to investigate heterogeneity changes between cells.
-    \item Although 19 different datasets were analyzed in this study, it is important to note that they originated from 3 independent sources,
+    Future research using single-cell RNA-Sequencing data is required to investigate heterogeneity changes between cells~\autocite{Ximerakis2019}.
+    \item Although 19 different datasets were analyzed in this study, it is important to note that they originated from only 3 independent sources,
     where Somel2011 and Kang2011 datasets contain measurements from different brain regions of the same individual.
     \item Although a significant overall shift was observed towards increased heterogeneity consistency during aging (\textbf{Figure~\ref{fig:fig3.3}c, lower panel}),
     a gene set that becomes significantly more heterogeneous across all datasets was not confidently identified due to ~40\% true positive rate.
@@ -162,6 +162,6 @@ but rather it is indeed a biological signal.
     leading to higher statistical power, and subsequent identification of more significant genes in both expression (\textbf{Figure~\ref{fig:fig3.1}c}) 
     and heterogeneity changes (\textbf{Figure~\ref{fig:fig3.2}c}).
     \item While two possible explanations of increased heterogeneity are related to the accumulation of somatic mutations and epigenetic regulations,
-    I couldn't test their effect due to a lack of data. 
+    I could not test their effect due to a lack of data. 
     More comprehensive studies incorporating different types of data are needed to reveal the source of increased heterogeneity.
 \end{enumerate}

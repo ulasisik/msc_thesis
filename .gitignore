@@ -18,6 +18,7 @@ data/
 figures/
 paper/
 scripts/oldscripts
+docs/
 # Ignore latex related stuff except .tex files
 thesis/*
 !thesis/*.tex

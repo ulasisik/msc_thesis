@@ -1,5 +1,5 @@
 % CHAPTER 2
-\chapter{Material and Method}~\label{chp:b2}
+\chapter{Materials and Methods}~\label{chp:b2}
 \section{Datasets}
 In this study, I analyzed 19 microarray age-series datasets to investigate age-related gene expression heterogeneity change in the human brain during development and aging.
 The datasets were retrieved from 3 independent sources, containing microarray data for the human brain~\autocite{Colantuoni2011, Kang2011, Somel2011, Somel2010}.
@@ -7,7 +7,7 @@ Overall, the datasets include 1,010 samples from 298 individuals spanning 17 dif
 All datasets have samples covering whole lifespan with ages ranging from 0 to 98 years (\textbf{Figure~\ref{fig:fig2.1}}).
 A summary of datasets used in this study is shown in \textbf{Table~\ref{table:table1}}.
 
-It should also be noted that Kang2011 datasets contain samples from the left and right hemispheres of the same individual.
+It should also be noted that the Kang2011 datasets contain samples from the left and right hemispheres of the same individual.
 These samples were analyzed as biological replicates, meaning that samples were not separated into two different datasets, for three reasons.
 First, it was previously suggested that the left and right hemispheres of the brain may show asymmetric age-related changes~\autocite{Sun2005, Dolcos2002}.
 Second, the other datasets do not contain hemisphere information.
@@ -16,7 +16,7 @@ Last, previous studies analyzing this dataset, including the original study, als
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=.9\textwidth]{figures/figure2_1.pdf}
-\caption{The distribution of ages of the samples. 
+\caption{The distribution of ages (in years) of the samples. 
 (a) Number of samples included in age intervals. 
 (b) Distribution of ages. The color coding reflect different data sources.}~\label{fig:fig2.1}
 \end{figure}
@@ -24,8 +24,8 @@ Last, previous studies analyzing this dataset, including the original study, als
 Additionally, the Somel2011\char`_PFC dataset includes two pairs of technical replicates, between which the correlation was high. 
 Therefore, the mean of expression values was used in the downstream analysis.
 
-The datasets were downloaded from NCBI Gene Expression Omnibus (GEO) database using the accession codes given in the \textbf{Table~\ref{table:table1}}. 
-All the analysis was performed in R programming environment~\autocite{R2020}.
+The datasets were downloaded from the NCBI Gene Expression Omnibus (GEO) database using the accession codes given in the \textbf{Table~\ref{table:table1}}. 
+All analyses was performed in R programming environment~\autocite{R2020}.
 
 \afterpage{
 \begin{table}[!ht]
@@ -81,9 +81,9 @@ The age of 20 years was used to separate development and aging for the following
 \end{enumerate}
 
 As a result, I obtained: 
-(i) one development and one aging dataset for the Colantuoni2011; 
-(ii) 16 development and 16 aging datasets for the Kang2011; and
-(iii) two development and two aging datasets for the Somel2011.
+(i) one development and one aging dataset for Colantuoni2011; 
+(ii) 16 development and 16 aging datasets for Kang2011; and
+(iii) two development and two aging datasets for Somel2011.
 Overall, both development and aging datasets resulted in a comparable number of samples ($n_{development} = 441$; $n_{aging}=569$).
 
 Moreover, it is important to note that I excluded samples from the prenatal development period, 
@@ -157,7 +157,7 @@ Quantile normalization is one of the commonly used methods used to minimize tech
 
 Quantile normalization assumes the same distribution for all samples. 
 Therefore, any significant variation in the distribution shape is regarded as unwanted and non-biological noise and is eliminated.
-However, it is also important to note that quantile normalization should be used with caution as it may also remove signals that can be of biological interest~\autocite{Hicks2014}.
+However, it is also important to note that quantile normalization should be used with caution as it may remove signals that can be of biological interest and introduce false signals as well~\autocite{Hicks2014}.
 Despite this danger, the quantile normalization was performed on all datasets for three reasons. 
 First, all the datasets analyzed in this study contain samples only from the human brain.
 Second, sample collection was performed under similar conditions (i.e., from healthy individuals), combined with the first reason, they indicate that overall expression distributions should be similar.
@@ -190,7 +190,7 @@ where $Expr_i$ and $Scaled\ Expr_i$ represent expression and scaled expression v
 whereas $Expr$ is the expression values of the gene for all samples in a dataset.
 
 \subsection{Batch-effect correction}
-There was one additional normalization step applied to the Somel2011\char`_PFC dataset to correct the batch effect.
+There was one additional normalization step applied to the Somel2011\char`_PFC dataset to correct the batch effect, which refers to non-biological differences in the distribution of expression values of different groups of samples that are processed separately.
 The correction was performed in three steps as follows:
 
 \begin{enumerate}
@@ -201,7 +201,7 @@ The correction was performed in three steps as follows:
 
 \section{Outlier removal}~\label{sec:out.rm}
 In addition to technical variance introduced by microarray analysis, 
-there can be some samples showing greater divergence from the rest of the samples due to a number oof factors,
+there can be some samples showing greater divergence from the rest of the samples due to a number of factors,
 such as different disease backgrounds or different diets.
 Including such samples (i.e., outliers) in the analysis would introduce extra noise and would obstruct the identification of the true relationship between age and expression levels.
 
@@ -222,9 +222,9 @@ Consistent with the previous studies~\autocite{Donertas2017,Donertas2018}, the f
 
 After removing outliers, we obtained 1,010 samples from 298 individuals (\textbf{Table~\ref{table:table1}}).
 Lastly, the common genes among all datasets were selected for the downstream analysis ($n=11,137$), 
-and the genes for which we don't have a measurement in at least one dataset were removed.
+and the genes for which we do not have a measurement in at least one dataset were removed.
 
-\section{Age-related expression change}~\label{sec:exp-change}
+\section{Investigating age-related expression change}~\label{sec:exp-change}
 Having preprocessed datasets for both development and aging periods, I next sought to characterize age-related gene expression changes. 
 Linear regression was used to quantify the relationship between expression levels and age. 
 The following linear model was fitted to each gene for each time period separately.
@@ -245,14 +245,14 @@ To test the effect of the age scale, I performed the same analysis using differe
 The linear regression was performed by using the ``lm'' function in base R for each gene in each dataset (development and aging datasets, separately).
 
 \subsection{Multiple testing correction}~\label{subsec:p.adjust}
-As a result of linear regression, I also obtained p-values for each gene, showing the significance of observed expression change.
+I obtained p-values for each gene from the linear regression model, showing the significance of observed age-related expression change.
 In this study, we used a significance level of $\alpha = 0.05$, meaning that there is a $5\%$ chance that there will be a false-positive result for a single statistical test.
 Since the regression analysis was performed on each gene independently, the false positive rate increased dramatically as a result of multiple comparison problem.
 Therefore, the p-values obtained from linear regression were adjusted for multiple testing to eliminate the accumulation of false-positive results.
 
 While there are several other methods available, I used Benjamini {\&} Hochberg method throughout this study to adjust p-values~\autocite{Benjamin1995}.
 It is the standard method that is commonly used to control the false discovery rate. 
-Compared to other methods, B{\&}H is one of the less conservative and more powerful methods.
+Compared to other methods, B{\&}H is one of the less conservative (and thus more powerful) methods.
 
 The correction was performed by using the ``p.adjust'' function in base R.
 
@@ -268,7 +268,7 @@ Then, the Spearman's correlation coefficients ($\rho$) were considered as a meas
 where positive values indicate an increase in heterogeneity with age and negative values reflect a decrease in age-related heterogeneity. 
 
 The correlation test was performed by using the ``cor.test'' function in base R and the p-values were adjusted for multiple testing using the B{\&}H method, 
-as explained in the~\textbf{Section~\ref{subsec:p.adjust}}.
+as explained in ~\textbf{Section~\ref{subsec:p.adjust}}.
 
 \begin{figure}[!ht]
 \centering
@@ -286,7 +286,7 @@ To evaluate the correlation among datasets in age-related gene expression (and h
 I performed pairwise Spearman's correlation test among beta values (rho values) for each pair of datasets, using the `cor.test` function in R.
 The heatmap visualizations (see \textbf{Figure~\ref{fig:fig3.1}a} and \textbf{Figure~\ref{fig:fig3.2}a}) were created by using ``pheatmap'' library in R~\autocite{Kolde2019}.
 
-The permutation test was used to test the significance of correlations among datasets (see \textbf{Section~\ref{subsec:perm.corr}} for details.)
+A random permutation test was used to test the significance of correlations among datasets (see \textbf{Section~\ref{subsec:perm.corr}} for details).
 
 \section{Principal component analysis}~\label{sec:pca}
 Since biological data, including gene expression data, is typically high-dimensional, it is difficult to visualize and discover patterns in the data.
@@ -298,10 +298,10 @@ Therefore, PCA allows us to visualize and summarize high-dimensional data in 2-d
 
 Apart from the outlier removal step (see \textbf{Section~\ref{sec:out.rm}}), 
 the PCA algorithm is also used to visualize age-related expression (\textbf{Figure~\ref{fig:fig3.1}b}) and heterogeneity changes (\textbf{Figure~\ref{fig:fig3.2}b}).
-I perform PCA by using the ``prcomp'' function in base R.
+I performed PCA using the ``prcomp'' function in base R.
 
 \section{Permutation test}~\label{sec:perm}
-The permutation test is a statistical method used for hypothesis testing. 
+The random permutation test is a statistical method used for hypothesis testing. 
 The main advantage of the permutation test over other parametric statistical tests is that the permutation test does not have distributional assumptions.
 Additionally, conventional parametric tests require each sample to be independent, 
 while the permutation test is more flexible, allowing us to design a permutation procedure that accounts for non-independence.
@@ -333,11 +333,11 @@ Using the expression and heterogeneity change estimates, I tested the significan
 All permutation tests were performed one-tailed.
 
 \subsection{Dataset correlations}~\label{subsec:perm.corr}
-Using the permuted ages, I first tested the correlations for expression and heterogeneity change within the development and aging dataset.
+Using the permuted ages, I first examined the coordination in expression and heterogeneity changes among datasets by computing correlation coefficients for expression and heterogeneity change within the development and aging datasets.
 One approach to test correlations would be to calculate pairwise correlations for each pair of datasets for each permutation,
 and calculate the expected median correlation among development and aging datasets.
 However, since 16 of 19 datasets analyzed in both time periods were retrieved from the same data source (i.e., Kang2011) and contain samples from different brain regions of the same individual,
-this approach would lead to low statistical power due to a high number of dependent pairwise comparisons.
+this approach would lead to excess false positives due to a high number of dependent pairwise comparisons.
 Therefore, we adopted an alternative approach, where I first calculated a median correlation coefficient value
 by performing Spearman's correlation test among all pairwise combinations of three subsets of datasets: one dataset from Kang2011, one dataset from Somel2011, and the Colantuoni2011 dataset.
 I performed this 1,000 using the permuted ages and generated a null distribution of medians for development and aging datasets, separately. 
@@ -347,7 +347,7 @@ Next, the difference in correlations between development and aging datasets was 
 For each permutation, I calculated a median difference between the correlations of development and aging datasets.
 Similarly, observed median differences were compared against the distribution of median differences obtained from permutations.
 
-\subsection{Genes showing significant change}~\label{subsec:perm.sig.change}
+\subsection{Significant expression and heterogeneity changes}~\label{subsec:perm.sig.change}
 To test if there is a significant difference in the number of genes showing the significant age-related change in expression (heterogeneity) between development and aging datasets,
 I calculated the difference in the number of significantly changing genes between development and aging datasets for each permutation to construct the null distribution.
 The p-values were obtained by comparing observed differences against the null distribution.
@@ -358,14 +358,14 @@ I calculated the median difference between median heterogeneity change of develo
 The median value was computed 1,000 times for each permutation to construct the null distribution.
 Then, I compared the observed median difference against the null distribution to obtain an empirical p-value.
 
-\subsection{Heterogeneity consistency}~\label{subsec:perm.consist}
-Lastly, I used heterogeneity change values computed using the permuted ages to obtain expected consistency in heterogeneity increase and to test the significance of observed consistency.
+\subsection{Testing consistency in heterogeneity changes}~\label{subsec:perm.consist}
+Lastly, I used heterogeneity change values computed using the permuted ages to estimate the randomly expected consistency in heterogeneity increase, and to test the significance of observed consistency.
 For each permutation, I calculated the number of genes showing a consistent increase in the $X$ number of datasets, where $X$ is an integer having values from 0 to 19.
 Then, the observed number of genes showing a consistent increase in heterogeneity in the $X$ number of datasets were compared against the expected number of genes for
 each $X$ value ranging from 0 to 19.
 
 \section{Clustering}~\label{sec:cluster}
-Clustering was performed using the k-means clustering algorithm on 147 genes showing a consistent increase in heterogeneity in all 19 aging datasets.
+Clustering of genes based on shared heterogeneity patterns was performed using the k-means clustering algorithm on 147 genes showing a consistent increase in heterogeneity in all 19 aging datasets.
 The heterogeneity levels (i.e., absolute residuals obtained from \textbf{Equation~\ref{eq:exp_change}}) were first scaled to have the same mean and standard deviation. 
 Then, using the scaled heterogeneity levels, spline curves were fitted for each gene with a degree of freedom of 3, by using the ``smooth.spline'' R function.
 Within each dataset, the smallest sample size was used to interpolate the data so that the age points are evenly spaced.
@@ -385,7 +385,7 @@ The p-values were adjusted for multiple testing using the B{\&}H method, consist
 Since I want to test if genes with consistent heterogeneity increase are associated with certain functionalities, 
 the genes were ranked according to the number of datasets in which they show consistent heterogeneity increase, meaning that a number between 0 and 19 was assigned to each gene.
 One problem with this approach is that not all genes can be ranked unambiguously due to many ties observed in the dataset. 
-To address this issue, I ran GSEA 1,000 times and calculated the number of times that each pathway detected as significant (see `significanceIn1000' column in \textbf{Table~\ref{table:a3}}).
+To address this issue, I ran GSEA 1,000 times and calculated the number of times that each pathway was detected as "significant" (see `significanceIn1000' column in \textbf{Table~\ref{table:a3}}).
 
 GO Biological Process enrichment results were visualized by using the ``treemap'' function from ``treemap'' package~\autocite{treemap2021}, 
 whereas significant KEGG pathways were visualized by using the ``KEGGgraph'' package in R~\autocite{KEGGgraph}.
